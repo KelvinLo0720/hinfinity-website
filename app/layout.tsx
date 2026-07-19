@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer";
 import { LanguageProvider } from "@/components/i18n";
 import { MotionLayer } from "@/components/motion-layer";
 import { PageTransition } from "@/components/page-transition";
+import { MobileDock } from "@/components/mobile-dock";
 
 export const metadata: Metadata = {
   title: { default: "H Infinity｜社會文化實踐計劃", template: "%s｜H Infinity" },
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <MotionLayer />
           <Header />
           <main id="main"><PageTransition>{children}</PageTransition></main>
+          <MobileDock />
           <Footer />
         </LanguageProvider>
       </body>

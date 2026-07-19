@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { useLanguage } from "./i18n";
+import { MobileStoryReel } from "./mobile-story-reel";
 
 const images = [
   { src: "/images/team-phone.jpg", altZh: "青年參加者在小組中一起查看手機內容", altEn: "Young participants reviewing content together", className: "collage-a" },
@@ -20,8 +21,9 @@ export function PhotoCollage() {
   const rotateY = useTransform(smoothX, [-1, 1], [-3.2, 3.2]);
 
   return (
-    <motion.div
-      className="hero-collage"
+    <>
+      <motion.div
+      className="hero-collage hero-collage-desktop"
       aria-label={language === "zh" ? "H Infinity 活動片段拼貼" : "H Infinity activity collage"}
       style={{ rotateX, rotateY, transformPerspective: 1100 }}
       onPointerMove={(event) => {
@@ -52,6 +54,8 @@ export function PhotoCollage() {
         <motion.path d="M40 90C110 12 220 120 310 57C385 4 463 59 555 30" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 0.7, duration: 1.4 }} />
         <motion.path d="M130 390C172 330 235 420 290 352C333 299 408 357 490 311" fill="none" stroke="var(--orange)" strokeWidth="4" strokeLinecap="round" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 1, duration: 1.2 }} />
       </svg>
-    </motion.div>
+      </motion.div>
+      <MobileStoryReel />
+    </>
   );
 }

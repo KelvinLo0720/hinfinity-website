@@ -1,1 +1,1 @@
-Upload the app, components, lib and public folders to the ROOT of the existing GitHub repository. GitHub should replace existing files and add the new i18n/motion files. Commit message: Add bilingual UI and energetic motion system
+Upload the app and components folders to the repository root and replace existing files. Commit message: Optimise mobile UI and interactions

@@ -4,6 +4,8 @@ import { Localized } from "@/components/i18n";
 import { PhotoCollage } from "@/components/photo-collage";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
+import { MobileSectionNav } from "@/components/mobile-section-nav";
+import { SnapRail } from "@/components/snap-rail";
 import { programmeSteps, projects } from "@/lib/content";
 
 const solutions = [
@@ -86,6 +88,8 @@ export default function HomePage() {
         </div>
       </section>
 
+      <MobileSectionNav />
+
       <div className="solution-strip" aria-label="H Infinity support">
         <div className="solution-track">
           {[0, 1].map((set) => (
@@ -99,7 +103,7 @@ export default function HomePage() {
         </div>
       </div>
 
-      <section className="section solution-section">
+      <section id="support" className="section solution-section">
         <div className="shell problem-grid">
           <Reveal>
             <span className="eyebrow">HOW WE SUPPORT YOU</span>
@@ -132,7 +136,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section section-blue journey-section">
+      <section id="journey" className="section section-blue journey-section">
         <div className="journey-orbit" aria-hidden="true" />
         <div className="shell">
           <SectionHeading
@@ -147,7 +151,7 @@ export default function HomePage() {
               <span className="journey-route-item" key={en}><Localized zh={zh} en={en} />{index < 5 ? <i aria-hidden="true">→</i> : null}</span>
             ))}
           </div>
-          <div className="journey-scroller">
+          <SnapRail className="journey-scroller" count={programmeSteps.length}>
             {programmeSteps.map((step, index) => (
               <Reveal key={step.n} delay={index * 0.06}>
                 <article className="journey-card motion-card">
@@ -158,11 +162,11 @@ export default function HomePage() {
                 </article>
               </Reveal>
             ))}
-          </div>
+          </SnapRail>
         </div>
       </section>
 
-      <section className="section section-navy chapter-section">
+      <section id="chapter" className="section section-navy chapter-section">
         <div className="shell chapter-grid">
           <Reveal>
             <SectionHeading
@@ -186,7 +190,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section projects-section">
+      <section id="projects" className="section projects-section">
         <div className="shell">
           <SectionHeading
             eyebrow="SELECTED PROJECTS"
@@ -195,7 +199,7 @@ export default function HomePage() {
             intro="Portfolio 唔只展示最後成果，亦會記錄每個團隊點樣觀察、測試、推翻假設，再將構思帶入社群。"
             introEn="The portfolio records more than outcomes. It shows how each team observes, tests, challenges assumptions and brings an idea into the community."
           />
-          <div className="project-showcase">
+          <SnapRail className="project-showcase" count={projects.length}>
             {projects.map((project, index) => (
               <Reveal key={project.slug} delay={index * 0.08}>
                 <Link className={`project-feature motion-card ${index % 2 ? "project-feature-reverse" : ""}`} href={`/projects/${project.slug}`}>
@@ -213,7 +217,7 @@ export default function HomePage() {
                 </Link>
               </Reveal>
             ))}
-          </div>
+          </SnapRail>
         </div>
       </section>
 
@@ -230,7 +234,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section cta-band">
+      <section id="next" className="section cta-band">
         <div className="shell cta-grid">
           <Reveal>
             <span className="eyebrow">NEXT COHORT</span>
