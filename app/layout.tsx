@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { LanguageProvider } from "@/components/i18n";
+import { MotionLayer } from "@/components/motion-layer";
+import { PageTransition } from "@/components/page-transition";
 
 export const metadata: Metadata = {
   title: { default: "H Infinity｜社會文化實踐計劃", template: "%s｜H Infinity" },
@@ -11,12 +14,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="zh-HK">
+    <html lang="zh-HK" data-language="zh">
       <body>
-        <a className="skip-link" href="#main">跳到主要內容</a>
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
+        <LanguageProvider>
+          <a className="skip-link" href="#main">跳到主要內容</a>
+          <MotionLayer />
+          <Header />
+          <main id="main"><PageTransition>{children}</PageTransition></main>
+          <Footer />
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
+import { useLanguage } from "./i18n";
 import { Logo } from "./logo";
 
 export function Footer() {
+  const { language } = useLanguage();
+  const isZh = language === "zh";
   return (
     <footer className="site-footer">
       <div className="footer-wave" aria-hidden="true" />
@@ -9,25 +14,25 @@ export function Footer() {
         <div>
           <Logo inverted />
           <p className="footer-note">H Infinity is a programme by Hong Kong Culture Limited.</p>
-          <p className="footer-note">香港籽鷂文化｜讓青年文化構思由想法走到行動。</p>
+          <p className="footer-note">{isZh ? "香港籽鷂文化｜讓青年文化構思由想法走到行動。" : "Hong Kong Culture Limited｜Helping youth move cultural ideas into action."}</p>
         </div>
         <div>
-          <h3>探索</h3>
-          <Link href="/h-infinity">計劃理念</Link>
-          <Link href="/first-chapter">第一個章節</Link>
-          <Link href="/projects">青年項目</Link>
-          <Link href="/stories">真實故事</Link>
+          <h3>{isZh ? "探索" : "Explore"}</h3>
+          <Link href="/h-infinity">{isZh ? "計劃理念" : "The Programme"}</Link>
+          <Link href="/first-chapter">{isZh ? "第一個章節" : "Our First Chapter"}</Link>
+          <Link href="/projects">{isZh ? "青年項目" : "Youth Projects"}</Link>
+          <Link href="/stories">{isZh ? "真實故事" : "Human Stories"}</Link>
         </div>
         <div>
-          <h3>參與</h3>
-          <Link href="/apply">報名參加</Link>
-          <Link href="/support">支持我們</Link>
-          <Link href="/partners">合作夥伴</Link>
-          <Link href="/contact">聯絡我們</Link>
+          <h3>{isZh ? "參與" : "Join"}</h3>
+          <Link href="/apply">{isZh ? "報名參加" : "Apply"}</Link>
+          <Link href="/support">{isZh ? "支持我們" : "Support Us"}</Link>
+          <Link href="/partners">{isZh ? "合作夥伴" : "Partners"}</Link>
+          <Link href="/contact">{isZh ? "聯絡我們" : "Contact"}</Link>
         </div>
         <div>
-          <h3>資料</h3>
-          <Link href="/privacy">私隱政策</Link>
+          <h3>{isZh ? "資料" : "Information"}</h3>
+          <Link href="/privacy">{isZh ? "私隱政策" : "Privacy"}</Link>
           <span>Instagram @hinfinity.hk</span>
           <span>hello@hinfinity.hk</span>
         </div>
