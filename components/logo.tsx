@@ -7,8 +7,8 @@ export function Logo({ inverted = false }: { inverted?: boolean }) {
       <Image
         src="/brand/hinfinity-logo-transparent.png"
         alt="H Infinity 社會文化實踐計劃"
-        width={174}
-        height={70}
+        width={560}
+        height={303}
         priority
       />
     </Link>

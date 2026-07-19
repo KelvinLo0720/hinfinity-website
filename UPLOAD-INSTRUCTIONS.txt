@@ -1,0 +1,15 @@
+H INFINITY HOMEPAGE FIX
+
+Upload these folders/files to the ROOT of your existing GitHub repository.
+GitHub should replace these four existing files:
+
+app/page.tsx
+app/globals.css
+components/logo.tsx
+public/brand/hinfinity-logo-transparent.png
+
+Do not upload the ZIP itself. Extract it first, then drag the app, components and public folders into GitHub's Upload files page.
+Commit message suggestion:
+Refine homepage UI and copy
+
+Vercel will automatically create a new deployment after the commit.
