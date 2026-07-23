@@ -317,8 +317,9 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
 }
 
 
-/* v11 — mobile landscape Gantt presentation */
+/* v13 — responsive rotated Gantt presentation */
 .gantt-orientation-gate{display:none}
+.gantt-portrait-stage{display:none}
 @media (max-width:900px) and (orientation:portrait){
   .timeline-slide .timeline-title{display:block}
   .timeline-slide .timeline-title h2{font-size:clamp(36px,10vw,48px);margin-bottom:12px}
@@ -329,13 +330,22 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
   .rotate-phone::before{content:"";position:absolute;left:50%;top:8px;transform:translateX(-50%);width:24px;height:4px;border-radius:4px;background:var(--navy)}
   .rotate-phone::after{content:"↻";position:absolute;right:-54px;top:42px;font-size:42px;font-weight:900;color:var(--blue);animation:turnArrow 2.8s ease-in-out infinite}
   .gantt-orientation-gate strong{display:block;font-size:24px;line-height:1.25;color:var(--navy)}
-  .gantt-orientation-gate p{max-width:330px;margin:10px auto 0;font-size:15px;line-height:1.55;color:#53607a}
-  .gantt-orientation-gate small{display:inline-block;margin-top:16px;padding:8px 12px;border:1.5px solid var(--navy);background:var(--lime);font-size:11px;font-weight:900;color:var(--navy)}
+  .gantt-orientation-gate p{display:none}
+  .gantt-orientation-gate small{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding:8px 12px;border:1.5px solid var(--navy);background:var(--lime);font-size:11px;font-weight:900;color:var(--navy)}
+  .gantt-countdown{display:grid;place-items:center;min-width:25px;height:25px;padding:0 6px;border-radius:999px;background:var(--navy);color:#fff;font-size:12px;font-weight:1000}
   @keyframes turnPhone{0%,28%{transform:rotate(0deg)}58%,88%{transform:rotate(90deg)}100%{transform:rotate(0deg)}}
   @keyframes turnArrow{0%,28%{opacity:.35;transform:rotate(0deg)}58%,88%{opacity:1;transform:rotate(90deg)}100%{opacity:.35;transform:rotate(0deg)}}
-  .gantt-portrait-stage{display:none;position:relative;width:100%;height:calc(100dvh - 305px);min-height:520px;margin-top:16px;overflow:hidden;border:2px solid var(--navy);background:#fff;box-shadow:8px 8px 0 var(--navy);opacity:0;transform:scale(.985);transition:opacity .45s ease,transform .55s cubic-bezier(.22,1,.36,1)}
+  .gantt-portrait-stage{display:none;position:relative;width:calc(100% + 28px);min-height:560px;margin:16px -14px 0;overflow:hidden;border:2px solid var(--navy);background:#fff;box-shadow:8px 8px 0 var(--navy);opacity:0;transform:scale(.985);transition:opacity .45s ease,transform .55s cubic-bezier(.22,1,.36,1)}
   .gantt-portrait-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
   .gantt-portrait-rotator{position:relative;transform-origin:center center;will-change:transform}
+  .gantt-portrait-rotator .gantt-board{width:1580px!important;min-width:1580px!important;max-width:none!important;overflow:visible!important;box-shadow:6px 7px 0 var(--navy)!important}
+  .gantt-portrait-rotator .gantt-years,.gantt-portrait-rotator .gantt-months,.gantt-portrait-rotator .gantt-row{grid-template-columns:340px repeat(14,88px)!important}
+  .gantt-portrait-rotator .gantt-years{height:40px!important}.gantt-portrait-rotator .gantt-months{height:62px!important}.gantt-portrait-rotator .gantt-row{min-height:62px!important}
+  .gantt-portrait-rotator .g-task{grid-template-columns:34px minmax(0,1fr) auto!important;gap:10px!important;padding:9px 12px!important;box-shadow:none!important}
+  .gantt-portrait-rotator .g-task>span{width:30px!important;height:30px!important;font-size:11px!important}
+  .gantt-portrait-rotator .g-task b{font-size:15px!important;line-height:1.15!important}.gantt-portrait-rotator .g-task small{font-size:11px!important;line-height:1.3!important}.gantt-portrait-rotator .g-task em{font-size:9px!important}
+  .gantt-portrait-rotator .g-year{font-size:13px!important}.gantt-portrait-rotator .g-month b{font-size:12px!important}.gantt-portrait-rotator .g-month span{font-size:9px!important}
+  .gantt-portrait-rotator .g-bar{min-height:36px!important;margin:0 4px!important;padding:5px 7px!important;font-size:11px!important;line-height:1.12!important;white-space:normal!important;overflow:visible!important}
   .timeline-slide.show-portrait-gantt .gantt-orientation-gate{display:none!important}
   .timeline-slide.show-portrait-gantt .gantt-portrait-stage{display:block;opacity:1;transform:none}
   .timeline-slide.show-portrait-gantt .timeline-title{margin-bottom:0}
@@ -608,7 +618,7 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
 <div><div class="label">TENTATIVE TIMELINE</div><h2>由招募、磨合，<br/>到項目落地。</h2></div>
 <p>時間線按現階段規劃整理；虛線標示的後期階段，日期將隨項目進度進一步確認。</p>
 </div>
-<div class="gantt-orientation-gate" role="note" aria-label="請旋轉手機查看完整時間線"><div><div class="rotate-phone" aria-hidden="true"></div><strong>請將手機向右旋轉</strong><p>畫面將在 2 秒後自動轉為橫向時間線，完整呈現月份、工作階段及所有文字。</p><small>自動切換中…</small></div></div><div class="gantt-portrait-stage" aria-label="橫向顯示的完整時間線"><div class="gantt-portrait-center"><div class="gantt-portrait-rotator"></div></div></div><div class="gantt-mobile-hint" aria-hidden="true">← 左右滑動查看完整時間線 →</div>
+<div class="gantt-orientation-gate" role="note" aria-label="請旋轉手機查看完整時間線"><div><div class="rotate-phone" aria-hidden="true"></div><strong>請將手機向右旋轉</strong><small>自動切換中… <b class="gantt-countdown" id="ganttCountdown">2</b></small></div></div><div class="gantt-portrait-stage" aria-label="橫向顯示的完整時間線"><div class="gantt-portrait-center"><div class="gantt-portrait-rotator"></div></div></div><div class="gantt-mobile-hint" aria-hidden="true">← 左右滑動查看完整時間線 →</div>
 <div aria-label="H Infinity 第二屆暫定時間線" class="gantt-scroll">
 <div class="gantt-board">
 <div class="gantt-years"><div class="g-corner">PHASE</div><div class="g-year y26">2026</div><div class="g-year y27">2027</div></div>
@@ -721,6 +731,8 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
   let active=Math.max(0,slides.findIndex(s=>s.id===location.hash.slice(1))); if(active<0) active=0;
   let startX=0,startY=0,lastWheel=0,touchFromScroller=false;
   let timelineAutoTimer=null;
+  let timelineCountdownTimer=null;
+  const ganttCountdown=document.getElementById('ganttCountdown');
   const timelineSlide=document.getElementById('timeline');
   const portraitRotator=document.querySelector('.gantt-portrait-rotator');
   const sourceGantt=document.querySelector('.timeline-slide .gantt-board');
@@ -734,26 +746,35 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
     const stage=document.querySelector('.gantt-portrait-stage');
     if(!stage) return;
     const board=portraitRotator.firstElementChild;
-    board.style.minWidth='1260px';
-    board.style.width='1260px';
-    const boardW=board.scrollWidth || 1260;
+    board.style.minWidth='1580px';
+    board.style.width='1580px';
+    const boardW=board.scrollWidth || 1580;
     const boardH=board.scrollHeight || 760;
     portraitRotator.style.width=boardW+'px';
     portraitRotator.style.height=boardH+'px';
-    const availableW=Math.max(280,stage.clientWidth-24);
-    const availableH=Math.max(420,stage.clientHeight-24);
-    const scale=Math.min(availableW/boardH,availableH/boardW,.92);
+    const availableW=Math.max(300,stage.clientWidth-18);
+    const scale=Math.min(availableW/boardH,.98);
+    const rotatedHeight=Math.ceil(boardW*scale)+24;
+    stage.style.height=Math.max(620,rotatedHeight)+'px';
     portraitRotator.style.transform='rotate(90deg) scale('+scale+')';
   }
   function scheduleTimelineAutoGantt(){
     if(timelineAutoTimer) clearTimeout(timelineAutoTimer);
+    if(timelineCountdownTimer) clearInterval(timelineCountdownTimer);
     if(!timelineSlide) return;
     timelineSlide.classList.remove('show-portrait-gantt');
+    if(ganttCountdown) ganttCountdown.textContent='2';
     const portraitMobile=matchMedia('(max-width: 900px) and (orientation: portrait)').matches;
     if(active===slides.indexOf(timelineSlide) && portraitMobile){
+      let remaining=2;
+      timelineCountdownTimer=setInterval(()=>{
+        remaining=Math.max(0,remaining-1);
+        if(ganttCountdown) ganttCountdown.textContent=String(remaining);
+        if(remaining<=0){clearInterval(timelineCountdownTimer);timelineCountdownTimer=null;}
+      },1000);
       timelineAutoTimer=setTimeout(()=>{
         timelineSlide.classList.add('show-portrait-gantt');
-        requestAnimationFrame(fitPortraitGantt);
+        requestAnimationFrame(()=>requestAnimationFrame(fitPortraitGantt));
       },2000);
     }
   }
