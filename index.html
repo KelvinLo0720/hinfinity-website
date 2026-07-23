@@ -5,8 +5,8 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#10264c" name="theme-color"/>
-<meta content="H Infinity 第二屆社會文化實踐計劃 — HTML Deck" name="description"/>
-<title>H Infinity 第二屆｜社會文化實踐計劃</title>
+<meta content="H Infinity 第二屆青年文化實踐計劃 — HTML Deck" name="description"/>
+<title>H Infinity 第二屆｜青年文化實踐計劃</title>
 <style>
 :root{--navy:#10264c;--blue:#304cff;--lime:#d9ff39;--orange:#ff6b3d;--paper:#f7f3e8;--ink:#10264c;--muted:#60708d;--line:rgba(16,38,76,.14);--card:#fff;--header:112px;--shadow:8px 8px 0 rgba(16,38,76,.95);--radius:28px;}
 *{box-sizing:border-box}
@@ -402,6 +402,31 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
   .case-rev-steps .step{grid-template-columns:44px 1fr;padding:11px 12px}
   .case-rev-steps .step h3{font-size:18px}
   .case-rev-steps .step p{font-size:14px}
+}
+
+
+/* v22: restore P.2 activity photos on mobile */
+@media (max-width:560px){
+  .problem-rev-photos{
+    display:grid !important;
+    grid-template-columns:1fr 1fr !important;
+    gap:10px !important;
+    margin-top:18px !important;
+  }
+  .problem-rev-photos .photo{
+    height:132px !important;
+    min-height:0 !important;
+    border-width:5px !important;
+    box-shadow:5px 6px 0 var(--navy) !important;
+  }
+  .problem-rev-photos .photo:nth-child(3){
+    grid-column:1 / -1 !important;
+    height:164px !important;
+  }
+  .problem-rev-photos .photo img{
+    object-fit:cover !important;
+    object-position:center !important;
+  }
 }
 
 </style>
