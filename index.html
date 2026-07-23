@@ -428,11 +428,9 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
 </div>
 <div class="cover-rev-visual">
 <div class="scribble cover-rev-idea">IDEA!</div>
-<div class="scribble blue cover-rev-motion">IN MOTION ↗</div>
 <!-- P.1 封面主相: p01-cover-main.jpg --><div class="photo cr1"><img alt="H Infinity 活動照片 1" src="https://raw.githubusercontent.com/KelvinLo0720/hinfinity-website/refs/heads/main/p01-cover-main.jpg?v=20260723"/></div>
 <!-- P.1 封面右側相: p01-cover-right.jpg --><div class="photo cr2"><img alt="H Infinity 活動照片 2" src="https://raw.githubusercontent.com/KelvinLo0720/hinfinity-website/refs/heads/main/p01-cover-right.jpg?v=20260723"/></div>
 <!-- P.1 封面下方相: p01-cover-bottom.jpg --><div class="photo cr3"><img alt="H Infinity 活動照片 3" src="https://raw.githubusercontent.com/KelvinLo0720/hinfinity-website/refs/heads/main/p01-cover-bottom.jpg?v=20260723"/></div>
-<svg aria-hidden="true" class="cover-rev-route" viewbox="0 0 900 600"><path d="M58 285 C 155 190, 250 210, 330 275 S 500 350, 590 280 760 145, 860 220"></path></svg>
 </div>
 </div>
 <div aria-label="H Infinity 核心元素" class="cover-rev-strip">
@@ -857,4 +855,19 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
 })();
 </script>
 </body>
-</html>
+</html><style>
+@media (max-width:560px){
+  .cover-rev-visual{height:400px!important;}
+  .cr3{
+    left:14%!important;
+    width:72%!important;
+    height:40%!important;
+    bottom:0!important;
+  }
+  .cr3 img{
+    object-fit:contain!important;
+    object-position:center center!important;
+    background:#fff;
+  }
+}
+</style>
