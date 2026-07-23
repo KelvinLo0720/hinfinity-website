@@ -333,6 +333,14 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
   .gantt-orientation-gate small{display:inline-block;margin-top:16px;padding:8px 12px;border:1.5px solid var(--navy);background:var(--lime);font-size:11px;font-weight:900;color:var(--navy)}
   @keyframes turnPhone{0%,28%{transform:rotate(0deg)}58%,88%{transform:rotate(90deg)}100%{transform:rotate(0deg)}}
   @keyframes turnArrow{0%,28%{opacity:.35;transform:rotate(0deg)}58%,88%{opacity:1;transform:rotate(90deg)}100%{opacity:.35;transform:rotate(0deg)}}
+  .gantt-portrait-stage{display:none;position:relative;width:100%;height:calc(100dvh - 305px);min-height:520px;margin-top:16px;overflow:hidden;border:2px solid var(--navy);background:#fff;box-shadow:8px 8px 0 var(--navy);opacity:0;transform:scale(.985);transition:opacity .45s ease,transform .55s cubic-bezier(.22,1,.36,1)}
+  .gantt-portrait-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}
+  .gantt-portrait-rotator{position:relative;transform-origin:center center;will-change:transform}
+  .timeline-slide.show-portrait-gantt .gantt-orientation-gate{display:none!important}
+  .timeline-slide.show-portrait-gantt .gantt-portrait-stage{display:block;opacity:1;transform:none}
+  .timeline-slide.show-portrait-gantt .timeline-title{margin-bottom:0}
+  .timeline-slide.show-portrait-gantt .timeline-title h2{font-size:clamp(31px,8.5vw,42px);margin-bottom:8px}
+  .timeline-slide.show-portrait-gantt .timeline-title p{font-size:13px;line-height:1.42}
 }
 @media (max-width:900px) and (orientation:landscape){
   .timeline-slide{padding:58px 12px 66px;overflow-y:auto}
@@ -600,7 +608,7 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
 <div><div class="label">TENTATIVE TIMELINE</div><h2>由招募、磨合，<br/>到項目落地。</h2></div>
 <p>時間線按現階段規劃整理；虛線標示的後期階段，日期將隨項目進度進一步確認。</p>
 </div>
-<div class="gantt-orientation-gate" role="note" aria-label="請旋轉手機查看完整時間線"><div><div class="rotate-phone" aria-hidden="true"></div><strong>請將手機向右旋轉</strong><p>橫向模式會顯示完整時間線，月份、工作階段及所有文字都會完整呈現。</p><small>ROTATE TO LANDSCAPE ↻</small></div></div><div class="gantt-mobile-hint" aria-hidden="true">← 左右滑動查看完整時間線 →</div>
+<div class="gantt-orientation-gate" role="note" aria-label="請旋轉手機查看完整時間線"><div><div class="rotate-phone" aria-hidden="true"></div><strong>請將手機向右旋轉</strong><p>畫面將在 2 秒後自動轉為橫向時間線，完整呈現月份、工作階段及所有文字。</p><small>自動切換中…</small></div></div><div class="gantt-portrait-stage" aria-label="橫向顯示的完整時間線"><div class="gantt-portrait-center"><div class="gantt-portrait-rotator"></div></div></div><div class="gantt-mobile-hint" aria-hidden="true">← 左右滑動查看完整時間線 →</div>
 <div aria-label="H Infinity 第二屆暫定時間線" class="gantt-scroll">
 <div class="gantt-board">
 <div class="gantt-years"><div class="g-corner">PHASE</div><div class="g-year y26">2026</div><div class="g-year y27">2027</div></div>
@@ -712,6 +720,43 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
   if(headerLogo && coverHeroLogo){coverHeroLogo.src=headerLogo.src;coverHeroLogo.style.visibility="visible";}
   let active=Math.max(0,slides.findIndex(s=>s.id===location.hash.slice(1))); if(active<0) active=0;
   let startX=0,startY=0,lastWheel=0,touchFromScroller=false;
+  let timelineAutoTimer=null;
+  const timelineSlide=document.getElementById('timeline');
+  const portraitRotator=document.querySelector('.gantt-portrait-rotator');
+  const sourceGantt=document.querySelector('.timeline-slide .gantt-board');
+  if(portraitRotator && sourceGantt){
+    const clonedGantt=sourceGantt.cloneNode(true);
+    clonedGantt.removeAttribute('id');
+    portraitRotator.appendChild(clonedGantt);
+  }
+  function fitPortraitGantt(){
+    if(!timelineSlide || !portraitRotator || !portraitRotator.firstElementChild) return;
+    const stage=document.querySelector('.gantt-portrait-stage');
+    if(!stage) return;
+    const board=portraitRotator.firstElementChild;
+    board.style.minWidth='1260px';
+    board.style.width='1260px';
+    const boardW=board.scrollWidth || 1260;
+    const boardH=board.scrollHeight || 760;
+    portraitRotator.style.width=boardW+'px';
+    portraitRotator.style.height=boardH+'px';
+    const availableW=Math.max(280,stage.clientWidth-24);
+    const availableH=Math.max(420,stage.clientHeight-24);
+    const scale=Math.min(availableW/boardH,availableH/boardW,.92);
+    portraitRotator.style.transform='rotate(90deg) scale('+scale+')';
+  }
+  function scheduleTimelineAutoGantt(){
+    if(timelineAutoTimer) clearTimeout(timelineAutoTimer);
+    if(!timelineSlide) return;
+    timelineSlide.classList.remove('show-portrait-gantt');
+    const portraitMobile=matchMedia('(max-width: 900px) and (orientation: portrait)').matches;
+    if(active===slides.indexOf(timelineSlide) && portraitMobile){
+      timelineAutoTimer=setTimeout(()=>{
+        timelineSlide.classList.add('show-portrait-gantt');
+        requestAnimationFrame(fitPortraitGantt);
+      },2000);
+    }
+  }
   function render(){
     slides.forEach((s,i)=>{s.classList.toggle('active',i===active);s.classList.toggle('exit-left',i<active);s.setAttribute('aria-hidden',i===active?'false':'true'); if(i!==active) s.scrollTop=0;});
     progress.style.width=((active+1)/slides.length*100)+'%';
@@ -720,6 +765,7 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
     history.replaceState(null,'','#'+slides[active].id);
     menuList.querySelectorAll('.slide-link').forEach((b,i)=>b.classList.toggle('active',i===active));
     overview.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('active',i===active));
+    scheduleTimelineAutoGantt();
   }
   function go(i){ active=Math.max(0,Math.min(slides.length-1,i)); menu.classList.remove('open'); overview.classList.remove('open'); render(); }
   slides.forEach((s,i)=>{
@@ -743,6 +789,8 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
   const deck=document.getElementById('deck');
   deck.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;touchFromScroller=!!e.target.closest('.gantt-scroll');},{passive:true});
   deck.addEventListener('touchend',e=>{if(touchFromScroller){touchFromScroller=false;return;} const dx=e.changedTouches[0].clientX-startX, dy=e.changedTouches[0].clientY-startY; if(Math.abs(dx)>65 && Math.abs(dx)>Math.abs(dy)*1.2) go(active + (dx<0?1:-1));},{passive:true});
+  addEventListener('resize',()=>{if(timelineSlide?.classList.contains('show-portrait-gantt')) requestAnimationFrame(fitPortraitGantt);});
+  addEventListener('orientationchange',()=>{setTimeout(()=>{scheduleTimelineAutoGantt();requestAnimationFrame(fitPortraitGantt);},250);});
   deck.addEventListener('wheel',e=>{
     const now=Date.now(); if(now-lastWheel<650||Math.abs(e.deltaY)<36) return;
     const current=slides[active]; const canScroll=current.scrollHeight>current.clientHeight+5;
