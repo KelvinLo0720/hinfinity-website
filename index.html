@@ -120,6 +120,7 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
 .g-bar{align-self:center;height:28px;margin:0 5px;border:2px solid var(--navy);box-shadow:3px 3px 0 var(--navy);display:flex;align-items:center;padding:0 10px;overflow:hidden;z-index:3;font-size:10px;font-weight:900;white-space:nowrap;color:var(--navy);background:#fff}
 .g-bar.lime{background:var(--lime)}.g-bar.blue{background:#cfd7ff}.g-bar.orange{background:#ffd6c7}.g-bar.navy{background:var(--navy);color:#fff}.g-bar.tentative{background:repeating-linear-gradient(135deg,#fff 0,#fff 7px,#edf0f7 7px,#edf0f7 14px);border-style:dashed;color:#5b6780}
 .timeline-note{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:13px;font-weight:900;color:var(--orange)}.timeline-note span{width:28px;height:12px;border:2px dashed var(--orange);background:repeating-linear-gradient(135deg,#fff 0,#fff 5px,#fff0e8 5px,#fff0e8 10px)}
+.gantt-mobile-hint{display:none;align-items:center;justify-content:center;gap:8px;margin:14px 0 0;padding:9px 12px;border:1.5px solid var(--navy);background:var(--lime);font-size:11px;font-weight:900;letter-spacing:.02em;color:var(--navy)}
 @media(max-width:900px){
   :root{--header:64px}
   .header{height:var(--header);padding:10px 16px}.logo{width:158px}.counter{font-size:10px}.round-btn{width:40px;height:40px}
@@ -289,15 +290,69 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
 .gm-bar.blue{background:#cfd7ff}.gm-bar.orange{background:#ffd6c7}.gm-bar.navy{background:var(--navy)}.gm-bar.tentative{background:repeating-linear-gradient(135deg,#fff 0,#fff 4px,#e8ebf3 4px,#e8ebf3 8px);border-style:dashed}
 .timeline-note{display:flex;align-items:center;gap:10px;margin-top:14px;font-size:13px;font-weight:900;color:var(--orange)}
 .timeline-note span{width:28px;height:12px;border:2px dashed var(--orange);background:repeating-linear-gradient(135deg,#fff 0,#fff 5px,#fff0e8 5px,#fff0e8 10px)}
+.gantt-mobile-hint{display:none;align-items:center;justify-content:center;gap:8px;margin:14px 0 0;padding:9px 12px;border:1.5px solid var(--navy);background:var(--lime);font-size:11px;font-weight:900;letter-spacing:.02em;color:var(--navy)}
 @media(max-width:900px){
   .timeline-title{display:block}.timeline-title p{margin-top:12px;font-size:16px}
-  .gantt-scroll{display:none}
-  .gantt-mobile{display:grid}
+  .gantt-mobile{display:none!important}
+  .gantt-mobile-hint{display:flex}
+  .gantt-scroll{display:block;margin:16px -20px 0;padding:0 20px 18px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;touch-action:pan-x pan-y;overscroll-behavior-x:contain}
+  .gantt-board{min-width:1118px;box-shadow:6px 7px 0 var(--navy)}
+  .gantt-years,.gantt-months,.gantt-row{grid-template-columns:218px repeat(14,64px)}
+  .gantt-years{height:34px}.gantt-months{height:54px}.gantt-row{min-height:66px}
+  .g-corner{padding:0 12px}
+  .g-task{grid-template-columns:30px minmax(0,1fr) auto;gap:8px;padding:9px 10px;box-shadow:6px 0 12px rgba(16,38,76,.06)}
+  .g-task>span{width:27px;height:27px;font-size:10px}.g-task b{font-size:12px}.g-task small{font-size:9px;line-height:1.25}.g-task em{font-size:8px}
+  .g-bar{min-height:34px;margin:0 4px;padding:4px 6px;font-size:9px;box-shadow:2px 3px 0 var(--navy)}
+  .g-month b{font-size:11px}.g-month span{font-size:8px}
   .timeline-note{font-size:12px;line-height:1.45}
 }
 @media(max-width:560px){
   .timeline-title h2{font-size:42px}
-  .gm-item{padding:12px}.gm-head{grid-template-columns:32px minmax(0,1fr);gap:9px}.gm-date{grid-column:2;text-align:left;margin-top:2px}.gm-copy b{font-size:15px}.gm-copy small{font-size:11px}
+  .gantt-scroll{margin-left:-16px;margin-right:-16px;padding-left:16px;padding-right:16px}
+  .gantt-board{min-width:1080px}
+  .gantt-years,.gantt-months,.gantt-row{grid-template-columns:204px repeat(14,62px)}
+  .g-task{grid-template-columns:28px minmax(0,1fr);padding:8px 9px}
+  .g-task em{grid-column:2;margin-top:-2px}
+  .g-task b{font-size:11px}.g-task small{font-size:8.5px}
+}
+
+
+/* v11 — mobile landscape Gantt presentation */
+.gantt-orientation-gate{display:none}
+@media (max-width:900px) and (orientation:portrait){
+  .timeline-slide .timeline-title{display:block}
+  .timeline-slide .timeline-title h2{font-size:clamp(36px,10vw,48px);margin-bottom:12px}
+  .timeline-slide .timeline-title p{font-size:15px;line-height:1.5}
+  .timeline-slide .gantt-mobile-hint,.timeline-slide .gantt-scroll,.timeline-slide .gantt-mobile,.timeline-slide .timeline-note{display:none!important}
+  .gantt-orientation-gate{display:grid;place-items:center;min-height:52vh;margin-top:18px;padding:26px 22px;border:2px solid var(--navy);background:linear-gradient(145deg,#fff 0%,#f7f3e8 66%,rgba(217,255,57,.34) 100%);box-shadow:8px 8px 0 var(--navy);text-align:center}
+  .rotate-phone{position:relative;width:82px;height:132px;margin:0 auto 26px;border:4px solid var(--navy);border-radius:18px;background:#fff;transform:rotate(0deg);animation:turnPhone 2.8s ease-in-out infinite}
+  .rotate-phone::before{content:"";position:absolute;left:50%;top:8px;transform:translateX(-50%);width:24px;height:4px;border-radius:4px;background:var(--navy)}
+  .rotate-phone::after{content:"↻";position:absolute;right:-54px;top:42px;font-size:42px;font-weight:900;color:var(--blue);animation:turnArrow 2.8s ease-in-out infinite}
+  .gantt-orientation-gate strong{display:block;font-size:24px;line-height:1.25;color:var(--navy)}
+  .gantt-orientation-gate p{max-width:330px;margin:10px auto 0;font-size:15px;line-height:1.55;color:#53607a}
+  .gantt-orientation-gate small{display:inline-block;margin-top:16px;padding:8px 12px;border:1.5px solid var(--navy);background:var(--lime);font-size:11px;font-weight:900;color:var(--navy)}
+  @keyframes turnPhone{0%,28%{transform:rotate(0deg)}58%,88%{transform:rotate(90deg)}100%{transform:rotate(0deg)}}
+  @keyframes turnArrow{0%,28%{opacity:.35;transform:rotate(0deg)}58%,88%{opacity:1;transform:rotate(90deg)}100%{opacity:.35;transform:rotate(0deg)}}
+}
+@media (max-width:900px) and (orientation:landscape){
+  .timeline-slide{padding:58px 12px 66px;overflow-y:auto}
+  .timeline-slide .slide-body{min-height:auto;justify-content:flex-start}
+  .timeline-slide .timeline-title{display:grid;grid-template-columns:minmax(0,1fr) minmax(250px,410px);gap:22px;align-items:end;margin-bottom:8px}
+  .timeline-slide .timeline-title h2{font-size:34px;line-height:.98;margin:8px 0 0}
+  .timeline-slide .timeline-title p{margin:0;font-size:13px;line-height:1.45}
+  .timeline-slide .label{font-size:10px}
+  .timeline-slide .gantt-orientation-gate,.timeline-slide .gantt-mobile-hint,.timeline-slide .gantt-mobile{display:none!important}
+  .timeline-slide .gantt-scroll{display:block;margin:10px 0 0;padding:0 4px 12px;overflow-x:hidden;overflow-y:visible;touch-action:pan-y}
+  .timeline-slide .gantt-board{width:100%;min-width:0;box-shadow:5px 5px 0 var(--navy)}
+  .timeline-slide .gantt-years,.timeline-slide .gantt-months,.timeline-slide .gantt-row{grid-template-columns:182px repeat(14,minmax(42px,1fr))}
+  .timeline-slide .gantt-years{height:28px}.timeline-slide .gantt-months{height:42px}.timeline-slide .gantt-row{min-height:49px}
+  .timeline-slide .g-corner{position:static;padding:0 9px;font-size:8px}
+  .timeline-slide .g-task{position:static;grid-template-columns:24px minmax(0,1fr) auto;gap:7px;padding:6px 8px;box-shadow:none}
+  .timeline-slide .g-task>span{width:22px;height:22px;font-size:8px}.timeline-slide .g-task b{font-size:10px}.timeline-slide .g-task small{font-size:7.5px;line-height:1.18}.timeline-slide .g-task em{font-size:7px}
+  .timeline-slide .g-year{font-size:10px}.timeline-slide .g-month b{font-size:9px}.timeline-slide .g-month span{font-size:7px}
+  .timeline-slide .g-bar{min-height:28px;margin:0 2px;padding:3px 4px;font-size:7.5px;line-height:1.05;box-shadow:2px 2px 0 var(--navy);white-space:normal;overflow:visible}
+  .timeline-slide .g-bar span{overflow:visible;overflow-wrap:normal;word-break:normal}
+  .timeline-slide .timeline-note{margin-top:10px;font-size:10px}
 }
 
 </style>
@@ -543,8 +598,9 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
 <div class="slide-body">
 <div class="timeline-title">
 <div><div class="label">TENTATIVE TIMELINE</div><h2>由招募、磨合，<br/>到項目落地。</h2></div>
-<p>時間線按現階段規劃整理；虛線標示的後期階段，日期將按項目進度再確認。</p>
+<p>時間線按現階段規劃整理；虛線標示的後期階段，日期將隨項目進度進一步確認。</p>
 </div>
+<div class="gantt-orientation-gate" role="note" aria-label="請旋轉手機查看完整時間線"><div><div class="rotate-phone" aria-hidden="true"></div><strong>請將手機向右旋轉</strong><p>橫向模式會顯示完整時間線，月份、工作階段及所有文字都會完整呈現。</p><small>ROTATE TO LANDSCAPE ↻</small></div></div><div class="gantt-mobile-hint" aria-hidden="true">← 左右滑動查看完整時間線 →</div>
 <div aria-label="H Infinity 第二屆暫定時間線" class="gantt-scroll">
 <div class="gantt-board">
 <div class="gantt-years"><div class="g-corner">PHASE</div><div class="g-year y26">2026</div><div class="g-year y27">2027</div></div>
@@ -560,7 +616,7 @@ h1,h2,h3,p{margin:0} h1,h2{letter-spacing:-.06em;line-height:.95} h1{font-size:c
 <div class="g-bar orange" style="grid-column:5 / span 2" title="Interview / Screening"><span>Screening</span></div>
 </div><div class="gantt-row">
 <div class="g-task"><span>04</span><div><b>Ice-breaking</b><small>建立信任、了解合作方式及團隊形成</small></div></div><i class="g-cell" style="grid-column:2"></i><i class="g-cell" style="grid-column:3"></i><i class="g-cell" style="grid-column:4"></i><i class="g-cell" style="grid-column:5"></i><i class="g-cell" style="grid-column:6"></i><i class="g-cell" style="grid-column:7"></i><i class="g-cell" style="grid-column:8"></i><i class="g-cell" style="grid-column:9"></i><i class="g-cell" style="grid-column:10"></i><i class="g-cell" style="grid-column:11"></i><i class="g-cell" style="grid-column:12"></i><i class="g-cell" style="grid-column:13"></i><i class="g-cell" style="grid-column:14"></i><i class="g-cell" style="grid-column:15"></i>
-<div class="g-bar navy" style="grid-column:7 / span 1" title="Ice-breaking"><span>ICE</span></div>
+<div class="g-bar navy" style="grid-column:7 / span 1" title="Ice-breaking"><span>Ice-breaking</span></div>
 </div><div class="gantt-row">
 <div class="g-task"><span>05</span><div><b>3-day Bootcamp</b><small>設計思維、項目管理及提案表達</small></div></div><i class="g-cell" style="grid-column:2"></i><i class="g-cell" style="grid-column:3"></i><i class="g-cell" style="grid-column:4"></i><i class="g-cell" style="grid-column:5"></i><i class="g-cell" style="grid-column:6"></i><i class="g-cell" style="grid-column:7"></i><i class="g-cell" style="grid-column:8"></i><i class="g-cell" style="grid-column:9"></i><i class="g-cell" style="grid-column:10"></i><i class="g-cell" style="grid-column:11"></i><i class="g-cell" style="grid-column:12"></i><i class="g-cell" style="grid-column:13"></i><i class="g-cell" style="grid-column:14"></i><i class="g-cell" style="grid-column:15"></i>
 <div class="g-bar lime" style="grid-column:7 / span 2" title="3-day Bootcamp"><span>Bootcamp</span></div>
