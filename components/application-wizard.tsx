@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { useLanguage } from "./i18n";
+import { Localized, useLanguage } from "./i18n";
 import { applicationConfig } from "@/lib/application-form-config";
 
 type Applicant = {
