@@ -186,8 +186,12 @@ export function ApplicationWizard({ token }: { token: string }) {
     }));
 
     if (type === "individual") {
-      setCvFiles((previous) => previous[0] ? { 0: previous[0] } : {});
-    }
+  setCvFiles((previous): Record<number, File> => {
+    const firstCv = previous[0];
+
+    return firstCv ? { 0: firstCv } : {};
+  });
+}
   }
 
   function addMember() {
