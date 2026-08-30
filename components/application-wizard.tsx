@@ -73,7 +73,9 @@ function normaliseLoadedData(value: unknown): FormData {
     Array.isArray(raw.applicants) && raw.applicants.length
       ? raw.applicants.slice(0, applicationConfig.maxTeamSize).map((applicant) => ({
           ...emptyApplicant(),
-          ...(applicant || {})
+          ...(applicant || {}),
+          cvFileName: "",
+          cvFileSize: 0
         }))
       : [emptyApplicant()];
 
@@ -100,6 +102,7 @@ export function ApplicationWizard({ token }: { token: string }) {
   const [data, setData] = useState<FormData>(emptyData);
   const [status, setStatus] = useState(t("尚未儲存", "Not saved yet"));
   const [submitting, setSubmitting] = useState(false);
+  const [cvFiles, setCvFiles] = useState<Record<number, File>>({});
   const loaded = useRef(false);
 
   const storageKey = `hinfinity:draft:${token}`;
@@ -181,6 +184,10 @@ export function ApplicationWizard({ token }: { token: string }) {
             ? previous.applicants
             : [...previous.applicants, emptyApplicant()]
     }));
+
+    if (type === "individual") {
+      setCvFiles((previous) => previous[0] ? { 0: previous[0] } : {});
+    }
   }
 
   function addMember() {
@@ -201,6 +208,16 @@ export function ApplicationWizard({ token }: { token: string }) {
       ...previous,
       applicants: previous.applicants.filter((_, i) => i !== index)
     }));
+
+    setCvFiles((previous) => {
+      const next: Record<number, File> = {};
+      Object.entries(previous).forEach(([key, file]) => {
+        const oldIndex = Number(key);
+        if (oldIndex < index) next[oldIndex] = file;
+        if (oldIndex > index) next[oldIndex - 1] = file;
+      });
+      return next;
+    });
   }
 
   function answer(key: "q1" | "q2" | "q3" | "q4" | "q5" | "q6", value: string) {
@@ -211,10 +228,15 @@ export function ApplicationWizard({ token }: { token: string }) {
     if (!file) {
       updateApplicant(index, "cvFileName", "");
       updateApplicant(index, "cvFileSize", 0);
+      setCvFiles((previous) => {
+        const next = { ...previous };
+        delete next[index];
+        return next;
+      });
       return;
     }
 
-    if (file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) {
+    if (file.type !== "application/pdf" || !file.name.toLowerCase().endsWith(".pdf")) {
       setStatus(t("CV 只接受 PDF 格式。", "CV must be a PDF file."));
       return;
     }
@@ -224,14 +246,10 @@ export function ApplicationWizard({ token }: { token: string }) {
       return;
     }
 
+    setCvFiles((previous) => ({ ...previous, [index]: file }));
     updateApplicant(index, "cvFileName", file.name);
     updateApplicant(index, "cvFileSize", file.size);
-    setStatus(
-      t(
-        "已選擇 CV。Frontend preview 只記錄檔名；正式 Notion integration 時先會真正上載。",
-        "CV selected. The frontend preview stores the filename only; the file will be uploaded once the Notion integration is connected."
-      )
-    );
+    setStatus(t("CV 已準備好，會喺正式提交時安全上載到 Notion。", "CV ready. It will be securely uploaded to Notion when you submit."));
   }
 
   function applicantIsComplete(applicant: Applicant) {
@@ -267,10 +285,17 @@ export function ApplicationWizard({ token }: { token: string }) {
     }
 
     if (step === 2) {
-      if (!data.applicants.every((applicant) => applicant.cvFileName.trim())) {
-        setStatus(t("每位申請者都需要選擇一份 PDF CV。", "Each applicant must select a PDF CV."));
+      const allFilesSelected = data.applicants.every((_, index) => Boolean(cvFiles[index]));
+
+      if (!allFilesSelected && !applicationConfig.testMode) {
+        setStatus(t("每位申請者都需要重新選擇一份 PDF CV。", "Each applicant must select a PDF CV."));
         return false;
       }
+
+      if (!allFilesSelected && applicationConfig.testMode) {
+        setStatus(t("TEST MODE：CV 可以暫時跳過。", "TEST MODE: CV can be skipped."));
+      }
+
       return true;
     }
 
@@ -303,29 +328,52 @@ export function ApplicationWizard({ token }: { token: string }) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  function submitPreview() {
+  async function submitApplication() {
     if (!data.accuracyDeclaration || !data.privacyConsent) {
       setStatus(t("請確認資料聲明及私隱同意。", "Please confirm the declaration and privacy consent."));
       return;
     }
 
+    if (!applicationConfig.testMode && !data.applicants.every((_, index) => Boolean(cvFiles[index]))) {
+      setStatus(t("每位申請者都需要重新選擇 CV 先可以提交。", "Each applicant must select their CV before submission."));
+      setStep(2);
+      return;
+    }
+
     setSubmitting(true);
+    setStatus(t("正在安全提交到 H Infinity…", "Submitting securely to H Infinity…"));
 
-    const reference = localReference();
+    try {
+      const form = new FormData();
+      form.append("payload", JSON.stringify(data));
 
-    localStorage.setItem(
-      `hinfinity:preview-submission:${reference}`,
-      JSON.stringify({
-        data,
-        submittedAt: new Date().toISOString()
-      })
-    );
+      data.applicants.forEach((_, index) => {
+        const file = cvFiles[index];
+        if (file) form.append(`cv_${index}`, file, file.name);
+      });
 
-    localStorage.removeItem(storageKey);
+      const response = await fetch("/api/application/submit", {
+        method: "POST",
+        body: form
+      });
 
-    window.setTimeout(() => {
-      router.push(`/apply/${token}?submitted=${encodeURIComponent(reference)}`);
-    }, 350);
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || t("提交失敗。", "Submission failed."));
+      }
+
+      localStorage.removeItem(storageKey);
+      localStorage.removeItem("hinfinity:last-application");
+      router.push(`/apply/${token}?submitted=${encodeURIComponent(result.referenceNumber)}`);
+    } catch (error) {
+      setStatus(
+        error instanceof Error
+          ? error.message
+          : t("提交失敗，請稍後再試。", "Submission failed. Please try again later.")
+      );
+      setSubmitting(false);
+    }
   }
 
   const question = (
@@ -585,6 +633,18 @@ export function ApplicationWizard({ token }: { token: string }) {
                 )}
               </p>
 
+              {applicationConfig.testMode && (
+                <div style={{ padding: 14, marginBottom: 20, border: "1px solid var(--line)", borderRadius: 14 }}>
+                  <strong>TEST MODE</strong>
+                  <p style={{ marginBottom: 0 }}>
+                    {t(
+                      "測試期間可以唔上載 CV 都繼續及提交；正式開放申請前會關閉呢個模式。",
+                      "During testing, you can continue and submit without a CV. This mode will be disabled before applications go live."
+                    )}
+                  </p>
+                </div>
+              ))}
+
               {data.applicants.map((applicant, index) => (
                 <div className="field field-full" key={index}>
                   <label>
@@ -607,8 +667,8 @@ export function ApplicationWizard({ token }: { token: string }) {
                     {applicant.cvFileName
                       ? `${t("已選擇", "Selected")}: ${applicant.cvFileName}`
                       : t(
-                          "PDF only · 建議 4MB 或以下。Frontend preview 暫時只記錄檔名。",
-                          "PDF only · recommended max 4MB. The frontend preview stores only the filename for now."
+                          "PDF only · 4MB 或以下。檔案只會喺你正式提交時上載。",
+                          "PDF only · max 4MB. The file is uploaded only when you submit."
                         )}
                   </small>
                 </div>
@@ -669,8 +729,8 @@ export function ApplicationWizard({ token }: { token: string }) {
               >
                 <Localized
                   as="p"
-                  zh={<><strong>Frontend Preview：</strong>今次撳 Submit 只會喺你部裝置建立一個測試 snapshot，唔會傳送俾 H Infinity。正式 Notion backend 接駁後先會真正提交。</>}
-                  en={<><strong>Frontend Preview:</strong> pressing Submit will only create a local test snapshot on this device. Nothing will be sent to H Infinity until the Notion backend is connected.</>}
+                  zh={applicationConfig.testMode ? <><strong>TEST MODE：</strong>今次會建立一筆 Notion 測試申請；CV 可以暫時留空。</> : <><strong>正式提交：</strong>提交後資料會寫入 H Infinity internal Applications database，並鎖定作正式申請紀錄。</>}
+                  en={applicationConfig.testMode ? <><strong>TEST MODE:</strong> this creates a test application in Notion; CV may be left blank.</> : <><strong>Final submission:</strong> your data will be written to H Infinity’s internal Applications database as the official application record.</>}
                 />
               </div>
 
@@ -705,7 +765,7 @@ export function ApplicationWizard({ token }: { token: string }) {
                     <br />
                     {applicant.programme} · {applicant.yearOfStudy}
                     <br />
-                    CV: {applicant.cvFileName}
+                    CV: {applicant.cvFileName || t("未提供", "Not provided")}
                   </dd>
                 </dl>
               ))}
@@ -790,11 +850,11 @@ export function ApplicationWizard({ token }: { token: string }) {
                 className="button button-primary"
                 type="button"
                 disabled={submitting}
-                onClick={submitPreview}
+                onClick={submitApplication}
               >
                 {submitting
                   ? t("處理中…", "Processing…")
-                  : t("測試提交 →", "Preview submit →")}
+                  : applicationConfig.testMode ? t("提交測試申請 →", "Submit test application →") : t("正式提交申請 →", "Submit application →")}
               </button>
             )}
           </div>

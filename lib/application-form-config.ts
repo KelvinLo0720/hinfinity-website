@@ -4,7 +4,8 @@ export const applicationConfig = {
   applicationClose: "31 Oct 2026",
   maxTeamSize: 4,
   minTeamSize: 2,
-  frontendOnly: true,
+  frontendOnly: false,
+  testMode: process.env.NEXT_PUBLIC_APPLICATION_TEST_MODE === "true",
   questions: [
     {
       id: "q1",
