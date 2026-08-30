@@ -17,18 +17,18 @@ export default async function ApplicationPage({
       <section className="application-shell">
         <div className="shell">
           <div className="application-card motion-card" style={{ textAlign: "center" }}>
-            <span className="eyebrow">FRONTEND PREVIEW COMPLETE</span>
+            <span className="eyebrow">APPLICATION SUBMITTED</span>
 
             <Localized
               as="h1"
-              zh="介面測試完成。"
-              en="Frontend test complete."
+              zh="收到。你已經踏出第一步。"
+              en="Received. You have taken the first step."
             />
 
             <Localized
               as="p"
-              zh="以下係本機測試參考編號；現階段資料未傳送到 H Infinity 團隊或 Notion database。"
-              en="This is a local preview reference. At this stage, no application data has been sent to the H Infinity team or to Notion."
+              zh="你的申請已成功寫入 H Infinity 系統。請保留以下參考編號。"
+              en="Your application has been successfully submitted to H Infinity. Please keep this reference number."
             />
 
             <p style={{ fontSize: 30, color: "var(--blue)", fontWeight: 900 }}>
@@ -46,8 +46,8 @@ export default async function ApplicationPage({
             >
               <Localized
                 as="p"
-                zh={<><strong>正式上線前：</strong>我哋會將呢個 Submit flow 接駁至 restricted Notion Applications database，屆時先會真正提交資料。</>}
-                en={<><strong>Before launch:</strong> this submit flow will be connected to the restricted Notion Applications database. Only then will submissions be sent to the programme team.</>}
+                zh={<><strong>下一步：</strong>H Infinity 團隊會按甄選流程處理你嘅申請。如有需要，我哋會透過主要聯絡電郵聯絡你。</>}
+                en={<><strong>Next:</strong> the H Infinity team will process your application according to the selection workflow and contact you through the primary email if needed.</>}
               />
             </div>
 
