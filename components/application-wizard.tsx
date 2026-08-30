@@ -643,7 +643,7 @@ export function ApplicationWizard({ token }: { token: string }) {
                     )}
                   </p>
                 </div>
-              ))
+              )}
 
               {data.applicants.map((applicant, index) => (
                 <div className="field field-full" key={index}>
