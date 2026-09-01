@@ -17,12 +17,8 @@ export const metadata: Metadata = {
   description:
     "H Infinity 係俾青年由「我有感覺」走到「我真係做咗一件事」嘅文化實踐計劃。",
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || SITE_URL),
-  alternates: {
-    canonical: "/"
-  },
   openGraph: {
     type: "website",
-    url: SITE_URL,
     siteName: "H Infinity",
     title: "H Infinity｜社會文化實踐計劃",
     description:

@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/admin", "/api/"]
+      disallow: ["/admin", "/api/", "/apply/"]
     },
     sitemap: "https://hinfinityhk.com/sitemap.xml",
     host: "https://hinfinityhk.com"
