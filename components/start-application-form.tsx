@@ -4,12 +4,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "./i18n";
 
-function createFrontendToken() {
+function createApplicationToken() {
   if (typeof crypto !== "undefined" && "randomUUID" in crypto) {
-    return `preview_${crypto.randomUUID().replaceAll("-", "")}`;
+    return `apply_${crypto.randomUUID().replaceAll("-", "")}`;
   }
 
-  return `preview_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+  return `apply_${Date.now()}_${Math.random().toString(36).slice(2)}`;
 }
 
 export function StartApplicationForm() {
@@ -28,7 +28,7 @@ export function StartApplicationForm() {
       return;
     }
 
-    const token = createFrontendToken();
+    const token = createApplicationToken();
 
     localStorage.setItem(`hinfinity:${token}:email`, normalisedEmail);
     localStorage.setItem(
@@ -46,6 +46,7 @@ export function StartApplicationForm() {
   function resumeLast() {
     try {
       const value = localStorage.getItem("hinfinity:last-application");
+
       if (!value) {
         setStatus(
           zh
@@ -56,7 +57,11 @@ export function StartApplicationForm() {
       }
 
       const parsed = JSON.parse(value);
-      if (!parsed?.token) throw new Error("Invalid draft");
+
+      if (!parsed?.token) {
+        throw new Error("Invalid draft");
+      }
+
       router.push(`/apply/${parsed.token}`);
     } catch {
       setStatus(
@@ -70,7 +75,10 @@ export function StartApplicationForm() {
   return (
     <div>
       <div className="field">
-        <label htmlFor="apply-email">{zh ? "主要聯絡電郵" : "Primary contact email"}</label>
+        <label htmlFor="apply-email">
+          {zh ? "主要聯絡電郵" : "Primary contact email"}
+        </label>
+
         <input
           id="apply-email"
           type="email"
@@ -81,10 +89,11 @@ export function StartApplicationForm() {
             if (event.key === "Enter") start();
           }}
         />
+
         <small>
           {zh
-            ? "團隊申請請先填組長／主要聯絡人電郵。現階段 Draft 只會保存在同一瀏覽器。"
-            : "For team applications, start with the team lead / primary contact email. At this stage, drafts are stored only in this browser."}
+            ? "團隊申請請先填組長／主要聯絡人電郵。未提交前嘅 Draft 會保存在呢個瀏覽器。"
+            : "For team applications, start with the team lead / primary contact email. Your draft is stored in this browser until final submission."}
         </small>
       </div>
 
@@ -94,11 +103,13 @@ export function StartApplicationForm() {
         </button>
 
         <button className="button" type="button" onClick={resumeLast}>
-          {zh ? "繼續此瀏覽器上次 Draft" : "Resume last draft on this browser"}
+          {zh ? "繼續上次申請" : "Resume last application"}
         </button>
       </div>
 
-      <p className="form-status" role="status">{status}</p>
+      <p className="form-status" role="status">
+        {status}
+      </p>
     </div>
   );
 }

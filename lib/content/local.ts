@@ -34,117 +34,194 @@ export type Story = {
 
 export const projects: Project[] = [
   {
-    slug: "stories-return-to-the-street",
-    title: "讓故事重新回到街上",
-    englishTitle: "Stories Return to the Street",
-    question: "一段被忽略的香港故事，可以點樣重新被聽見？",
-    questionEn: "How might an overlooked Hong Kong story be heard again?",
-    category: "地方故事 × 社區參與",
-    categoryEn: "Local Stories × Community",
+    slug: "hk-virgo",
+    title: "HK VirGO 香港謎路",
+    englishTitle: "HK VirGO",
+    question: "一個香港文化遊戲，可以點樣由第一個版本一路試到更好玩、更清楚？",
+    questionEn: "How can a Hong Kong culture game keep evolving through real testing and feedback?",
+    category: "香港文化 × 遊戲",
+    categoryEn: "Hong Kong Culture × Game",
     image: "/images/team-phone.jpg",
     accent: "orange",
-    summary: "由街坊口述、日常觀察與青年視角出發，把地方記憶變成可以被看見、被討論的公共文化行動。",
-    summaryEn: "Starting with oral histories, everyday observation and youth perspectives, the team turns local memory into a public cultural action that can be seen and discussed.",
-    context: "團隊留意到，很多地方故事只停留在熟悉該區的人之間。當城市節奏改變，記憶往往比建築更快消失。",
-    contextEn: "The team noticed that many local stories remain within small circles of people who already know the neighbourhood. As the city changes, memories can disappear faster than buildings.",
-    shift: "最初構思集中在『保存資料』；經過同儕回饋後，團隊轉向思考：怎樣令故事再次進入日常，而不是被封存在檔案內。",
-    shiftEn: "The first idea focused on preserving information. Peer feedback shifted the question towards how stories could return to everyday life instead of staying sealed inside an archive.",
-    process: "團隊以訪談、街區觀察、快速原型及小型公眾測試，逐步找出最容易讓陌生人參與的表達方式。",
-    processEn: "Through interviews, neighbourhood observation, rapid prototypes and small public tests, the team explored formats that make it easier for strangers to take part.",
-    outcome: "形成一套可延伸的地方故事展示概念，並建立首輪訪談與公眾測試框架。",
-    outcomeEn: "The team developed an expandable local-story display concept and a first framework for interviews and public testing.",
-    reflection: "文化保育不只是留住過去，而是創造一次讓今天的人願意停下來聽的相遇。",
-    reflectionEn: "Cultural preservation is not only about keeping the past. It is about creating an encounter that makes people today willing to stop and listen."
+    summary: "HK VirGO 由遊戲構思出發，透過 beta feedback 持續調整遊戲機制，並探索下一步發展方向。",
+    summaryEn: "HK VirGO started as a game concept and continues refining its mechanics through beta feedback while exploring its next stage of development.",
+    context: "團隊希望用互動方式重新打開人對香港地方、故事與文化線索的好奇，而唔係只靠單向介紹。",
+    contextEn: "The team wanted to reopen curiosity about Hong Kong places, stories and cultural clues through interaction rather than one-way explanation.",
+    shift: "重點由『有幾多內容』慢慢移去『玩家點樣真正進入個體驗』，遊戲機制亦因測試回應持續修正。",
+    shiftEn: "The focus moved from how much content could be included to how players actually enter the experience, with mechanics revised through testing.",
+    process: "由原型、玩家測試到 beta feedback，團隊一路調整規則、節奏與文化內容之間的關係。",
+    processEn: "From prototypes and player testing to beta feedback, the team kept adjusting the relationship between rules, pacing and cultural content.",
+    outcome: "項目持續發展中，並繼續探索遊戲、文化內容與不同平台之間的可能。",
+    outcomeEn: "The project continues to develop while exploring possibilities across game design, cultural content and different platforms.",
+    reflection: "文化內容唔只要『放入去』，仲要變成玩家願意主動追落去嘅體驗。",
+    reflectionEn: "Cultural content cannot simply be inserted; it has to become an experience players actively want to follow."
   },
   {
-    slug: "re-heritage",
-    title: "Re:Heritage",
-    englishTitle: "Re:Heritage",
-    question: "文化保育可唔可以唔只講『以前』，而係同今日生活重新接軌？",
-    questionEn: "Can heritage move beyond the past and reconnect with life today?",
-    category: "文化保育 × 設計思維",
-    categoryEn: "Heritage × Design Thinking",
-    image: "/images/peer-review.jpg",
-    accent: "blue",
-    summary: "以青年生活語言重新整理文化內容，讓保育由單向介紹，變成可以參與、回應與再創作的過程。",
-    summaryEn: "The project reframes cultural content through the language of youth, turning heritage from one-way explanation into a process of participation, response and reinterpretation.",
-    context: "團隊認為，文化資訊並非不存在，而是常以距離感較大的方式出現，令年輕人難以代入。",
-    contextEn: "The team felt that cultural information was available, but often presented with too much distance for young people to relate to it.",
-    shift: "Bootcamp 期間，項目由『做更多內容』轉向『重新設計參與方式』，並將受眾體驗放在資訊量之前。",
-    shiftEn: "During the bootcamp, the project moved from producing more content to redesigning the way people participate, placing audience experience before information volume.",
-    process: "透過受眾訪談、內容拆解、情境測試與導師挑戰，團隊建立更生活化的文化接觸點。",
-    processEn: "Audience interviews, content mapping, scenario tests and mentor challenges helped the team create more everyday points of cultural contact.",
-    outcome: "完成可測試的內容框架與體驗原型，為後續社區合作建立基礎。",
-    outcomeEn: "The team completed a testable content framework and experience prototype, creating a base for future community collaboration.",
-    reflection: "真正的傳承，不是把答案交給下一代，而是讓下一代有位置加入問題。",
-    reflectionEn: "Real transmission is not giving the next generation an answer. It is giving them a place inside the question."
-  },
-  {
-    slug: "room-for-ideas",
-    title: "有想法的房間",
-    englishTitle: "Room for Ideas",
-    question: "當一個人未有完整計劃，社群可以點樣陪佢行出第一步？",
-    questionEn: "How can a community support someone who has an idea but not yet a complete plan?",
-    category: "青年成長 × 同儕實驗",
-    categoryEn: "Youth Growth × Peer Experiment",
+    slug: "shingage",
+    title: "Shingage 城語",
+    englishTitle: "Shingage",
+    question: "一個屋邨、一段地方記憶，可以點樣由記錄變成有人參與嘅文化行動？",
+    questionEn: "How can neighbourhood memory move from documentation into a cultural action people can take part in?",
+    category: "地方文化 × 社區",
+    categoryEn: "Local Culture × Community",
     image: "/images/group-conversation.jpg",
+    accent: "blue",
+    summary: "Shingage 以地方文化保存同社區參與為方向，延伸至西環邨相關文化保存實踐。",
+    summaryEn: "Shingage works around local cultural preservation and community participation, extending into cultural preservation work connected with Sai Wan Estate.",
+    context: "地方記憶好多時存在於居民經驗、日常語言同生活細節之中，但城市變化可以令呢啲內容好快消失。",
+    contextEn: "Local memory often lives in residents' experiences, everyday language and small details, yet urban change can make these disappear quickly.",
+    shift: "項目由『保存資料』進一步思考點樣令街坊、青年同地方本身一齊參與。",
+    shiftEn: "The project moved beyond preserving information to ask how residents, young people and the place itself could all take part.",
+    process: "透過地方研究、內容整理、合作同社區接觸，逐步建立可延伸的文化保存形式。",
+    processEn: "Through local research, content development, collaboration and community contact, the team built an approach that can continue evolving.",
+    outcome: "項目繼續圍繞西環邨及地方文化保存發展，將研究轉化成更貼近社區的實踐。",
+    outcomeEn: "The project continues developing around Sai Wan Estate and local cultural preservation, translating research into community-facing practice.",
+    reflection: "保存唔只係留低資料，而係令一個地方仍然有人願意講、願意聽、願意再做。",
+    reflectionEn: "Preservation is not only about keeping records; it is about keeping a place spoken about, listened to and practised."
+  },
+  {
+    slug: "dust-stories-hong-kong",
+    title: "殊途同歸——塵土裏的香港故事",
+    englishTitle: "Dust Stories of Hong Kong",
+    question: "歷史可唔可以唔只存在喺書本，而係重新行返入街道？",
+    questionEn: "Can history leave the page and return to the streets?",
+    category: "香港歷史 × 行走體驗",
+    categoryEn: "Hong Kong History × Walking Experience",
+    image: "/images/mentor-chat.jpg",
     accent: "lime",
-    summary: "從安全試錯與同儕支持出發，探索一個不以勝負為核心的青年構思空間。",
-    summaryEn: "Starting with safe experimentation and peer support, the project explores an idea space for youth that is not built around winning or losing.",
-    context: "不少青年不是沒有想法，而是覺得自己未夠資格、未有資源，或者未準備好公開說出來。",
-    contextEn: "Many young people do have ideas, but feel unqualified, under-resourced or not ready to say them out loud.",
-    shift: "團隊放棄以完成度作為參與門檻，轉而設計一個能承載模糊、疑問和反覆修改的過程。",
-    shiftEn: "The team stopped using completeness as an entry requirement and instead designed a process that can hold uncertainty, questions and repeated revision.",
-    process: "項目利用小組對話、問題卡、快速分享和反思練習，測試不同程度的參與方式。",
-    processEn: "Small-group conversations, question cards, rapid sharing and reflection exercises were used to test different levels of participation.",
-    outcome: "建立一套可用於青年聚會及構思工作坊的活動流程。",
-    outcomeEn: "The project produced an activity flow that can be used in youth gatherings and ideation workshops.",
-    reflection: "不是每個人都需要被催促成為領袖；有時候，先有人願意認真聽，行動才會開始。",
-    reflectionEn: "Not everyone needs to be pushed into becoming a leader. Sometimes action begins because someone is willing to listen seriously."
+    summary: "項目以香港歷史故事為核心，發展步行導賞及可預約的文化體驗。",
+    summaryEn: "The project centres on Hong Kong historical stories and develops walking tours and bookable cultural experiences.",
+    context: "好多歷史內容同今日生活其實只隔一條街，但如果冇人重新整理、帶路同講述，就好容易變得遙遠。",
+    contextEn: "Much of Hong Kong's history is physically close to everyday life, but can still feel distant without someone to reinterpret and guide people through it.",
+    shift: "由單純『講歷史』轉向設計一場觀眾可以行入去、感受空間同重新連結故事的體驗。",
+    shiftEn: "The idea moved from simply telling history to designing an experience people can physically enter and connect with through place.",
+    process: "透過資料研究、路線設計、故事編排同實際帶團，項目逐步形成自己的行走體驗。",
+    processEn: "Research, route design, narrative development and live tours gradually shaped the project's walking experience.",
+    outcome: "項目透過 pop-up 及私人預約形式持續提供歷史步行體驗。",
+    outcomeEn: "The project continues offering historical walking experiences through pop-ups and private bookings.",
+    reflection: "當歷史重新同腳下的地方連起來，文化就唔再只係『以前發生過』。",
+    reflectionEn: "When history reconnects with the ground beneath us, culture becomes more than something that happened in the past."
+  },
+  {
+    slug: "hong-kong-history-museum-game",
+    title: "港史科學館",
+    englishTitle: "Hong Kong History Museum Game Project",
+    question: "香港歷史可以點樣變成一套令人願意坐低玩、再繼續問問題嘅遊戲？",
+    questionEn: "How can Hong Kong history become a game that makes people sit down, play and keep asking questions?",
+    category: "香港歷史 × Board Game",
+    categoryEn: "Hong Kong History × Board Game",
+    image: "/images/peer-review.jpg",
+    accent: "orange",
+    summary: "港史科學館將香港歷史內容轉化成桌遊，並持續探索產品化及市場發展。",
+    summaryEn: "The project turns Hong Kong history into a board game and continues exploring product and market development.",
+    context: "歷史學習經常被理解成接收大量資料，但遊戲可以令人用選擇、互動同後果去理解內容。",
+    contextEn: "History learning is often treated as information intake, while games can create understanding through choices, interaction and consequences.",
+    shift: "項目逐步由『歷史知識遊戲化』走向一套可以被測試、被重玩、亦有產品發展可能的桌遊。",
+    shiftEn: "The project evolved from gamifying historical knowledge into a board game that can be tested, replayed and developed as a product.",
+    process: "團隊持續調整規則、資訊量、玩家體驗同歷史內容之間的平衡。",
+    processEn: "The team continues balancing rules, information density, player experience and historical content.",
+    outcome: "項目正持續推進香港歷史桌遊的產品化方向。",
+    outcomeEn: "The project continues developing the Hong Kong history board game towards a product.",
+    reflection: "當歷史變成一個要你作選擇嘅過程，理解往往會比背答案行得更遠。",
+    reflectionEn: "When history becomes a process that asks you to make choices, understanding can go further than memorising answers."
   }
 ];
 
 export const stories: Story[] = [
   {
-    slug: "from-participant-to-builder",
-    eyebrow: "ALUMNI RETURN",
-    title: "由參加者，到下一屆的共同設計者",
-    titleEn: "From participant to co-designer of the next cohort",
-    excerpt: "第一屆不只是一次活動。當舊生把親身經驗帶回團隊，計劃才真正開始形成循環。",
-    excerptEn: "The first cohort was more than an event. The programme begins to form a real cycle when alumni bring their lived experience back into the team.",
+    slug: "one-year-later-hk-virgo",
+    eyebrow: "ONE YEAR LATER",
+    title: "一個 Idea，點樣喺測試之後繼續行？",
+    titleEn: "What happens to an idea after the first round of testing?",
+    excerpt: "HK VirGO 冇停喺第一個版本。由 beta feedback 到遊戲機制調整，真正的項目發展往往由『做完』之後先開始。",
+    excerptEn: "HK VirGO did not stop at version one. From beta feedback to revised game mechanics, real project development often begins after the first version is finished.",
+    image: "/images/team-phone.jpg"
+  },
+  {
+    slug: "shingage-place-and-memory",
+    eyebrow: "PROJECT PROCESS",
+    title: "地方文化唔只係資料：Shingage 點樣行入社區",
+    titleEn: "Local culture is more than information: how Shingage moved into the community",
+    excerpt: "由地方研究到西環邨文化保存，項目一路問：點樣先可以令記憶繼續有人參與？",
+    excerptEn: "From local research to cultural preservation work around Sai Wan Estate, the project keeps asking how memory can remain participatory.",
+    image: "/images/group-conversation.jpg"
+  },
+  {
+    slug: "history-back-on-the-street",
+    eyebrow: "FROM IDEA TO PRACTICE",
+    title: "歷史重新行返入街道",
+    titleEn: "Putting history back on the street",
+    excerpt: "殊途同歸將研究變成步行體驗，令歷史唔只係一段文字，而係一條你可以親身行過的路。",
+    excerptEn: "Dust Stories of Hong Kong turns research into walking experiences, making history not only something to read but a route people can physically move through.",
     image: "/images/mentor-chat.jpg"
-  },
-  {
-    slug: "the-idea-was-rebuilt-twice",
-    eyebrow: "BEHIND THE PROCESS",
-    title: "三日內，個 Idea 被推翻咗兩次",
-    titleEn: "The idea was rebuilt twice in three days",
-    excerpt: "真正的轉折，不是有人給出標準答案，而是團隊開始願意放低最初的假設。",
-    excerptEn: "The real turning point was not receiving a standard answer. It was the team becoming willing to let go of its first assumptions.",
-    image: "/images/participant-pitch.jpg"
-  },
-  {
-    slug: "not-a-perfect-pitch",
-    eyebrow: "A REAL MOMENT",
-    title: "唔完美的簡報，反而令問題變得清楚",
-    titleEn: "An imperfect pitch made the problem clearer",
-    excerpt: "H Infinity 重視的不是包裝得最完整，而是能否真誠面對問題、回應社群和持續修正。",
-    excerptEn: "H Infinity values honest engagement with the problem, the community and continuous revision more than a perfectly packaged presentation.",
-    image: "/images/bootcamp-circle.jpg"
   }
 ];
 
 export const people = [
-  { name: "Programme Curatorial Team", role: "策劃及項目設計", roleEn: "Curatorial & Programme Design", note: "把不同背景的人、方法與資源連接起來。", noteEn: "Connecting people, methods and resources across different backgrounds." },
-  { name: "First Cohort Alumni", role: "參加者與回流成員", roleEn: "Participants & Returning Alumni", note: "由親歷者成為下一屆的同行者。", noteEn: "Turning lived experience into support for the next cohort." },
-  { name: "Cross-sector Mentors", role: "導師、講者及評審", roleEn: "Mentors, Speakers & Judges", note: "以文化、設計及社會實踐經驗，挑戰構思亦陪伴落地。", noteEn: "Challenging ideas and supporting implementation through cultural, design and social-practice experience." }
+  {
+    name: "Programme Team",
+    role: "策劃、製作與項目運作",
+    roleEn: "Programme, Production & Operations",
+    note: "將理念變成 programme、content、合作同實際執行。",
+    noteEn: "Turning the programme's ideas into delivery, content, partnerships and day-to-day execution."
+  },
+  {
+    name: "Advisors & Mentors",
+    role: "問題、經驗與挑戰",
+    roleEn: "Questions, Experience & Challenge",
+    note: "唔只提供答案，而係幫青年問清楚問題、拆假設，同埋見到更多可能。",
+    noteEn: "Not only providing answers, but helping young people sharpen questions, challenge assumptions and see more possibilities."
+  },
+  {
+    name: "Cohort 01 Alumni",
+    role: "參加者、實踐者與回流成員",
+    roleEn: "Participants, Practitioners & Returning Alumni",
+    note: "將第一屆親身經驗帶返社群，令下一屆唔需要由零開始。",
+    noteEn: "Bringing first-cohort experience back into the community so the next cohort does not have to start from zero."
+  }
 ];
 
 export const programmeSteps = [
-  { n: "01", en: "MEET", zh: "遇見同路人", enTitle: "Meet fellow travellers", image: "/images/mentor-chat.jpg" },
-  { n: "02", en: "EXPLORE", zh: "拆開真正問題", enTitle: "Unpack the real problem", image: "/images/team-phone.jpg" },
-  { n: "03", en: "BUILD", zh: "把想法做成原型", enTitle: "Build the idea into a prototype", image: "/images/peer-review.jpg" },
-  { n: "04", en: "PITCH", zh: "用清楚語言溝通", enTitle: "Communicate with clarity", image: "/images/participant-pitch.jpg" },
-  { n: "05", en: "GROW", zh: "導師與種子支持", enTitle: "Grow with mentors and seed support", image: "/images/group-conversation.jpg" },
-  { n: "06", en: "LAUNCH", zh: "讓項目真正發生", enTitle: "Bring the project into the world", image: "/images/bootcamp-circle.jpg" }
+  {
+    n: "01",
+    en: "MEET",
+    zh: "遇見同路人",
+    enTitle: "Meet fellow travellers",
+    image: "/images/mentor-chat.jpg"
+  },
+  {
+    n: "02",
+    en: "EXPLORE",
+    zh: "拆開真正問題",
+    enTitle: "Unpack the real problem",
+    image: "/images/team-phone.jpg"
+  },
+  {
+    n: "03",
+    en: "BUILD",
+    zh: "把想法做成原型",
+    enTitle: "Build the idea into a prototype",
+    image: "/images/peer-review.jpg"
+  },
+  {
+    n: "04",
+    en: "PITCH",
+    zh: "用清楚語言溝通",
+    enTitle: "Communicate with clarity",
+    image: "/images/participant-pitch.jpg"
+  },
+  {
+    n: "05",
+    en: "TEST",
+    zh: "帶入真實情境測試",
+    enTitle: "Test in the real world",
+    image: "/images/group-conversation.jpg"
+  },
+  {
+    n: "06",
+    en: "CONTINUE",
+    zh: "令項目繼續行",
+    enTitle: "Keep the project moving",
+    image: "/images/bootcamp-circle.jpg"
+  }
 ];

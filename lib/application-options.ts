@@ -37,6 +37,16 @@ export const institutionOptions = [
   "香港大學專業進修學院保良局何鴻燊社區書院 / HKU SPACE Po Leung Kuk Stanley Ho Community College",
   "香港都會大學李嘉誠專業進修學院 / HKMU Li Ka Shing School of Professional and Continuing Education (LiPACE)",
 
+  // Other local post-secondary institutions
+  "明愛白英奇專業學校 / Caritas Bianchi College of Careers",
+  "明愛社區書院 / Caritas Institute of Community Education",
+  "香港三育書院 / Hong Kong Adventist College",
+  "香港藝術學院 / Hong Kong Art School",
+  "香港科技專上書院 / Hong Kong Institute of Technology",
+  "香港專業進修學校 / Hong Kong College of Technology",
+  "青年會專業書院 / YMCA College of Careers",
+  "香港建造學院 / Hong Kong Institute of Construction (HKIC)",
+
   // VTC member institutions
   "香港專業教育學院 / Hong Kong Institute of Vocational Education (IVE)",
   "香港知專設計學院 / Hong Kong Design Institute (HKDI)",
@@ -50,15 +60,7 @@ export const institutionOptions = [
   "青年學院 / Youth College",
   "卓越培訓發展中心 / Pro-Act by VTC",
   "匯縱專業發展中心 / Integrated Vocational Development Centre (IVDC)",
-  "展亮技能發展中心 / Shine Skills Centre",
-
-  // Other Hong Kong post-secondary institutions
-  "明愛白英奇專業學校 / Caritas Bianchi College of Careers",
-  "香港藝術學院 / Hong Kong Art School",
-  "香港科技專上書院 / Hong Kong Institute of Technology",
-  "香港專業進修學校 / Hong Kong College of Technology",
-  "青年會專業書院 / YMCA College of Careers",
-  "香港建造學院 / Hong Kong Institute of Construction (HKIC)"
+  "展亮技能發展中心 / Shine Skills Centre"
 ] as const;
 
 export const yearOfStudyOptions = [
@@ -69,5 +71,15 @@ export const yearOfStudyOptions = [
   "Year 5 or above"
 ] as const;
 
+export const interviewTimePreferenceOptions = [
+  "Weekday Daytime",
+  "Weekday Evening",
+  "Weekend Daytime",
+  "Weekend Evening",
+  "Flexible"
+] as const;
+
 export type InstitutionOption = (typeof institutionOptions)[number];
 export type YearOfStudyOption = (typeof yearOfStudyOptions)[number];
+export type InterviewTimePreferenceOption =
+  (typeof interviewTimePreferenceOptions)[number];
