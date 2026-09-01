@@ -383,10 +383,15 @@ export function ApplicationWizardV2({
     }));
 
     if (type === "individual") {
-      setCvFiles((previous) => {
-        const first = previous[0];
-        return first ? { 0: first } : {};
-      });
+      setCvFiles(
+        (previous): Record<number, File> => {
+          const first = previous[0];
+
+          return first
+            ? { 0: first }
+            : {};
+        }
+      );
     }
 
     setFieldErrors({});
