@@ -69,8 +69,7 @@ export const yearOfStudyOptions = [
   "Year 3",
   "Year 4",
   "Year 5 or above",
-  "Graduated",
-  "Working"
+  "Graduated / Employed"
 ] as const;
 
 export const interviewTimePreferenceOptions = [
