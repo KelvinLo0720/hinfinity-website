@@ -608,6 +608,45 @@ export function ApplicationWizardV2({
     );
   }
 
+  function yearOfStudyLabel(
+    value: string
+  ) {
+    const labels: Record<
+      string,
+      [string, string]
+    > = {
+      "Year 1": [
+        "一年級",
+        "Year 1"
+      ],
+      "Year 2": [
+        "二年級",
+        "Year 2"
+      ],
+      "Year 3": [
+        "三年級",
+        "Year 3"
+      ],
+      "Year 4": [
+        "四年級",
+        "Year 4"
+      ],
+      "Year 5 or above": [
+        "五年級或以上",
+        "Year 5 or above"
+      ],
+      "Graduated / Employed": [
+        "已畢業 / 在職中",
+        "Graduated / Employed"
+      ]
+    };
+
+    return t(
+      labels[value]?.[0] || value,
+      labels[value]?.[1] || value
+    );
+  }
+
   function validateApplicantStep() {
     const errors: FieldErrors = {};
 
@@ -710,8 +749,8 @@ export function ApplicationWizardV2({
               "yearOfStudy"
             )
           ] = t(
-            `${role}：請選擇就讀年級`,
-            `${role}: select year of study`
+            `${role}：請選擇就讀年級 / 目前狀況`,
+            `${role}: select year of study / current status`
           );
         }
       }
@@ -1574,8 +1613,8 @@ export function ApplicationWizardV2({
                             )}
                           >
                             {t(
-                              "就讀年級",
-                              "Year of study"
+                              "就讀年級 / 目前狀況",
+                              "Year of study / current status"
                             )}
                           </label>
 
@@ -1606,8 +1645,8 @@ export function ApplicationWizardV2({
                           >
                             <option value="">
                               {t(
-                                "請選擇就讀年級",
-                                "Select year of study"
+                                "請選擇就讀年級 / 目前狀況",
+                                "Select year of study / current status"
                               )}
                             </option>
 
@@ -1617,11 +1656,9 @@ export function ApplicationWizardV2({
                                   key={year}
                                   value={year}
                                 >
-                                  {year ===
-                                    "Year 5 or above" &&
-                                  zh
-                                    ? "Year 5 或以上"
-                                    : year}
+                                  {yearOfStudyLabel(
+                                    year
+                                  )}
                                 </option>
                               )
                             )}
@@ -1934,9 +1971,9 @@ export function ApplicationWizardV2({
                       {applicant.institution}
                       <br />
                       {applicant.programme} ·{" "}
-                      {
+                      {yearOfStudyLabel(
                         applicant.yearOfStudy
-                      }
+                      )}
                       <br />
                       CV:{" "}
                       {applicant.cvFileName ||
