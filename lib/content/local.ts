@@ -305,3 +305,75 @@ export const stories: Story[] = [
     image: "/images/mentor-chat.jpg"
   }
 ];
+
+export const people = [
+  {
+    name: "Programme Team",
+    role: "策劃、製作與項目運作",
+    roleEn: "Programme, Production & Operations",
+    note: "將理念變成 programme、content、合作同實際執行。",
+    noteEn:
+      "Turning the programme's ideas into delivery, content, partnerships and day-to-day execution."
+  },
+  {
+    name: "Advisors & Mentors",
+    role: "問題、經驗與挑戰",
+    roleEn: "Questions, Experience & Challenge",
+    note: "唔會提供標準答案，只陪青年釐清問題、拆解假設，探索更多可能。",
+    noteEn:
+      "There are no standard answers. Advisors and mentors help young people clarify questions, unpack assumptions and explore more possibilities."
+  },
+  {
+    name: "Cohort 01 Alumni",
+    role: "參加者、實踐者與回流成員",
+    roleEn: "Participants, Practitioners & Returning Alumni",
+    note: "將親身走過的路帶返社群，讓下一屆唔需要摸住石頭過河。",
+    noteEn:
+      "Bringing lived experience back into the community so the next cohort does not have to find its way from scratch."
+  }
+];
+
+export const programmeSteps = [
+  {
+    n: "01",
+    en: "MEET",
+    zh: "遇見同路人",
+    enTitle: "Meet fellow travellers",
+    image: "/images/mentor-chat.jpg"
+  },
+  {
+    n: "02",
+    en: "EXPLORE",
+    zh: "釐清核心問題",
+    enTitle: "Clarify the core problem",
+    image: "/images/team-phone.jpg"
+  },
+  {
+    n: "03",
+    en: "BUILD",
+    zh: "將諗法化為雛形",
+    enTitle: "Turn the idea into a prototype",
+    image: "/images/peer-review.jpg"
+  },
+  {
+    n: "04",
+    en: "PITCH",
+    zh: "成為「說故事的人」",
+    enTitle: "Become a storyteller",
+    image: "/images/participant-pitch.jpg"
+  },
+  {
+    n: "05",
+    en: "TEST",
+    zh: "喺現實中試行",
+    enTitle: "Test it in the real world",
+    image: "/images/group-conversation.jpg"
+  },
+  {
+    n: "06",
+    en: "CONTINUE",
+    zh: "賦予生命力",
+    enTitle: "Give the project a life of its own",
+    image: "/images/bootcamp-circle.jpg"
+  }
+];
