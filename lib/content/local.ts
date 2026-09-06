@@ -61,6 +61,12 @@ export const projects: Project[] = [
     category: "香港文化 × 遊戲",
     categoryEn: "Hong Kong Culture × Game",
     image: "/images/team-phone.jpg",
+    video: {
+      src: "/media/projects/hk-virgo/full.mp4",
+      preview: "/media/projects/hk-virgo/preview.mp4",
+      poster: "/media/projects/hk-virgo/poster.jpg",
+      duration: "01:16"
+    },
     accent: "orange",
     summary: "HK VirGO 由遊戲構思出發，透過 beta feedback 持續調整遊戲機制，並探索下一步發展方向。",
     summaryEn: "HK VirGO started as a game concept and continues refining its mechanics through beta feedback while exploring its next stage of development.",
@@ -86,9 +92,9 @@ export const projects: Project[] = [
     categoryEn: "Local Culture × Community",
     image: "/images/group-conversation.jpg",
     video: {
-      src: "/videos/projects/shingage/shingage-full.mp4",
-      preview: "/videos/projects/shingage/shingage-preview.mp4",
-      poster: "/images/projects/shingage-video-poster.jpg",
+      src: "/media/projects/shingage/full.mp4",
+      preview: "/media/projects/shingage/preview.mp4",
+      poster: "/media/projects/shingage/poster.jpg",
       duration: "01:14"
     },
     accent: "blue",
@@ -115,6 +121,12 @@ export const projects: Project[] = [
     category: "香港歷史 × 導賞體驗 × 工作坊",
     categoryEn: "Hong Kong History × Guided Experience × Workshop",
     image: "/images/mentor-chat.jpg",
+    video: {
+      src: "/media/projects/dust-stories-hong-kong/full.mp4",
+      preview: "/media/projects/dust-stories-hong-kong/preview.mp4",
+      poster: "/media/projects/dust-stories-hong-kong/poster.jpg",
+      duration: "01:28"
+    },
     accent: "lime",
     summary: "項目以居港內地人為對象，希望藉生死角度帶出香港歷史，幫助居港內地人了解香港文化。",
     summaryEn: "The project is designed for Mainland Chinese residents in Hong Kong, using perspectives on life and death to open up Hong Kong history and deepen understanding of local culture.",
