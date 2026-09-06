@@ -8,36 +8,36 @@ export const metadata = { title: "H Infinity 計劃" };
 const features = [
   [
     "01",
-    "安全試錯",
-    "Safe experimentation",
-    "唔以勝負做中心。構思可以被挑戰、推翻、重建，再慢慢搵到真正值得做嘅方向。",
-    "The programme is not centred on winning. Ideas can be challenged, discarded and rebuilt until a direction becomes worth pursuing."
+    "大膽試錯",
+    "Experiment boldly",
+    "呢度唔會用勝負論英雄。構思可以被挑戰、推翻、重建，再慢慢搵到真正值得做嘅方向。",
+    "This is not a place that defines people by winning or losing. Ideas can be challenged, discarded and rebuilt until a direction becomes genuinely worth pursuing."
   ],
   [
     "02",
-    "由一個人到一隊人",
+    "由一個人到一個團隊",
     "From one person to a team",
-    "你未需要一開始就有 team。計劃會創造認識同路人、交換問題同建立合作嘅機會。",
-    "You do not need a team on day one. The programme creates opportunities to meet peers, exchange questions and build collaborations."
+    "唔需要一開始就有團隊。計劃會創造認識同路人、交換問題同建立合作嘅機會。",
+    "You do not need a team on day one. The programme creates opportunities to meet fellow travellers, exchange questions and build collaborations."
   ],
   [
     "03",
-    "有人 Challenge 你",
-    "People who challenge you",
-    "Mentor 唔只係分享成功經驗，而係幫你問清楚問題、拆假設、睇見盲點。",
-    "Mentors do more than share success stories. They help sharpen the question, challenge assumptions and expose blind spots."
+    "前輩指導",
+    "Guidance from practitioners",
+    "Mentor 唔會一味分享成功經驗，會幫你挖出問題、睇清盲點，拆解假設。",
+    "Mentors do more than share success stories. They help uncover the real problem, spot blind spots and challenge assumptions."
   ],
   [
     "04",
-    "真實測試",
-    "Real-world testing",
-    "由紙上構思走出去，接觸真實受眾、地方與社群，再根據回應修正。",
-    "Move beyond the page, test with real audiences, places and communities, and revise in response."
+    "親手試行",
+    "Test it yourself",
+    "唔再紙上談兵，落區試水溫、聽反應，邊做邊改。",
+    "Move beyond ideas on paper: take it into the community, test the waters, listen to responses and improve it as you go."
   ],
   [
     "05",
-    "唔喺 Finale 完結",
-    "Beyond the finale",
+    "傳承",
+    "Pass it forward",
     "項目可以繼續發展，舊生亦可以回流，將經驗帶返下一屆。",
     "Projects can continue developing, while alumni can return and carry experience into the next cohort."
   ]
@@ -47,20 +47,20 @@ export default function HInfinityPage() {
   return (
     <>
       <PageHero
-        eyebrow="旗艦計劃"
-        eyebrowEn="THE FLAGSHIP PROGRAMME"
-        title="唔係商業比賽。係一個俾你真係做一件事嘅地方。"
-        titleEn="Not a business competition. A place to actually make something happen."
-        intro="H Infinity 俾青年由「我對某樣嘢有感覺」，走到「我真係做咗一件事」。你未需要有完整 idea、team 或 Proposal。"
-        introEn="H Infinity helps young people move from “I care about something” to “I actually made something happen.” You do not need a complete idea, team or proposal to begin."
+        eyebrow="主要計劃"
+        eyebrowEn="MAIN PROGRAMME"
+        title="唔係商業比賽，不設名次、不評輸贏，只係一個俾你真心做一件事嘅地方。"
+        titleEn="Not a business competition: no rankings, no winners or losers—just a place to genuinely make something happen."
+        intro="H Infinity 陪你實踐想法。唔需要已經具備周全計劃、組好團隊，只要有諗法、有熱誠，就走出空想，落手落腳將佢變成現實。"
+        introEn="H Infinity helps you put ideas into practice. You do not need a complete plan or a ready-made team. If you have an idea and the passion to try, move beyond imagining it and start making it real."
       >
         <div className="button-row">
           <Link className="button button-primary" href="/apply">
             <Localized zh="立即申請" en="Apply now" />
           </Link>
 
-          <Link className="button" href="/first-chapter">
-            <Localized zh="睇第一屆" en="Explore the first cohort" />
+          <Link className="button" href="/projects/cohort-01">
+            <Localized zh="首屆項目" en="Explore first-cohort projects" />
           </Link>
         </div>
       </PageHero>
@@ -87,40 +87,26 @@ export default function HInfinityPage() {
 
               <Localized
                 as="p"
-                zh="關心香港文化、城市、社區、人、故事或社會議題，但未必有完整計劃、正式經驗或特定學科背景嘅青年。"
-                en="Young people who care about Hong Kong culture, the city, community, people, stories or social issues, even without a complete plan, formal experience or a specific academic background."
+                zh="只要你關心香港文化、社區，或者各種社會議題，就已經符合條件！"
+                en="If you care about Hong Kong culture, community or wider social issues, you already meet the starting point."
               />
 
               <Localized
                 as="p"
-                zh={
-                  <>
-                    <strong>唔需要：</strong>
-                    完整 Proposal、現成 team、文化相關學位、所有答案。
-                  </>
-                }
-                en={
-                  <>
-                    <strong>You do not need:</strong>
-                    a complete proposal, an existing team, a culture-related degree or all the answers.
-                  </>
-                }
+                zh="可能你會擔心⋯⋯ 未有正式工作經驗？唔係讀文社科？"
+                en="You might be wondering: no formal work experience? Not studying arts, humanities or social sciences?"
               />
 
               <Localized
                 as="p"
-                zh={
-                  <>
-                    <strong>由一樣嘢開始：</strong>
-                    你真係在意。
-                  </>
-                }
-                en={
-                  <>
-                    <strong>Start with one thing:</strong>
-                    something you genuinely care about.
-                  </>
-                }
+                zh="通通唔要緊！你唔需要帶住完整計劃書、現成團隊嚟報名。"
+                en="None of that is a problem. You do not need a complete proposal or an existing team to apply."
+              />
+
+              <Localized
+                as="p"
+                zh="只要你心目中有一樣嘢好在意，唔想睇住佢消失，想親手留住佢——咁就即管試咗先！"
+                en="If there is something you care deeply about, something you do not want to see disappear and want to help carry forward with your own hands, give it a try."
               />
             </aside>
           </Reveal>

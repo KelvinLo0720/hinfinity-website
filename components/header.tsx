@@ -8,13 +8,25 @@ import { LanguageSwitch, useLanguage } from "./i18n";
 import { Logo } from "./logo";
 
 const links = [
-  ["/about", "關於我們", "About"],
-  ["/h-infinity", "H Infinity", "H Infinity"],
-  ["/first-chapter", "第一屆", "Our First Chapter"],
-  ["/projects", "項目", "Projects"],
-  ["/stories", "故事", "Stories"],
-  ["/people", "人物", "People"]
+  { href: "/about", zh: "關於我們", en: "About" },
+  { href: "/h-infinity", zh: "H Infinity", en: "H Infinity" },
+  {
+    href: "/projects",
+    zh: "項目",
+    en: "Projects",
+    children: [
+      { href: "/projects", zh: "所有項目", en: "All Projects" },
+      { href: "/projects/cohort-01", zh: "第一屆", en: "Cohort 01" }
+    ]
+  },
+  { href: "/stories", zh: "故事", en: "Stories" },
+  { href: "/people", zh: "人物", en: "People" }
 ] as const;
+
+function isActive(pathname: string, href: string) {
+  if (href === "/projects") return pathname.startsWith("/projects");
+  return pathname.startsWith(href);
+}
 
 export function Header() {
   const pathname = usePathname();
@@ -41,15 +53,45 @@ export function Header() {
           className="main-nav main-nav-desktop"
           aria-label={language === "zh" ? "主導覽" : "Main navigation"}
         >
-          {links.map(([href, zh, en]) => (
-            <Link
-              key={href}
-              className={pathname.startsWith(href) ? "is-active" : ""}
-              href={href}
-            >
-              {language === "zh" ? zh : en}
-            </Link>
-          ))}
+          {links.map((item) =>
+            "children" in item ? (
+              <div className="nav-group" key={item.href}>
+                <Link
+                  className={`nav-primary-link nav-parent-link ${
+                    isActive(pathname, item.href) ? "is-active" : ""
+                  }`}
+                  href={item.href}
+                  aria-haspopup="true"
+                >
+                  <span>{language === "zh" ? item.zh : item.en}</span>
+                  <span className="nav-chevron" aria-hidden="true">⌄</span>
+                </Link>
+
+                <div className="nav-dropdown">
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.href}
+                      className={pathname === child.href ? "is-active" : ""}
+                      href={child.href}
+                    >
+                      <span>{language === "zh" ? child.zh : child.en}</span>
+                      <i aria-hidden="true">↗</i>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                className={`nav-primary-link ${
+                  isActive(pathname, item.href) ? "is-active" : ""
+                }`}
+                href={item.href}
+              >
+                {language === "zh" ? item.zh : item.en}
+              </Link>
+            )
+          )}
 
           <LanguageSwitch compact />
 
@@ -112,9 +154,10 @@ export function Header() {
                 language === "zh" ? "手機主導覽" : "Mobile navigation"
               }
             >
-              {links.map(([href, zh, en], index) => (
+              {links.map((item, index) => (
                 <motion.div
-                  key={href}
+                  className="mobile-menu-group"
+                  key={item.href}
                   initial={{ opacity: 0, x: 24 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{
@@ -123,14 +166,35 @@ export function Header() {
                   }}
                 >
                   <Link
-                    className={pathname.startsWith(href) ? "is-active" : ""}
-                    href={href}
+                    className={
+                      isActive(pathname, item.href) ? "is-active" : ""
+                    }
+                    href={item.href}
                     onClick={() => setOpen(false)}
                   >
                     <span>0{index + 1}</span>
-                    <b>{language === "zh" ? zh : en}</b>
+                    <b>{language === "zh" ? item.zh : item.en}</b>
                     <i aria-hidden="true">↗</i>
                   </Link>
+
+                  {"children" in item ? (
+                    <div className="mobile-menu-submenu">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.href}
+                          className={
+                            pathname === child.href ? "is-active" : ""
+                          }
+                          href={child.href}
+                          onClick={() => setOpen(false)}
+                        >
+                          <span aria-hidden="true">—</span>
+                          <b>{language === "zh" ? child.zh : child.en}</b>
+                          <i aria-hidden="true">↗</i>
+                        </Link>
+                      ))}
+                    </div>
+                  ) : null}
                 </motion.div>
               ))}
             </nav>
@@ -143,8 +207,8 @@ export function Header() {
             >
               <p>
                 {language === "zh"
-                  ? "你未需要有答案。由一個你真正關心嘅問題開始。"
-                  : "You do not need all the answers. Start with a question you genuinely care about."}
+                  ? "呢一刻唔需要答案。由一個你真正關心嘅問題開始。"
+                  : "You do not need the answers right now. Start with a question you genuinely care about."}
               </p>
 
               <Link href="/apply" onClick={() => setOpen(false)}>

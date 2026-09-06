@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Localized } from "@/components/i18n";
 import { PageHero } from "@/components/page-hero";
+import { ProjectCohortNav } from "@/components/project-cohort-nav";
 import { projects } from "@/lib/content";
 
 export const metadata = { title: "青年項目" };
@@ -12,13 +13,19 @@ export default function ProjectsPage() {
       <PageHero
         eyebrow="項目檔案"
         eyebrowEn="PROJECT ARCHIVE"
-        title="一個項目，唔只係最後成果。"
-        titleEn="A project is more than its final outcome."
+        title="一個項目，唔只係睇最後成果。"
+        titleEn="A project is more than what you see at the finish line."
         intro="我哋記錄每個項目點樣由問題出發、經過測試同修正，再一步一步走入真實世界。"
         introEn="We document how each project starts from a question, moves through testing and revision, and gradually enters the real world."
       />
 
-      <section className="section-tight">
+      <section className="cohort-nav-section">
+        <div className="shell">
+          <ProjectCohortNav active="all" />
+        </div>
+      </section>
+
+      <section className="section-tight project-archive-section">
         <div className="shell">
           <div className="project-grid">
             {projects.map((project) => (
@@ -30,7 +37,7 @@ export default function ProjectsPage() {
                 <div className="project-image">
                   <Image
                     src={project.image}
-                    alt={`H Infinity Cohort 01｜${project.title}`}
+                    alt={`H Infinity Cohort ${project.cohort}｜${project.title}`}
                     fill
                     sizes="360px"
                   />
@@ -44,7 +51,7 @@ export default function ProjectsPage() {
                 </div>
 
                 <div className="project-meta">
-                  <span>COHORT 01</span>
+                  <span>COHORT {project.cohort}</span>
                   <span>VIEW ↗</span>
                 </div>
 

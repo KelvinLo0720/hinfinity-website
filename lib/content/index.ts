@@ -1,2 +1,2 @@
-export { projects, stories, people, programmeSteps } from "./local";
-export type { Project, Story } from "./local";
+export { cohorts, projects, stories, people, programmeSteps } from "./local";
+export type { Cohort, Project, Story } from "./local";

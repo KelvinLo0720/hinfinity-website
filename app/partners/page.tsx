@@ -7,18 +7,18 @@ export const metadata = { title: "合作夥伴" };
 const groups = [
   [
     "Funding Partners",
-    "將資源變成青年實踐所需的時間、方法、製作與測試空間。",
-    "Turn resources into the time, methods, production capacity and testing space youth projects need."
+    "提供資金與試錯資源，支援項目由想法逐步成真。",
+    "Provide funding and room to experiment, supporting projects as they move from ideas towards reality."
   ],
   [
     "Knowledge Partners",
-    "以文化、設計、研究、項目管理或社會實踐經驗，幫青年問得更深。",
-    "Bring experience in culture, design, research, project management or social practice to help young people ask better questions."
+    "分享經驗，陪青年拆解盲點、釐清方向。",
+    "Share experience, helping young people unpack blind spots and clarify their direction."
   ],
   [
     "Community Partners",
-    "讓項目走入真實地方與社群，接觸真正受眾，而唔只停留喺房入面。",
-    "Help projects enter real places and communities, meeting actual audiences rather than staying inside the room."
+    "協助項目走入社區，面對真實受眾。",
+    "Help projects move into communities and meet real audiences."
   ],
   [
     "Venue & Production Partners",
@@ -27,13 +27,13 @@ const groups = [
   ],
   [
     "Media & Content Partners",
-    "將值得被聽見的青年文化實踐帶到更廣泛的公眾。",
-    "Bring youth cultural practice worth hearing to wider audiences."
+    "將值得被看見嘅青年文化企劃，帶到更廣泛嘅大眾視野。",
+    "Bring youth cultural initiatives worth seeing to a wider public."
   ],
   [
     "School & Youth Partners",
-    "連結不同學科、院校與背景的青年，令入口唔只屬於一小撮『文化人』。",
-    "Connect young people across disciplines, institutions and backgrounds, keeping the entry point wider than a small cultural circle."
+    "打破界限，連結唔同學科背景嘅青年。",
+    "Break down boundaries and connect young people from different academic backgrounds."
   ]
 ] as const;
 
@@ -41,12 +41,12 @@ export default function PartnersPage() {
   return (
     <>
       <PageHero
-        eyebrow="合作"
-        eyebrowEn="COLLABORATE"
-        title="唔係 Logo 牆。係一齊令一件事真係發生。"
-        titleEn="Not a logo wall. A network that helps real work happen."
-        intro="H Infinity 尋找願意同青年一齊做、試、改的夥伴。合作可以由資源、知識、場地、社區連結、媒體到青年招募開始。"
-        introEn="H Infinity works with partners who are willing to build, test and revise alongside young people. Collaboration can begin with resources, knowledge, venues, community connections, media or youth outreach."
+        eyebrow="合作夥伴"
+        eyebrowEn="PARTNERS"
+        title="唔係 Logo 牆，一齊讓一件事真正發生。"
+        titleEn="Not a logo wall. Let’s make something real happen together."
+        intro="H Infinity 尋找願意與青年一起做、試、改的夥伴。合作不限形式——資源、知識、場地、社區連結、媒體、青年招募，都可以是起點。"
+        introEn="H Infinity looks for partners willing to build, test and revise alongside young people. Collaboration can take many forms—resources, knowledge, venues, community connections, media or youth outreach can all be a starting point."
       />
 
       <section className="section-tight">

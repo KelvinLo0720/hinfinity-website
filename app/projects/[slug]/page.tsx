@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Localized } from "@/components/i18n";
+import { ProjectCohortNav } from "@/components/project-cohort-nav";
 import { projects } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -27,14 +28,20 @@ export default async function ProjectDetailPage({
     ["04 / THE PROCESS", "測試與修正", "Testing and revision", project.process, project.processEn],
     ["05 / WHERE IT IS NOW", "而家去到邊", "Where it is now", project.outcome, project.outcomeEn],
     ["06 / REFLECTION", "一個學習", "A reflection", project.reflection, project.reflectionEn]
-  ];
+  ].filter((section) => section[3] && section[4]);
 
   return (
     <>
+      <section className="cohort-nav-section cohort-nav-section-detail">
+        <div className="shell">
+          <ProjectCohortNav active={project.cohort} />
+        </div>
+      </section>
+
       <section className="project-detail-hero">
         <div className="shell project-detail-grid">
           <div>
-            <span className="eyebrow">COHORT 01 / PROJECT STORY</span>
+            <span className="eyebrow">COHORT {project.cohort} / PROJECT STORY</span>
 
             <Localized
               as="h1"
@@ -51,7 +58,7 @@ export default async function ProjectDetailPage({
 
             <div className="button-row">
               <Link className="button button-primary" href="/projects">
-                <Localized zh="返回項目" en="Back to projects" />
+                <Localized zh="返回所有項目" en="Back to all projects" />
               </Link>
             </div>
           </div>
@@ -59,7 +66,7 @@ export default async function ProjectDetailPage({
           <div className="project-detail-image motion-card">
             <Image
               src={project.image}
-              alt={`H Infinity Cohort 01｜${project.title}`}
+              alt={`H Infinity Cohort ${project.cohort}｜${project.title}`}
               fill
               sizes="(max-width: 700px) 90vw, 560px"
             />

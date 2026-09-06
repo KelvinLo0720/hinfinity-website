@@ -11,10 +11,10 @@ export default function AboutPage() {
       <PageHero
         eyebrow="關於香港籽鷂文化"
         eyebrowEn="ABOUT HONG KONG CULTURE LIMITED"
-        title="播下文化的種子，讓青年自由飛。"
-        titleEn="Sow the seeds of culture. Give young people room to fly."
-        intro="香港籽鷂文化是一個以青年為核心的文化實踐平台。我們透過導師、同儕、方法與資源，讓青年由一樣真正關心的事開始，逐步做出自己的文化行動。"
-        introEn="Hong Kong Culture Limited is a youth-centred cultural practice platform. Through mentors, peers, methods and resources, we help young people turn something they genuinely care about into cultural action."
+        title="播下文化的種子，讓青年自由飛翔。"
+        titleEn="Sow the seeds of culture. Let young people take flight."
+        intro="讓青年由一件真正關心的事開始，逐步實踐自己的文化項目。"
+        introEn="We help young people start with something they genuinely care about and gradually put their own cultural projects into practice."
       />
 
       <section className="section-tight">
@@ -34,16 +34,16 @@ export default function AboutPage() {
 
             <Localized
               as="blockquote"
-              zh="文化唔只係一樣要被保存嘅嘢，而係一樣要有人繼續做落去嘅嘢。"
-              en="Culture is not only something to preserve. It continues when people keep practising, making and reinterpreting it."
+              zh="文化不應鎖進夾萬，要有人去實踐、去傳承。"
+              en="Culture should not be locked away. It needs people to practise it and pass it on."
             />
 
             <Localized as="h2" zh="我哋做緊咩" en="What we do" />
 
             <Localized
               as="p"
-              zh="我哋將青年對香港、文化、社區、人與日常生活的感覺，轉化成一個可以被測試、被挑戰、被實踐的過程。"
-              en="We turn young people's observations about Hong Kong, culture, community, people and everyday life into a process that can be tested, challenged and put into practice."
+              zh="我們把青年對香港、文化、社區與人的感受，用測試、挑戰與實踐反覆打磨，直至真正落地。"
+              en="We take young people’s feelings about Hong Kong, culture, community and people, then refine them through testing, challenge and practice until they can take shape in the real world."
             />
 
             <Localized
@@ -69,8 +69,8 @@ export default function AboutPage() {
 
               <Localized
                 as="p"
-                zh="我哋唔只想講文化重要，而係想令更多青年有方法、有同行者、有空間，真係將一樣關心的事做出來。"
-                en="We do not only want to say culture matters. We want more young people to have the methods, people and space to turn something they care about into real work."
+                zh="比起反覆強調文化重要，我們更想給予青年方法、同行者與空間，把關心的事真正做出來。"
+                en="Rather than repeatedly saying that culture matters, we want to give young people methods, fellow travellers and room to make what they care about real."
               />
 
               <Link className="text-link" href="/h-infinity">
