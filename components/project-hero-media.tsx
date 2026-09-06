@@ -51,11 +51,12 @@ export function ProjectHeroMedia({
 
   async function playFullVideo() {
     const player = videoRef.current;
-    if (!player || loading) return;
+    const projectVideo = video;
+    if (!player || !projectVideo || loading) return;
 
     setLoading(true);
     player.pause();
-    player.src = video.src;
+    player.src = projectVideo.src;
     player.loop = false;
     player.muted = false;
     player.controls = true;
@@ -79,7 +80,7 @@ export function ProjectHeroMedia({
         ref={videoRef}
         className="project-detail-video-player"
         poster={video.poster}
-        muted
+        muted={!started}
         playsInline
         preload="metadata"
         aria-label={alt}
