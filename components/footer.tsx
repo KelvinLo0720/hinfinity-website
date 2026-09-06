@@ -23,8 +23,8 @@ export function Footer() {
           </p>
           <p className="footer-note">
             {isZh
-              ? "香港籽鷂文化｜文化唔只係一樣要被保存嘅嘢，而係一樣要有人繼續做落去嘅嘢。"
-              : "Hong Kong Culture Limited｜Culture continues when people keep making, practising and reinterpreting it."}
+              ? "香港籽鷂文化｜文化不應鎖進夾萬，要有人去實踐、去傳承。"
+              : "Hong Kong Culture Limited｜Culture should not be locked away. It needs people to practise it and pass it on."}
           </p>
         </div>
 

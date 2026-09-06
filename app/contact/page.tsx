@@ -12,7 +12,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="聯絡"
         eyebrowEn="CONTACT"
-        title="由一個對話開始。"
+        title="由對話開始。"
         titleEn="Start with a conversation."
         intro="想參加 H Infinity、傾合作、成為導師／講者、做媒體訪問，或者只係有一個值得我哋知道的想法，都可以直接搵我哋。"
         introEn="Whether you want to join H Infinity, explore a partnership, mentor or speak, make a media enquiry, or simply share an idea worth hearing, you can contact us directly."

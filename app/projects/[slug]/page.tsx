@@ -27,7 +27,7 @@ export default async function ProjectDetailPage({
     ["04 / THE PROCESS", "測試與修正", "Testing and revision", project.process, project.processEn],
     ["05 / WHERE IT IS NOW", "而家去到邊", "Where it is now", project.outcome, project.outcomeEn],
     ["06 / REFLECTION", "一個學習", "A reflection", project.reflection, project.reflectionEn]
-  ];
+  ].filter((section) => section[3] && section[4]);
 
   return (
     <>

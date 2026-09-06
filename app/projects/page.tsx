@@ -12,8 +12,8 @@ export default function ProjectsPage() {
       <PageHero
         eyebrow="項目檔案"
         eyebrowEn="PROJECT ARCHIVE"
-        title="一個項目，唔只係最後成果。"
-        titleEn="A project is more than its final outcome."
+        title="一個項目，唔只係睇最後成果。"
+        titleEn="A project is more than what you see at the finish line."
         intro="我哋記錄每個項目點樣由問題出發、經過測試同修正，再一步一步走入真實世界。"
         introEn="We document how each project starts from a question, moves through testing and revision, and gradually enters the real world."
       />

@@ -7,22 +7,22 @@ import { Localized, useLanguage } from "./i18n";
 const stories = [
   {
     src: "/images/team-phone.jpg",
-    zh: "由一個問題開始",
+    zh: "由一條問題開始",
     en: "Start with one question",
     altZh: "青年參加者在小組中一起查看手機內容",
     altEn: "Young participants reviewing content together"
   },
   {
     src: "/images/participant-pitch.jpg",
-    zh: "勇敢講出構思",
-    en: "Put the idea into words",
+    zh: "勇敢分享構思",
+    en: "Share the idea with confidence",
     altZh: "參加者在 H Infinity 活動中分享構思",
     altEn: "A participant presenting an idea at H Infinity"
   },
   {
     src: "/images/group-conversation.jpg",
-    zh: "同路人一齊實踐",
-    en: "Build it with others",
+    zh: "與同路人一齊實踐",
+    en: "Put it into practice with others",
     altZh: "參加者圍坐交流",
     altEn: "Participants in a group conversation"
   }

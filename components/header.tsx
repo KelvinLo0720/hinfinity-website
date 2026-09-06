@@ -143,8 +143,8 @@ export function Header() {
             >
               <p>
                 {language === "zh"
-                  ? "你未需要有答案。由一個你真正關心嘅問題開始。"
-                  : "You do not need all the answers. Start with a question you genuinely care about."}
+                  ? "呢一刻唔需要答案。由一個你真正關心嘅問題開始。"
+                  : "You do not need the answers right now. Start with a question you genuinely care about."}
               </p>
 
               <Link href="/apply" onClick={() => setOpen(false)}>

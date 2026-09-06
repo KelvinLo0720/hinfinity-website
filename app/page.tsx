@@ -13,46 +13,46 @@ const solutions = [
     number: "01",
     zh: "由模糊想法變成清晰方向",
     en: "Turn a vague idea into a clear direction",
-    copyZh: "用設計思維拆解問題，令一個念頭逐步變成可測試、可溝通的構思。",
+    copyZh: "用設計思維拆解問題，一個念頭變成試得到、講得明嘅構思。",
     copyEn:
-      "Use design thinking to unpack the problem and turn a first thought into an idea that can be tested and communicated."
+      "Use design thinking to unpack the problem and turn a first thought into an idea that can be tested and explained clearly."
   },
   {
     number: "02",
     zh: "連結同路人與跨界導師",
     en: "Connect with peers and cross-sector mentors",
     copyZh:
-      "唔需要一個人摸索；你會遇見來自不同背景的同行者、文化工作者與實踐者。",
+      "唔使一個人摸索：呢度有班同路人——有帶導賞團嘅、有做媒體嘅、有做文創嘅、有研究歷史嘅，陪你一齊行。",
     copyEn:
-      "You do not have to figure everything out alone. Meet peers, cultural practitioners and people from different fields."
+      "You do not have to figure everything out alone. Here you will meet fellow travellers—from tour guides and media makers to creative practitioners and history researchers—who can walk alongside you."
   },
   {
     number: "03",
-    zh: "在安全空間測試與修正",
-    en: "Test, fail and rebuild in a safe space",
+    zh: "安心試錯，在修正中成長",
+    en: "Experiment safely, grow through revision",
     copyZh:
-      "唔以完成度決定價值，容許試錯、被挑戰、重建，再找出真正可行的方向。",
+      "唔好以完成度決定價值。你可以試錯、被挑戰、推倒重來，再搵到真正行得通嘅方向。",
     copyEn:
-      "Your value is not measured by how finished the idea looks. Experiment, be challenged, rebuild and find what truly works."
+      "Your value is not measured by how finished the idea looks. You can experiment, be challenged, start over and keep revising until you find a direction that genuinely works."
   },
   {
     number: "04",
-    zh: "由構思走到真實實踐",
-    en: "Move from idea to real-world practice",
+    zh: "由構思走到落地實踐",
+    en: "Move from idea to implementation",
     copyZh:
-      "透過 Pitching、Mentorship 同真實測試，將構思帶入社群並持續修正。",
+      "透過 Pitching、Mentorship 同實戰測試，將構思帶入社群並持續修正。",
     copyEn:
-      "Use pitching, mentorship and real-world testing to bring the idea into communities and keep improving it."
+      "Use pitching, mentorship and hands-on testing to bring the idea into communities and keep improving it."
   }
 ] as const;
 
 const journeyDescriptions = [
-  ["由陌生人變成同行者", "Turn strangers into fellow travellers"],
-  ["在過程中拆開真正問題", "Unpack the real problem through the process"],
-  ["快速測試、修正與再建立", "Test quickly, revise and rebuild"],
-  ["用不同語言向不同受眾溝通", "Communicate with different audiences"],
-  ["帶入真實情境測試", "Test in real situations"],
-  ["令項目繼續行落去", "Keep the project moving"]
+  ["由素未謀面到並肩作戰", "From strangers to working side by side"],
+  ["喺實戰中拆解問題關鍵", "Unpack the key problem through practice"],
+  ["測試、修正、再建立", "Test, revise and rebuild"],
+  ["換位思考，從對方角度開始溝通", "Shift perspective and communicate from the audience’s point of view"],
+  ["透過實戰，反覆驗證", "Validate it repeatedly through practice"],
+  ["走入社區，持續運作", "Move into the community and keep it going"]
 ] as const;
 
 export default function HomePage() {
@@ -67,8 +67,8 @@ export default function HomePage() {
               <Localized
                 as="span"
                 className="hero-kicker"
-                zh="文化倡議 × 青年社群 × 真實實踐"
-                en="CULTURAL ACTION × YOUTH COMMUNITY × REAL PRACTICE"
+                zh="文化倡議 × 青年社群 × 親手實踐"
+                en="CULTURAL ACTION × YOUTH COMMUNITY × HANDS-ON PRACTICE"
               />
             </Reveal>
 
@@ -100,8 +100,8 @@ export default function HomePage() {
               <Localized
                 as="p"
                 className="hero-sub"
-                zh="唔需要一份完美 Proposal。由一個你真正關心嘅問題開始，我哋陪你連結同路人、方法同資源。"
-                en="You do not need a perfect proposal. Start with a question you genuinely care about, and we will connect you with people, methods and resources."
+                zh="唔使一份完美 Proposal。由一個你真係關心嘅問題開始，我哋陪你搵同路人、搵方法、搵資源。"
+                en="You do not need a perfect proposal. Start with a question you genuinely care about, and we will help you find fellow travellers, methods and resources."
               />
             </Reveal>
 
@@ -159,18 +159,18 @@ export default function HomePage() {
               />
               <Localized
                 as="span"
-                zh="連結同路人與跨界導師"
-                en="CONNECT ACROSS FIELDS"
+                zh="結集同伴，請教前輩"
+                en="GATHER PEERS, LEARN FROM PRACTITIONERS"
               />
               <Localized
                 as="span"
-                zh="安全試錯，反覆修正"
-                en="TEST, FAIL, REBUILD"
+                zh="大膽試錯，小心修正"
+                en="TRY BOLDLY, REVISE CAREFULLY"
               />
               <Localized
                 as="span"
-                zh="由構思走到真實實踐"
-                en="MOVE IDEAS INTO ACTION"
+                zh="由構思到實踐"
+                en="MOVE IDEAS INTO PRACTICE"
               />
             </div>
           ))}
@@ -187,24 +187,30 @@ export default function HomePage() {
               className="big-statement"
               zh={
                 <>
-                  你未需要有
+                  我哋一齊
                   <br />
-                  <span className="underline">完整答案。</span>
+                  <span className="underline">搵答案！</span>
                 </>
               }
               en={
                 <>
-                  You do not need
+                  Let’s find
                   <br />
-                  <span className="underline">a complete answer.</span>
+                  <span className="underline">the answers together!</span>
                 </>
               }
             />
 
             <Localized
               as="p"
-              zh="H Infinity 唔係要你一開始就交出完美方案，而係提供一條由探索、協作到落地的路，陪你將關心變成行動。"
-              en="H Infinity does not ask for a perfect solution on day one. We offer a pathway from exploration and collaboration to implementation, helping you turn what you care about into action."
+              zh="呢一刻，你唔需要交出一份完美無瑕嘅計劃。"
+              en="At this stage, you do not need to present a flawless plan."
+            />
+
+            <Localized
+              as="p"
+              zh="H Infinity 提供一個探索空間，陪你搵同伴、試水溫，將關心社會變成實際行動。"
+              en="H Infinity gives you room to explore, find collaborators, test the waters and turn what you care about in society into practical action."
             />
 
             <Link className="text-link" href="/h-infinity">
@@ -245,10 +251,10 @@ export default function HomePage() {
         <div className="shell">
           <SectionHeading
             eyebrow="WHAT HAPPENS HERE"
-            title="由遇見，到真正發生。"
-            titleEn="From meeting each other to making something real."
-            intro="H Infinity 唔係一場 lecture series。參加者會拆解問題、建立原型、練習 Pitch、接受挑戰，再將構思帶入真實情境測試與實踐。"
-            introEn="H Infinity is not a lecture series. Participants unpack problems, build prototypes, practise pitching, respond to challenges and test their ideas in real situations."
+            title="由一個念頭，到落地成事。"
+            titleEn="From a first thought to making it happen."
+            intro="透過 H Infinity，參加者會拆解問題、練習 Pitching、建立原型，將構思變成實踐。"
+            introEn="Through H Infinity, participants unpack problems, practise pitching, build prototypes and turn ideas into practice."
           />
 
           <div
@@ -256,11 +262,11 @@ export default function HomePage() {
             aria-label="H Infinity participant journey"
           >
             {[
-              ["遇見", "MEET"],
+              ["相遇", "MEET"],
               ["探索", "EXPLORE"],
               ["建立", "BUILD"],
-              ["溝通", "PITCH"],
-              ["測試", "TEST"],
+              ["提倡", "PITCH"],
+              ["試驗", "TEST"],
               ["延續", "CONTINUE"]
             ].map(([zh, en], index) => (
               <span className="journey-route-item" key={en}>
@@ -316,10 +322,10 @@ export default function HomePage() {
           <Reveal>
             <SectionHeading
               eyebrow="OUR FIRST CHAPTER"
-              title="第一屆，唔係句號；係文化行動開始形成。"
-              titleEn="The first cohort was not a full stop. It was the moment cultural practice started to take shape."
-              intro="我哋記錄嘅唔只係活動，而係參加者點樣由模糊構思出發，經歷碰撞、修正與實踐，再令項目繼續行落去。"
-              introEn="We document more than an event: how participants moved from vague ideas through challenge, revision and practice, then kept their projects moving."
+              title="第一屆，為推廣文化寫下第一筆。"
+              titleEn="The first cohort wrote the opening chapter of putting culture into action."
+              intro="我們記錄的，是參加者如何由模糊構思出發，歷經碰撞、修正與實踐，讓項目真正落地。"
+              introEn="We document how participants started with rough ideas, moved through challenge, revision and practice, and ultimately brought their projects into reality."
             />
 
             <div
@@ -387,8 +393,8 @@ export default function HomePage() {
         <div className="shell">
           <SectionHeading
             eyebrow="SELECTED PROJECTS"
-            title="由一個問題，走到一個真正發生嘅項目。"
-            titleEn="From one question to a project that actually happens."
+            title="由一個問題，走到一個真正落地嘅項目。"
+            titleEn="From one question to a project that truly takes shape."
             intro="Portfolio 唔只展示最後成果，亦記錄每個團隊點樣觀察、測試、推翻假設，再將構思帶入真實世界。"
             introEn="The portfolio records more than outcomes. It shows how each team observes, tests, challenges assumptions and brings an idea into the real world."
           />
@@ -464,8 +470,8 @@ export default function HomePage() {
             <Localized
               as="p"
               className="quote-text"
-              zh="文化唔只係一樣要被保存嘅嘢，而係一樣要有人繼續做落去嘅嘢。"
-              en="Culture is not only something to preserve. It continues when people keep making, practising and reinterpreting it."
+              zh="文化唔應該鎖入夾萬，要活喺人嘅手中。"
+              en="Culture should not be locked away. It should stay alive in people’s hands."
             />
 
             <Localized
@@ -500,22 +506,22 @@ export default function HomePage() {
                 <>
                   下一個章節，
                   <br />
-                  等緊你一齊寫。
+                  期待你我一同續寫。
                 </>
               }
               en={
                 <>
                   The next chapter
                   <br />
-                  is waiting for you.
+                  is ours to write together.
                 </>
               }
             />
 
             <Localized
               as="p"
-              zh="不限學科，亦唔需要預先準備完整計劃。你只需要由一個真正關心嘅問題開始。"
-              en="No specific discipline and no complete plan required. Start with a question you genuinely care about."
+              zh="不限學科背景，亦無需遞交周詳計劃。只要有熱誠，我哋都期待與你相見。"
+              en="No specific academic background or detailed plan is required. If you have the passion to try, we look forward to meeting you."
             />
 
             <div className="button-row">

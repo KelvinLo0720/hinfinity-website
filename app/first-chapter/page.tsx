@@ -13,10 +13,10 @@ export default function FirstChapterPage() {
       <PageHero
         eyebrow="第一屆"
         eyebrowEn="OUR FIRST CHAPTER"
-        title="第一次，未必完美。但足以令下一次開始。"
-        titleEn="The first attempt may not be perfect. It can still make the next one possible."
-        intro="首屆 H Infinity 留低嘅唔只係活動紀錄，而係一批青年點樣由模糊構思出發，經歷碰撞、修正、測試，再將項目繼續做落去。"
-        introEn="The first H Infinity cohort left more than event records. It shows how young people moved from rough ideas through challenge, revision and testing, then kept their projects moving."
+        title="千里之行始於足下，每一小步都係一大步。"
+        titleEn="Every long journey begins with a first step. Every small step can be a big one."
+        intro="首屆 H Infinity 留低嘅唔只係活動紀錄，而係一班青年由模糊構思出發，經歷碰撞、修正、測試，最終將項目落地成形的軌跡。"
+        introEn="The first H Infinity cohort left more than event records. It traces how a group of young people started with rough ideas, moved through challenge, revision and testing, and ultimately brought their projects into shape."
       />
 
       <section className="section-tight">
@@ -84,15 +84,15 @@ export default function FirstChapterPage() {
 
             <Localized
               as="h2"
-              zh="由構思，到一件真係繼續發生嘅事。"
-              en="From an idea to something that keeps happening."
+              zh="由一個念頭，到長做長有。"
+              en="From a first thought to something built to keep going."
             />
 
             <Localized
               as="p"
               className="section-intro"
-              zh="以下係首屆部分項目。重點唔只係最後成果，而係每隊點樣一路試、一路改，再搵到自己下一步。"
-              en="These are selected projects from the first cohort. The focus is not only the final outcome, but how each team kept testing, revising and finding its next step."
+              zh="以下係首屆部分項目。除咗最後成果，值得留意嘅係每隊一路試、一路改、搵到下一步嘅過程。"
+              en="These are selected projects from the first cohort. Beyond the final outcomes, what matters is how each team kept testing, revising and finding its next step."
             />
           </div>
 

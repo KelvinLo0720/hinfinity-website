@@ -9,12 +9,12 @@ export default function StoriesPage() {
   return (
     <>
       <PageHero
-        eyebrow="真實過程"
-        eyebrowEn="STORIES FROM THE PROCESS"
+        eyebrow="背後"
+        eyebrowEn="BEHIND THE PROJECTS"
         title="由項目自己講：改過、試過，先至行得落去。"
         titleEn="Let the projects speak: testing and rebuilding are part of moving forward."
-        intro="H Infinity 想記錄嘅唔只係一張完成相，而係構思點樣被挑戰、重建，最後變成一件真係有人繼續做嘅事。"
-        introEn="H Infinity documents more than finished outcomes. We follow how ideas are challenged, rebuilt and turned into work people keep doing."
+        intro="H Infinity 想記錄嘅，係每個項目背後嘅故事——構思如何歷經挑戰、反覆重建，最後變成一件有人實踐，有人共鳴嘅事。"
+        introEn="H Infinity documents the stories behind each project—how ideas are challenged, repeatedly rebuilt and eventually become work that people put into practice and connect with."
       />
 
       <section className="section-tight">
