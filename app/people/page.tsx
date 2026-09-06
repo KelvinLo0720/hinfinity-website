@@ -1,8 +1,9 @@
-import { Localized } from "@/components/i18n";
 import { PageHero } from "@/components/page-hero";
-import { people } from "@/lib/content";
+import { PeopleDirectory } from "@/components/people-directory";
 
-export const metadata = { title: "人物與社群" };
+export const metadata = {
+  title: "人物與社群"
+};
 
 export default function PeoplePage() {
   return (
@@ -17,14 +18,8 @@ export default function PeoplePage() {
       />
 
       <section className="section-tight">
-        <div className="shell people-grid">
-          {people.map((person) => (
-            <article className="person-card motion-card" key={person.name}>
-              <Localized as="strong" zh={person.role} en={person.roleEn} />
-              <h3>{person.name}</h3>
-              <Localized as="p" zh={person.note} en={person.noteEn} />
-            </article>
-          ))}
+        <div className="shell">
+          <PeopleDirectory />
         </div>
       </section>
     </>
