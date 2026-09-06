@@ -1094,3 +1094,88 @@ html[data-language="en"] body { font-family: Inter, Arial, Helvetica, sans-serif
 @media (prefers-reduced-motion: reduce) {
   .mobile-story-hint i { animation: none; }
 }
+
+/* Project story video hero */
+.project-detail-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 12px solid white;
+  background: #0c1730;
+  transform: rotate(2deg);
+  box-shadow: var(--shadow);
+}
+.project-detail-video-player {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #0c1730;
+}
+.project-video-play {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 0;
+  background: linear-gradient(180deg, rgba(8, 18, 42, .04), rgba(8, 18, 42, .32));
+  color: var(--navy);
+  cursor: pointer;
+}
+.project-video-play::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 21, 48, .08);
+  transition: background .2s ease;
+}
+.project-video-play:hover::before { background: rgba(10, 21, 48, .18); }
+.project-video-play > span { position: relative; z-index: 1; }
+.project-video-play > span:last-child {
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  padding: 12px 17px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .94);
+  box-shadow: 0 8px 26px rgba(8, 18, 42, .18);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+.project-video-play small {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 900;
+}
+.project-video-play-icon {
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: white;
+  box-shadow: 0 8px 26px rgba(8, 18, 42, .2);
+  font-size: 17px;
+  line-height: 1;
+  padding-left: 3px;
+}
+.project-detail-video.is-playing { transform: rotate(0deg); }
+.project-detail-video.is-playing:hover { transform: translateY(-3px); }
+
+@media (max-width: 700px) {
+  .project-detail-video { border-width: 8px; transform: rotate(1deg); }
+  .project-video-play { flex-direction: column; gap: 9px; }
+  .project-video-play-icon { width: 46px; height: 46px; }
+  .project-video-play > span:last-child { padding: 10px 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-detail-video { transform: none; }
+  .project-detail-video.is-playing:hover { transform: none; }
+}

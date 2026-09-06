@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Localized } from "@/components/i18n";
 import { ProjectCohortNav } from "@/components/project-cohort-nav";
+import { ProjectHeroMedia } from "@/components/project-hero-media";
 import { projects } from "@/lib/content";
 
 export function generateStaticParams() {
@@ -63,14 +63,11 @@ export default async function ProjectDetailPage({
             </div>
           </div>
 
-          <div className="project-detail-image motion-card">
-            <Image
-              src={project.image}
-              alt={`H Infinity Cohort ${project.cohort}｜${project.title}`}
-              fill
-              sizes="(max-width: 700px) 90vw, 560px"
-            />
-          </div>
+          <ProjectHeroMedia
+            image={project.image}
+            video={project.video}
+            alt={`H Infinity Cohort ${project.cohort}｜${project.title}`}
+          />
         </div>
       </section>
 

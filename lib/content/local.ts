@@ -15,6 +15,12 @@ export type Project = {
   category: string;
   categoryEn: string;
   image: string;
+  video?: {
+    src: string;
+    preview: string;
+    poster: string;
+    duration: string;
+  };
   accent: string;
   summary: string;
   summaryEn: string;
@@ -79,6 +85,12 @@ export const projects: Project[] = [
     category: "地方文化 × 社區",
     categoryEn: "Local Culture × Community",
     image: "/images/group-conversation.jpg",
+    video: {
+      src: "/videos/projects/shingage/shingage-full.mp4",
+      preview: "/videos/projects/shingage/shingage-preview.mp4",
+      poster: "/images/projects/shingage-video-poster.jpg",
+      duration: "01:14"
+    },
     accent: "blue",
     summary: "Shingage 以保育地區文化同社區參與為方向，目前著手研究西環邨相關文化保育。",
     summaryEn: "Shingage focuses on local cultural preservation and community participation, and is currently researching cultural preservation connected with Sai Wan Estate.",
