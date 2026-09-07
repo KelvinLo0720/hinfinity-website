@@ -159,7 +159,7 @@ export default function HomePage() {
               />
               <Localized
                 as="span"
-                zh="結集同伴，請教前輩"
+                zh="集結同伴，請教前輩"
                 en="GATHER PEERS, LEARN FROM PRACTITIONERS"
               />
               <Localized
@@ -253,8 +253,8 @@ export default function HomePage() {
             eyebrow="WHAT HAPPENS HERE"
             title="由一個念頭，到落地成事。"
             titleEn="From a first thought to making it happen."
-            intro="透過 H Infinity，參加者會拆解問題、練習 Pitching、建立原型，將構思變成實踐。"
-            introEn="Through H Infinity, participants unpack problems, practise pitching, build prototypes and turn ideas into practice."
+            intro="H Infinity，參加者會拆解問題、練習 Pitching、建立原型，將構思轉化成實踐。"
+            introEn="At H Infinity, participants unpack problems, practise pitching, build prototypes and turn ideas into practice."
           />
 
           <div
@@ -354,8 +354,8 @@ export default function HomePage() {
                 <b>03</b>
                 <Localized
                   as="span"
-                  zh="走入真實實踐"
-                  en="move into practice"
+                  zh="走入社區實踐"
+                  en="move into community practice"
                 />
               </div>
 
@@ -395,8 +395,8 @@ export default function HomePage() {
             eyebrow="SELECTED PROJECTS"
             title="由一個問題，走到一個真正落地嘅項目。"
             titleEn="From one question to a project that truly takes shape."
-            intro="Portfolio 唔只展示最後成果，亦記錄每個團隊點樣觀察、測試、推翻假設，再將構思帶入真實世界。"
-            introEn="The portfolio records more than outcomes. It shows how each team observes, tests, challenges assumptions and brings an idea into the real world."
+            intro="我哋唔只展示最後成果，亦記錄每個團隊點樣觀察、測試、推翻假設，再將構思帶入真實世界。"
+            introEn="We show more than final outcomes. We also document how each team observes, tests, challenges assumptions and brings an idea into the real world."
           />
 
           <SnapRail
