@@ -11,10 +11,10 @@ export default function PeoplePage() {
       <PageHero
         eyebrow="人物與網絡"
         eyebrowEn="PEOPLE & NETWORK"
-        title="真正推動一個 Idea 行落去，靠嘅係一班人。"
-        titleEn="It takes a group of people to keep an idea moving."
-        intro="H Infinity 由策劃團隊、導師、顧問、舊生、參加者與合作夥伴一齊構成。有人提供經驗，有人問問題，有人將第一屆的學習帶返下一屆。"
-        introEn="H Infinity is shaped by the programme team, advisors, mentors, alumni, participants and partners. Some bring experience, some ask harder questions, and some carry learning from one cohort into the next."
+        title="我哋想建立嘅，唔單止係一個個項目，而係凝聚一個社群。"
+        titleEn="We are building more than individual projects—we are bringing a community together."
+        intro="H Infinity 能一路延續，有賴一班人各司其職。策劃團隊、導師、顧問、舊生、參加者與合作夥伴，將自己的活力同經驗注入社群。"
+        introEn="H Infinity keeps moving because different people each play a part. The programme team, mentors, advisors, alumni, participants and partners bring their energy and experience into the community."
       />
 
       <section className="section-tight">
