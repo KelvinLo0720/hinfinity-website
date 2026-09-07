@@ -31,8 +31,8 @@ const features = [
     "04",
     "親手試行",
     "Test it yourself",
-    "唔再紙上談兵，落區試水溫、聽反應，邊做邊改。",
-    "Move beyond ideas on paper: take it into the community, test the waters, listen to responses and improve it as you go."
+    "唔再紙上談兵，深入社區實踐，邊聽邊做。",
+    "Move beyond ideas on paper: go into the community, put the idea into practice, listen and keep doing."
   ],
   [
     "05",
