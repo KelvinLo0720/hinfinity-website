@@ -5,8 +5,9 @@ import { PhotoCollage } from "@/components/photo-collage";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
 import { MobileSectionNav } from "@/components/mobile-section-nav";
+import { ProgrammeSnapshot } from "@/components/programme-snapshot";
 import { SnapRail } from "@/components/snap-rail";
-import { programmeSteps, projects } from "@/lib/content";
+import { projects } from "@/lib/content";
 
 const solutions = [
   {
@@ -44,15 +45,6 @@ const solutions = [
     copyEn:
       "Use pitching, mentorship and hands-on testing to bring the idea into communities and keep improving it."
   }
-] as const;
-
-const journeyDescriptions = [
-  ["由素未謀面到並肩作戰", "From strangers to working side by side"],
-  ["喺實戰中拆解問題關鍵", "Unpack the key problem through practice"],
-  ["測試、修正、再建立", "Test, revise and rebuild"],
-  ["換位思考，從對方角度開始溝通", "Shift perspective and communicate from the audience’s point of view"],
-  ["透過實戰，反覆驗證", "Validate it repeatedly through practice"],
-  ["走入社區，持續運作", "Move into the community and keep it going"]
 ] as const;
 
 export default function HomePage() {
@@ -242,77 +234,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section
-        id="journey"
-        className="section section-blue journey-section"
-      >
-        <div className="journey-orbit" aria-hidden="true" />
-
-        <div className="shell">
-          <SectionHeading
-            eyebrow="WHAT HAPPENS HERE"
-            title="由一個念頭，到落地成事。"
-            titleEn="From a first thought to making it happen."
-            intro="H Infinity，參加者會拆解問題、練習 Pitching、建立原型，將構思轉化成實踐。"
-            introEn="At H Infinity, participants unpack problems, practise pitching, build prototypes and turn ideas into practice."
-          />
-
-          <div
-            className="journey-route"
-            aria-label="H Infinity participant journey"
-          >
-            {[
-              ["相遇", "MEET"],
-              ["探索", "EXPLORE"],
-              ["建立", "BUILD"],
-              ["提倡", "PITCH"],
-              ["試驗", "TEST"],
-              ["延續", "CONTINUE"]
-            ].map(([zh, en], index) => (
-              <span className="journey-route-item" key={en}>
-                <Localized zh={zh} en={en} />
-                {index < 5 ? <i aria-hidden="true">→</i> : null}
-              </span>
-            ))}
-          </div>
-
-          <SnapRail
-            className="journey-scroller"
-            count={programmeSteps.length}
-          >
-            {programmeSteps.map((step, index) => (
-              <Reveal key={step.n} delay={index * 0.06}>
-                <article className="journey-card motion-card">
-                  <div className="journey-image">
-                    <Image
-                      src={step.image}
-                      alt={step.zh}
-                      fill
-                      sizes="280px"
-                    />
-                  </div>
-
-                  <span>
-                    {step.n} / {step.en}
-                  </span>
-
-                  <Localized
-                    as="h3"
-                    zh={step.zh}
-                    en={step.enTitle}
-                  />
-
-                  <Localized
-                    as="p"
-                    zh={journeyDescriptions[index][0]}
-                    en={journeyDescriptions[index][1]}
-                  />
-                </article>
-              </Reveal>
-            ))}
-          </SnapRail>
-        </div>
-      </section>
+      <ProgrammeSnapshot />
 
       <section
         id="chapter"
