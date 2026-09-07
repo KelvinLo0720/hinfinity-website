@@ -156,7 +156,7 @@ export function ProgrammeSnapshot({
           <Reveal>
             <article className={styles.factCard}>
               <span className={styles.factLabel}>WHO</span>
-              <strong>18–30<Localized as="strong" zh="18–30 歲" en="Age 18–30" /></strong>
+              <strong>zh="18–30 歲" en="Age 18–30" /></strong>
               <Localized
                 as="p"
                 zh="對社會、人文精神有抱負嘅年青人"
