@@ -9,7 +9,7 @@ export default function StoriesPage() {
   return (
     <>
       <PageHero
-        eyebrow="背後"
+        eyebrow="項目背後"
         eyebrowEn="BEHIND THE PROJECTS"
         title="由項目自己講：改過、試過，先至行得落去。"
         titleEn="Let the projects speak: testing and rebuilding are part of moving forward."
