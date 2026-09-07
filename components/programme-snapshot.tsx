@@ -77,36 +77,77 @@ const fundingSteps = [
   }
 ] as const;
 
-export function ProgrammeSnapshot() {
+type ProgrammeSnapshotProps = {
+  variant?: "home" | "detail";
+};
+
+export function ProgrammeSnapshot({
+  variant = "home"
+}: ProgrammeSnapshotProps) {
+  const isDetail = variant === "detail";
+
   return (
-    <section id="journey" className={styles.section}>
-      <div className={styles.orbit} aria-hidden="true">∞</div>
+    <section
+      id={isDetail ? "programme-details" : "journey"}
+      className={styles.section}
+    >
+      <div className={styles.orbit} aria-hidden="true">
+        ∞
+      </div>
 
       <div className={`shell ${styles.inner}`}>
         <Reveal>
           <div className={styles.heading}>
-            <span className={styles.eyebrow}>PROGRAMME AT A GLANCE</span>
+            <span className={styles.eyebrow}>
+              {isDetail ? "PROGRAMME DETAILS" : "PROGRAMME AT A GLANCE"}
+            </span>
+
             <Localized
               as="h2"
               zh={
-                <>
-                  報名之前，先睇清楚
-                  <br />
-                  <em>你會經歷啲咩。</em>
-                </>
+                isDetail ? (
+                  <>
+                    由入選到落地，
+                    <br />
+                    <em>時間、流程、資金一次睇清楚。</em>
+                  </>
+                ) : (
+                  <>
+                    報名之前，先睇清楚
+                    <br />
+                    <em>你會經歷啲咩。</em>
+                  </>
+                )
               }
               en={
-                <>
-                  Before you apply, know
-                  <br />
-                  <em>what the journey involves.</em>
-                </>
+                isDetail ? (
+                  <>
+                    From selection to implementation:
+                    <br />
+                    <em>time, process and funding in one view.</em>
+                  </>
+                ) : (
+                  <>
+                    Before you apply, know
+                    <br />
+                    <em>what the journey involves.</em>
+                  </>
+                )
               }
             />
+
             <Localized
               as="p"
-              zh="由前期準備、研究、匯報到落手實踐，H Infinity 係一段需要你真正投入時間嘅過程。以下幾個日子，入選參加者需要預先留低。"
-              en="From preparation and research to presentations and implementation, H Infinity is a process that needs real commitment. Selected participants should reserve the key dates below in advance."
+              zh={
+                isDetail
+                  ? "H Infinity 唔係一次性活動。由前期準備、研究、匯報到落手實踐，參加者需要預留時間，亦會一路接受回饋同修正項目。"
+                  : "由前期準備、研究、匯報到落手實踐，H Infinity 係一段需要你真正投入時間嘅過程。以下幾個日子，入選參加者需要預先留低。"
+              }
+              en={
+                isDetail
+                  ? "H Infinity is not a one-off event. From preparation and research to presentations and implementation, participants need to make time, receive feedback and keep revising their projects."
+                  : "From preparation and research to presentations and implementation, H Infinity is a process that needs real commitment. Selected participants should reserve the key dates below in advance."
+              }
             />
           </div>
         </Reveal>
@@ -155,8 +196,13 @@ export function ProgrammeSnapshot() {
               <div className={styles.panelHeading}>
                 <div>
                   <span>01 / TIME COMMITMENT</span>
-                  <Localized as="h3" zh="你要預留嘅時間" en="Dates to reserve" />
+                  <Localized
+                    as="h3"
+                    zh="你要預留嘅時間"
+                    en="Dates to reserve"
+                  />
                 </div>
+
                 <Localized
                   as="span"
                   className={styles.requiredKey}
@@ -167,7 +213,10 @@ export function ProgrammeSnapshot() {
 
               <div className={styles.timeline}>
                 {timeline.map((item, index) => (
-                  <div className={styles.timelineItem} key={`${item.dateEn}-${item.titleEn}`}>
+                  <div
+                    className={styles.timelineItem}
+                    key={`${item.dateEn}-${item.titleEn}`}
+                  >
                     <div className={styles.timelineRail} aria-hidden="true">
                       <span>{String(index + 1).padStart(2, "0")}</span>
                     </div>
@@ -175,6 +224,7 @@ export function ProgrammeSnapshot() {
                     <div className={styles.timelineCopy}>
                       <div className={styles.timelineDateRow}>
                         <Localized as="b" zh={item.dateZh} en={item.dateEn} />
+
                         {item.required ? (
                           <Localized
                             as="span"
@@ -183,6 +233,7 @@ export function ProgrammeSnapshot() {
                             en="COMPULSORY"
                           />
                         ) : null}
+
                         {item.tentative ? (
                           <Localized
                             as="span"
@@ -192,7 +243,12 @@ export function ProgrammeSnapshot() {
                           />
                         ) : null}
                       </div>
-                      <Localized as="p" zh={item.titleZh} en={item.titleEn} />
+
+                      <Localized
+                        as="p"
+                        zh={item.titleZh}
+                        en={item.titleEn}
+                      />
                     </div>
                   </div>
                 ))}
@@ -202,7 +258,10 @@ export function ProgrammeSnapshot() {
 
           <Reveal delay={0.1}>
             <article className={styles.fundingPanel}>
-              <span className={styles.fundingKicker}>02 / FROM PLAN TO FUNDING</span>
+              <span className={styles.fundingKicker}>
+                02 / FROM PLAN TO FUNDING
+              </span>
+
               <Localized
                 as="h3"
                 zh={
@@ -247,20 +306,46 @@ export function ProgrammeSnapshot() {
         <Reveal>
           <div className={styles.ctaRow}>
             <div>
-              <Localized as="b" zh="申請截止：31 Oct 2026" en="Applications close: 31 Oct 2026" />
+              <Localized
+                as="b"
+                zh="申請截止：31 Oct 2026"
+                en="Applications close: 31 Oct 2026"
+              />
               <Localized
                 as="p"
-                zh="準備好預留時間，將一個你真正關心嘅問題做落去？"
-                en="Ready to make the time and turn something you genuinely care about into action?"
+                zh={
+                  isDetail
+                    ? "如果你願意預留時間，將一個真正關心嘅問題一路做落去，就由申請開始。"
+                    : "準備好預留時間，將一個你真正關心嘅問題做落去？"
+                }
+                en={
+                  isDetail
+                    ? "If you are ready to make the time and carry a question you genuinely care about into practice, start with the application."
+                    : "Ready to make the time and turn something you genuinely care about into action?"
+                }
               />
             </div>
 
             <div className="button-row">
-              <Link className="button button-light button-kinetic" href="/apply">
+              <Link
+                className="button button-light button-kinetic"
+                href="/apply"
+              >
                 <Localized zh="立即申請 ↗" en="Apply now ↗" />
               </Link>
-              <Link className="button button-dark button-kinetic" href="/h-infinity">
-                <Localized zh="了解完整計劃" en="Full programme details" />
+
+              <Link
+                className="button button-dark button-kinetic"
+                href={isDetail ? "/projects/cohort-01" : "/h-infinity"}
+              >
+                <Localized
+                  zh={isDetail ? "睇首屆項目" : "了解完整計劃"}
+                  en={
+                    isDetail
+                      ? "See Cohort 01 projects"
+                      : "Full programme details"
+                  }
+                />
               </Link>
             </div>
           </div>
