@@ -19,7 +19,6 @@ const links = [
       { href: "/projects/cohort-01", zh: "第一屆", en: "Cohort 01" }
     ]
   },
-  { href: "/stories", zh: "故事", en: "Stories" },
   { href: "/people", zh: "人物", en: "People" }
 ] as const;
 
