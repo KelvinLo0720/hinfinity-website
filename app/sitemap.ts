@@ -10,7 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/h-infinity",
     "/projects",
     "/projects/cohort-01",
-    "/stories",
     "/people",
     "/partners",
     "/support",
@@ -22,7 +21,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     ...staticRoutes.map((route) => ({
       url: `${BASE_URL}${route}`,
-      changeFrequency: route === "" || route === "/apply" ? "weekly" as const : "monthly" as const,
+      changeFrequency:
+        route === "" || route === "/apply"
+          ? ("weekly" as const)
+          : ("monthly" as const),
       priority: route === "" ? 1 : route === "/apply" ? 0.95 : 0.7
     })),
     ...projects.map((project) => ({
