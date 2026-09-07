@@ -39,9 +39,6 @@ export function Footer() {
           <Link href="/projects">
             {isZh ? "青年項目" : "Youth Projects"}
           </Link>
-          <Link href="/stories">
-            {isZh ? "故事" : "Stories"}
-          </Link>
         </div>
 
         <div>
