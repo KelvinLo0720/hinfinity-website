@@ -3,13 +3,13 @@ import Link from "next/link";
 import { Localized } from "@/components/i18n";
 import { PageHero } from "@/components/page-hero";
 import { ProjectCohortNav } from "@/components/project-cohort-nav";
-import { Reveal } from "@/components/reveal";
-import { programmeSteps, projects } from "@/lib/content";
+import { projects } from "@/lib/content";
 
 export const metadata = { title: "第一屆項目" };
 
 export default function Cohort01Page() {
   const cohortProjects = projects.filter((project) => project.cohort === "01");
+
   return (
     <>
       <PageHero
@@ -27,64 +27,6 @@ export default function Cohort01Page() {
         </div>
       </section>
 
-      <section className="section-tight">
-        <div className="shell">
-          <div className="chapter-stats">
-            <div className="stat-note motion-card">
-              <b>01</b>
-              <Localized as="span" zh="由一個問題開始" en="start with a question" />
-            </div>
-
-            <div className="stat-note motion-card">
-              <b>02</b>
-              <Localized as="span" zh="反覆測試同修正" en="test and revise" />
-            </div>
-
-            <div className="stat-note motion-card">
-              <b>03</b>
-              <Localized as="span" zh="帶入真實情境" en="move into practice" />
-            </div>
-
-            <div className="stat-note motion-card">
-              <b>∞</b>
-              <Localized as="span" zh="項目繼續行" en="keep it moving" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section section-blue">
-        <div className="shell">
-          <span className="eyebrow">PROGRAMME MOMENTS</span>
-
-          <div className="journey-scroller" style={{ marginTop: 32 }}>
-            {programmeSteps.map((step, index) => (
-              <Reveal key={step.n} delay={index * 0.06}>
-                <article className="journey-card motion-card">
-                  <div className="journey-image">
-                    <Image
-                      src={step.image}
-                      alt={step.zh}
-                      fill
-                      sizes="280px"
-                    />
-                  </div>
-                  <span>
-                    {step.n} / {step.en}
-                  </span>
-                  <Localized as="h3" zh={step.zh} en={step.enTitle} />
-                  <Localized
-                    as="p"
-                    zh="首屆過程紀錄"
-                    en="A moment from the first cohort"
-                  />
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="section">
         <div className="shell">
           <div className="section-heading">
@@ -92,8 +34,8 @@ export default function Cohort01Page() {
 
             <Localized
               as="h2"
-              zh="由一個念頭，到長做長有。"
-              en="From a first thought to something built to keep going."
+              zh="由一個念頭，到落地生根。"
+              en="From a first thought to something that takes root."
             />
 
             <Localized
