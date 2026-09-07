@@ -54,8 +54,8 @@ export default function AboutPage() {
 
             <Localized
               as="p"
-              zh="香港籽鷂文化是組織平台；H Infinity 是目前的旗艦青年社會文化實踐計劃。"
-              en="Hong Kong Culture Limited is the organisational platform; H Infinity is its flagship youth social and cultural practice programme."
+              zh="香港籽鷂文化是組織平台；H Infinity 是旗下青年社會文化實踐計劃。"
+              en="Hong Kong Culture Limited is the organisational platform; H Infinity is a youth social and cultural practice programme under it."
             />
           </Reveal>
 
