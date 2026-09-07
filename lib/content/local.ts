@@ -141,9 +141,9 @@ export const projects: Project[] = [
       "Shingage focuses on local cultural preservation and community participation, and is currently researching cultural preservation connected with Sai Wan Estate.",
 
     context:
-      "地方記憶，往往埋藏喺居民嘅日常生活入面。但城市變化急促，無形嘅社區記憶，好容易喺轉眼間消失。",
+      "社區集體回憶，往往埋藏喺居民嘅日常生活入面。但城市變化急促，無形嘅社區記憶，好容易喺轉眼間消失。",
     contextEn:
-      "Local memories are often embedded in residents’ everyday lives. But as the city changes quickly, intangible community memories can disappear in an instant.",
+      "Collective community memories are often embedded in residents’ everyday lives. But as the city changes quickly, intangible community memories can disappear in an instant.",
 
     shift:
       "項目由『保存資料』進一步思考點樣令街坊、青年同地方本身一齊參與。",
@@ -365,8 +365,8 @@ export const programmeSteps = [
   {
     n: "05",
     en: "TEST",
-    zh: "喺現實中試行",
-    enTitle: "Test it in the real world",
+    zh: "實踐計劃",
+    enTitle: "Put the plan into practice",
     image: "/images/group-conversation.jpg"
   },
   {
