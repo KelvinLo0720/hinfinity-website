@@ -5,7 +5,7 @@ import { Localized } from "./i18n";
 
 const sections = [
   { id: "support", zh: "支援", en: "Support" },
-  { id: "journey", zh: "旅程", en: "Journey" },
+  { id: "journey", zh: "計劃", en: "Programme" },
   { id: "chapter", zh: "第一屆", en: "Chapter" },
   { id: "projects", zh: "項目", en: "Projects" },
   { id: "next", zh: "招募", en: "Next" }
@@ -35,8 +35,14 @@ export function MobileSectionNav() {
   }, []);
 
   useEffect(() => {
-    const current = navRef.current?.querySelector<HTMLButtonElement>(`[data-section="${active}"]`);
-    current?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    const current = navRef.current?.querySelector<HTMLButtonElement>(
+      `[data-section="${active}"]`
+    );
+    current?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest"
+    });
   }, [active]);
 
   function goTo(id: string) {
@@ -48,7 +54,11 @@ export function MobileSectionNav() {
   }
 
   return (
-    <div className="mobile-section-nav" ref={navRef} aria-label="Homepage sections">
+    <div
+      className="mobile-section-nav"
+      ref={navRef}
+      aria-label="Homepage sections"
+    >
       {sections.map((section, index) => (
         <button
           type="button"
