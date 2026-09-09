@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Localized } from "@/components/i18n";
 import { PageHero } from "@/components/page-hero";
@@ -37,7 +38,8 @@ const features = [
     n: "04",
     titleZh: "親手試行",
     titleEn: "Test it yourself",
-    copyZh: "唔再紙上談兵，深入社區實踐，邊聽邊做。",
+    copyZh:
+      "唔再紙上談兵，深入社區實踐，邊聽邊做。",
     copyEn:
       "Move beyond ideas on paper: go into the community, put the idea into practice, listen and keep doing."
   },
@@ -68,40 +70,172 @@ export default function HInfinityPage() {
         introEn="H Infinity helps you put ideas into practice. You do not need a complete plan or a ready-made team. If you have an idea and the passion to try, move beyond imagining it and start making it real."
       >
         <div className="button-row">
-          <Link className="button button-primary" href="/apply">
-            <Localized zh="立即申請" en="Apply now" />
+          <Link
+            className="button button-primary"
+            href="/apply"
+          >
+            <Localized
+              zh="立即申請"
+              en="Apply now"
+            />
           </Link>
 
-          <Link className="button" href="#programme-details">
-            <Localized zh="睇計劃詳情 ↓" en="Programme details ↓" />
+          <Link
+            className="button"
+            href="#programme-details"
+          >
+            <Localized
+              zh="睇計劃詳情 ↓"
+              en="Programme details ↓"
+            />
           </Link>
         </div>
       </PageHero>
 
       <ProgrammeSnapshot variant="detail" />
 
-      <section className={styles.supportSection}>
+      <section
+        className={styles.programmeMoments}
+      >
+        <div className="shell">
+          <Reveal>
+            <div className={styles.momentsHeading}>
+              <span className={styles.eyebrow}>
+                IN PRACTICE
+              </span>
+
+              <Localized
+                as="h2"
+                zh="唔只聽人講。你會同人一齊做。"
+                en="Not just listening. You make things with people."
+              />
+
+              <Localized
+                as="p"
+                zh="由遇見同路人、接受前輩挑戰，到走入真實環境測試構思——H Infinity 將討論、同行同實踐放喺同一條路上。"
+                en="From meeting peers and being challenged by practitioners to testing ideas in real settings, H Infinity puts discussion, collaboration and practice on the same path."
+              />
+            </div>
+          </Reveal>
+
+          <div className={styles.momentsGrid}>
+            <Reveal>
+              <figure
+                className={`${styles.momentCard} motion-card`}
+              >
+                <Image
+                  src="/images/hinfinity/hinfinity-team-workshop.jpg"
+                  alt="H Infinity 參加者分組討論和共同發展構思"
+                  fill
+                  sizes="(max-width: 700px) 88vw, 34vw"
+                />
+
+                <figcaption>
+                  <Localized
+                    as="span"
+                    zh="01 · TEAM / 同路人"
+                    en="01 · TEAM / PEERS"
+                  />
+
+                  <Localized
+                    as="strong"
+                    zh="做住做住，遇到一班一齊行嘅人。"
+                    en="As you make things, you meet people to keep moving with."
+                  />
+                </figcaption>
+              </figure>
+            </Reveal>
+
+            <Reveal delay={0.08}>
+              <figure
+                className={`${styles.momentCard} motion-card`}
+              >
+                <Image
+                  src="/images/hinfinity/hinfinity-mentorship-circle.jpg"
+                  alt="H Infinity 參加者圍成一圈進行交流和指導"
+                  fill
+                  sizes="(max-width: 700px) 88vw, 34vw"
+                />
+
+                <figcaption>
+                  <Localized
+                    as="span"
+                    zh="02 · MENTORSHIP / 前輩指導"
+                    en="02 · MENTORSHIP / GUIDANCE"
+                  />
+
+                  <Localized
+                    as="strong"
+                    zh="有人問你啱嘅問題，比直接畀答案更重要。"
+                    en="The right question can matter more than being handed an answer."
+                  />
+                </figcaption>
+              </figure>
+            </Reveal>
+
+            <Reveal delay={0.16}>
+              <figure
+                className={`${styles.momentCard} motion-card`}
+              >
+                <Image
+                  src="/images/hinfinity/hinfinity-testing-fieldwork.jpg"
+                  alt="H Infinity 參加者走入現場進行文化項目實踐"
+                  fill
+                  sizes="(max-width: 700px) 88vw, 34vw"
+                />
+
+                <figcaption>
+                  <Localized
+                    as="span"
+                    zh="03 · FIELDWORK / 實踐"
+                    en="03 · FIELDWORK / PRACTICE"
+                  />
+
+                  <Localized
+                    as="strong"
+                    zh="離開紙面，先知道個 idea 真係行唔行得通。"
+                    en="Leave the page behind and find out whether the idea actually works."
+                  />
+                </figcaption>
+              </figure>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className={styles.supportSection}
+      >
         <div className="shell">
           <Reveal>
             <div className={styles.sectionHeading}>
-              <span className={styles.eyebrow}>WHAT YOU GET</span>
+              <span className={styles.eyebrow}>
+                WHAT YOU GET
+              </span>
+
               <Localized
                 as="h2"
                 zh={
                   <>
                     唔只係一筆資金。
                     <br />
-                    <em>有人同你一齊拆、試、改。</em>
+                    <em>
+                      有人同你一齊拆、試、改。
+                    </em>
                   </>
                 }
                 en={
                   <>
                     More than funding.
                     <br />
-                    <em>People to question, test and build with you.</em>
+                    <em>
+                      People to question, test
+                      and build with you.
+                    </em>
                   </>
                 }
               />
+
               <Localized
                 as="p"
                 zh="H Infinity 重點唔係幫你包裝一份完美 Proposal，而係陪你將一個未成形嘅念頭，逐步變成可以落地、可以面對真實社群嘅文化實踐。"
@@ -111,32 +245,52 @@ export default function HInfinityPage() {
           </Reveal>
 
           <div className={styles.featureGrid}>
-            {features.map((feature, index) => (
-              <Reveal key={feature.n} delay={index * 0.05}>
-                <article className={`${styles.featureCard} motion-card`}>
-                  <span className={styles.featureNumber}>{feature.n}</span>
-                  <Localized
-                    as="h3"
-                    zh={feature.titleZh}
-                    en={feature.titleEn}
-                  />
-                  <Localized
-                    as="p"
-                    zh={feature.copyZh}
-                    en={feature.copyEn}
-                  />
-                </article>
-              </Reveal>
-            ))}
+            {features.map(
+              (feature, index) => (
+                <Reveal
+                  key={feature.n}
+                  delay={index * 0.05}
+                >
+                  <article
+                    className={`${styles.featureCard} motion-card`}
+                  >
+                    <span
+                      className={
+                        styles.featureNumber
+                      }
+                    >
+                      {feature.n}
+                    </span>
+
+                    <Localized
+                      as="h3"
+                      zh={feature.titleZh}
+                      en={feature.titleEn}
+                    />
+
+                    <Localized
+                      as="p"
+                      zh={feature.copyZh}
+                      en={feature.copyEn}
+                    />
+                  </article>
+                </Reveal>
+              )
+            )}
           </div>
         </div>
       </section>
 
       <section className={styles.fitSection}>
-        <div className={`shell ${styles.fitGrid}`}>
+        <div
+          className={`shell ${styles.fitGrid}`}
+        >
           <Reveal>
             <div className={styles.fitCopy}>
-              <span className={styles.eyebrow}>WHO IS IT FOR?</span>
+              <span className={styles.eyebrow}>
+                WHO IS IT FOR?
+              </span>
+
               <Localized
                 as="h2"
                 zh={
@@ -162,22 +316,45 @@ export default function HInfinityPage() {
               />
 
               <div className={styles.fitTags}>
-                <Localized as="span" zh="未有正式工作經驗？可以。" en="No formal work experience? Fine." />
-                <Localized as="span" zh="唔係讀文社科？可以。" en="Not studying arts or social sciences? Fine." />
-                <Localized as="span" zh="未有現成團隊？可以。" en="No existing team? Fine." />
-                <Localized as="span" zh="未有完整計劃書？可以。" en="No complete proposal? Fine." />
+                <Localized
+                  as="span"
+                  zh="未有正式工作經驗？可以。"
+                  en="No formal work experience? Fine."
+                />
+
+                <Localized
+                  as="span"
+                  zh="唔係讀文社科？可以。"
+                  en="Not studying arts or social sciences? Fine."
+                />
+
+                <Localized
+                  as="span"
+                  zh="未有現成團隊？可以。"
+                  en="No existing team? Fine."
+                />
+
+                <Localized
+                  as="span"
+                  zh="未有完整計劃書？可以。"
+                  en="No complete proposal? Fine."
+                />
               </div>
             </div>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <aside className={`${styles.startCard} motion-card`}>
+            <aside
+              className={`${styles.startCard} motion-card`}
+            >
               <span>START HERE</span>
+
               <Localized
                 as="h3"
                 zh="由一樣你好在意、唔想睇住佢消失嘅事開始。"
                 en="Start with something you care about and do not want to see disappear."
               />
+
               <Localized
                 as="p"
                 zh="你未需要有所有答案。重要嘅係，你願唔願意落手做、接受挑戰，再一路修正。"
@@ -185,11 +362,24 @@ export default function HInfinityPage() {
               />
 
               <div className="button-row">
-                <Link className="button button-primary" href="/apply">
-                  <Localized zh="立即申請 ↗" en="Apply now ↗" />
+                <Link
+                  className="button button-primary"
+                  href="/apply"
+                >
+                  <Localized
+                    zh="立即申請 ↗"
+                    en="Apply now ↗"
+                  />
                 </Link>
-                <Link className="button" href="/projects/cohort-01">
-                  <Localized zh="睇首屆項目" en="See Cohort 01 projects" />
+
+                <Link
+                  className="button"
+                  href="/projects/cohort-01"
+                >
+                  <Localized
+                    zh="睇首屆項目"
+                    en="See Cohort 01 projects"
+                  />
                 </Link>
               </div>
             </aside>
