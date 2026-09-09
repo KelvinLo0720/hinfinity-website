@@ -2,6 +2,7 @@ import crypto from "node:crypto";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { applicationSchema } from "@/lib/application-submit-schema";
+import { sendApplicationConfirmationEmails } from "@/lib/application-confirmation-email";
 import {
   getApplicationsDataSource,
   heading2,
@@ -162,6 +163,7 @@ export async function POST(request: Request) {
 
     const reference = referenceNumber();
     const lead = data.applicants[0];
+    const submittedAt = new Date();
 
     const uploadedFiles = envelope.data.cvUploads
       .sort((a, b) => a.index - b.index);
@@ -190,7 +192,7 @@ export async function POST(request: Request) {
       },
       "Submitted At": {
         date: {
-          start: new Date().toISOString()
+          start: submittedAt.toISOString()
         }
       },
       Status: optionValue(
@@ -388,6 +390,27 @@ export async function POST(request: Request) {
         children
       })
     });
+
+    try {
+      await sendApplicationConfirmationEmails({
+        reference,
+        applicationType: data.applicationType,
+        applicants: data.applicants.map((applicant) => ({
+          chineseName: applicant.chineseName,
+          englishName: applicant.englishName,
+          email: applicant.email
+        })),
+        submittedAt,
+        testMode
+      });
+    } catch (emailError) {
+      // The application has already been saved successfully.
+      // A temporary email problem must not make the applicant submit twice.
+      console.error(
+        "Application confirmation email setup error",
+        emailError
+      );
+    }
 
     return NextResponse.json({
       submitted: true,
