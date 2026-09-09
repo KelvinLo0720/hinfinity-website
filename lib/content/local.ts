@@ -235,8 +235,19 @@ export const projects: Project[] = [
     category: "香港歷史 × Board Game",
     categoryEn: "Hong Kong History × Board Game",
 
-    // 暫時維持原圖，等港史科學館影片處理完成再換
-    image: "/images/peer-review.jpg",
+    // Projects Index thumbnail
+    image:
+      "/media/projects/hong-kong-history-museum-game/thumbnail.jpg",
+
+    video: {
+      src:
+        "/media/projects/hong-kong-history-museum-game/full.mp4",
+      preview:
+        "/media/projects/hong-kong-history-museum-game/preview.mp4",
+      poster:
+        "/media/projects/hong-kong-history-museum-game/thumbnail.jpg",
+      duration: "01:24"
+    },
 
     accent: "orange",
 
@@ -285,7 +296,8 @@ export const stories: Story[] = [
     slug: "shingage-place-and-memory",
     eyebrow: "PROJECT PROCESS",
     title: "將社區回憶重新帶入公眾視線。",
-    titleEn: "Bringing community memories back into public view.",
+    titleEn:
+      "Bringing community memories back into public view.",
     excerpt:
       "由地方研究到西環邨文化保存，項目一路問：點樣先可以令記憶繼續有人參與？",
     excerptEn:
@@ -311,7 +323,8 @@ export const people = [
     name: "Programme Team",
     role: "策劃、製作與項目運作",
     roleEn: "Programme, Production & Operations",
-    note: "將理念變成 programme、content、合作同實際執行。",
+    note:
+      "將理念變成 programme、content、合作同實際執行。",
     noteEn:
       "Turning the programme's ideas into delivery, content, partnerships and day-to-day execution."
   },
@@ -319,15 +332,18 @@ export const people = [
     name: "Advisors & Mentors",
     role: "問題、經驗與挑戰",
     roleEn: "Questions, Experience & Challenge",
-    note: "唔會提供標準答案，只陪青年釐清問題、拆解假設，探索更多可能。",
+    note:
+      "唔會提供標準答案，只陪青年釐清問題、拆解假設，探索更多可能。",
     noteEn:
       "There are no standard answers. Advisors and mentors help young people clarify questions, unpack assumptions and explore more possibilities."
   },
   {
     name: "Cohort 01 Alumni",
     role: "參加者、實踐者與回流成員",
-    roleEn: "Participants, Practitioners & Returning Alumni",
-    note: "將親身走過的路帶返社群，讓下一屆唔需要摸住石頭過河。",
+    roleEn:
+      "Participants, Practitioners & Returning Alumni",
+    note:
+      "將親身走過的路帶返社群，讓下一屆唔需要摸住石頭過河。",
     noteEn:
       "Bringing lived experience back into the community so the next cohort does not have to find its way from scratch."
   }
