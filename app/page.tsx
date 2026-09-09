@@ -14,7 +14,8 @@ const solutions = [
     number: "01",
     zh: "由模糊想法變成清晰方向",
     en: "Turn a vague idea into a clear direction",
-    copyZh: "用設計思維拆解問題，一個念頭變成試得到、講得明嘅構思。",
+    copyZh:
+      "用設計思維拆解問題，一個念頭變成試得到、講得明嘅構思。",
     copyEn:
       "Use design thinking to unpack the problem and turn a first thought into an idea that can be tested and explained clearly."
   },
@@ -51,7 +52,10 @@ export default function HomePage() {
   return (
     <>
       <section className="hero">
-        <div className="hero-energy-grid" aria-hidden="true" />
+        <div
+          className="hero-energy-grid"
+          aria-hidden="true"
+        />
 
         <div className="shell hero-grid">
           <div className="hero-copy">
@@ -103,7 +107,10 @@ export default function HomePage() {
                   className="button button-primary button-kinetic"
                   href="/apply"
                 >
-                  <Localized zh="立即申請 ↗" en="Apply now ↗" />
+                  <Localized
+                    zh="立即申請 ↗"
+                    en="Apply now ↗"
+                  />
                 </Link>
 
                 <Link
@@ -127,7 +134,10 @@ export default function HomePage() {
               />
             </Reveal>
 
-            <span className="hero-sticker" aria-hidden="true">
+            <span
+              className="hero-sticker"
+              aria-hidden="true"
+            >
               IDEAS
               <br />
               IN MOTION
@@ -140,7 +150,10 @@ export default function HomePage() {
 
       <MobileSectionNav />
 
-      <div className="solution-strip" aria-label="H Infinity support">
+      <div
+        className="solution-strip"
+        aria-label="H Infinity support"
+      >
         <div className="solution-track">
           {[0, 1].map((set) => (
             <div key={set}>
@@ -149,16 +162,19 @@ export default function HomePage() {
                 zh="拆解問題，找到方向"
                 en="UNPACK THE PROBLEM"
               />
+
               <Localized
                 as="span"
                 zh="集結同伴，請教前輩"
                 en="GATHER PEERS, LEARN FROM PRACTITIONERS"
               />
+
               <Localized
                 as="span"
                 zh="大膽試錯，小心修正"
                 en="TRY BOLDLY, REVISE CAREFULLY"
               />
+
               <Localized
                 as="span"
                 zh="由構思到實踐"
@@ -169,10 +185,15 @@ export default function HomePage() {
         </div>
       </div>
 
-      <section id="support" className="section solution-section">
+      <section
+        id="support"
+        className="section solution-section"
+      >
         <div className="shell problem-grid">
           <Reveal>
-            <span className="eyebrow">HOW WE SUPPORT YOU</span>
+            <span className="eyebrow">
+              HOW WE SUPPORT YOU
+            </span>
 
             <Localized
               as="p"
@@ -181,14 +202,18 @@ export default function HomePage() {
                 <>
                   我哋一齊
                   <br />
-                  <span className="underline">搵答案！</span>
+                  <span className="underline">
+                    搵答案！
+                  </span>
                 </>
               }
               en={
                 <>
                   Let’s find
                   <br />
-                  <span className="underline">the answers together!</span>
+                  <span className="underline">
+                    the answers together!
+                  </span>
                 </>
               }
             />
@@ -205,7 +230,10 @@ export default function HomePage() {
               en="H Infinity gives you room to explore, find collaborators, test the waters and turn what you care about in society into practical action."
             />
 
-            <Link className="text-link" href="/h-infinity">
+            <Link
+              className="text-link"
+              href="/h-infinity"
+            >
               <Localized
                 zh="點解要參加 H Infinity →"
                 en="Why join H Infinity →"
@@ -215,12 +243,22 @@ export default function HomePage() {
 
           <div className="problem-stack solution-stack">
             {solutions.map((item, index) => (
-              <Reveal key={item.number} delay={index * 0.08}>
+              <Reveal
+                key={item.number}
+                delay={index * 0.08}
+              >
                 <article className="problem-card solution-card motion-card">
-                  <span className="problem-number">{item.number}</span>
+                  <span className="problem-number">
+                    {item.number}
+                  </span>
 
                   <div>
-                    <Localized as="strong" zh={item.zh} en={item.en} />
+                    <Localized
+                      as="strong"
+                      zh={item.zh}
+                      en={item.en}
+                    />
+
                     <Localized
                       as="p"
                       zh={item.copyZh}
@@ -256,6 +294,7 @@ export default function HomePage() {
             >
               <div>
                 <b>01</b>
+
                 <Localized
                   as="span"
                   zh="由問題開始"
@@ -265,6 +304,7 @@ export default function HomePage() {
 
               <div>
                 <b>02</b>
+
                 <Localized
                   as="span"
                   zh="反覆測試修正"
@@ -274,6 +314,7 @@ export default function HomePage() {
 
               <div>
                 <b>03</b>
+
                 <Localized
                   as="span"
                   zh="走入社區實踐"
@@ -283,6 +324,7 @@ export default function HomePage() {
 
               <div>
                 <b>∞</b>
+
                 <Localized
                   as="span"
                   zh="項目繼續行"
@@ -292,17 +334,23 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <Reveal className="chapter-photo" delay={0.16}>
+          <Reveal
+            className="chapter-photo"
+            delay={0.16}
+          >
             <div className="chapter-photo-main motion-card">
               <Image
-                src="/images/bootcamp-circle.jpg"
-                alt="H Infinity 首屆參加者交流"
+                src="/images/home/home-ourfirstchapter-cancropintohorizontal.png"
+                alt="H Infinity 首屆參加者以便利貼探索自己對社區的想像"
                 fill
                 sizes="(max-width: 900px) 90vw, 580px"
               />
             </div>
 
-            <span className="chapter-stamp" aria-hidden="true">
+            <span
+              className="chapter-stamp"
+              aria-hidden="true"
+            >
               FIRST
               <br />
               CHAPTER
@@ -311,7 +359,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="projects" className="section projects-section">
+      <section
+        id="projects"
+        className="section projects-section"
+      >
         <div className="shell">
           <SectionHeading
             eyebrow="SELECTED PROJECTS"
@@ -326,10 +377,15 @@ export default function HomePage() {
             count={projects.length}
           >
             {projects.map((project, index) => (
-              <Reveal key={project.slug} delay={index * 0.08}>
+              <Reveal
+                key={project.slug}
+                delay={index * 0.08}
+              >
                 <Link
                   className={`project-feature motion-card ${
-                    index % 2 ? "project-feature-reverse" : ""
+                    index % 2
+                      ? "project-feature-reverse"
+                      : ""
                   }`}
                   href={`/projects/${project.slug}`}
                 >
@@ -355,7 +411,8 @@ export default function HomePage() {
                     </span>
 
                     <p className="project-kicker">
-                      COHORT {project.cohort} · PROJECT STORY
+                      COHORT {project.cohort} · PROJECT
+                      STORY
                     </p>
 
                     <Localized
@@ -404,11 +461,14 @@ export default function HomePage() {
             />
           </Reveal>
 
-          <Reveal className="quote-photo" delay={0.12}>
+          <Reveal
+            className="quote-photo"
+            delay={0.12}
+          >
             <figure className="motion-card">
               <Image
-                src="/images/participant-pitch.jpg"
-                alt="H Infinity 參加者分享構思"
+                src="/images/home/home-emotional-idea-share.jpg"
+                alt="H Infinity 參加者分享手繪文化項目構思"
                 fill
                 sizes="(max-width: 700px) 90vw, 460px"
               />
@@ -417,10 +477,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="next" className="section cta-band">
+      <section
+        id="next"
+        className="section cta-band"
+      >
         <div className="shell cta-grid">
           <Reveal>
-            <span className="eyebrow">COHORT 02 / APPLICATIONS OPEN</span>
+            <span className="eyebrow">
+              COHORT 02 / APPLICATIONS OPEN
+            </span>
 
             <Localized
               as="h2"
@@ -451,7 +516,10 @@ export default function HomePage() {
                 className="button button-light button-kinetic"
                 href="/apply"
               >
-                <Localized zh="立即申請" en="Apply now" />
+                <Localized
+                  zh="立即申請"
+                  en="Apply now"
+                />
               </Link>
 
               <Link
@@ -466,7 +534,10 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <Reveal className="cta-details" delay={0.14}>
+          <Reveal
+            className="cta-details"
+            delay={0.14}
+          >
             <dl>
               <div>
                 <Localized
@@ -474,6 +545,7 @@ export default function HomePage() {
                   zh="申請開放"
                   en="Applications open"
                 />
+
                 <dd>1 Sep 2026</dd>
               </div>
 
@@ -483,6 +555,7 @@ export default function HomePage() {
                   zh="申請截止"
                   en="Applications close"
                 />
+
                 <dd>31 Oct 2026</dd>
               </div>
 
@@ -492,6 +565,7 @@ export default function HomePage() {
                   zh="申請形式"
                   en="Application format"
                 />
+
                 <Localized
                   as="dd"
                   zh="個人 / 團隊（2–4 人）"
@@ -505,6 +579,7 @@ export default function HomePage() {
                   zh="現階段"
                   en="Current stage"
                 />
+
                 <Localized
                   as="dd"
                   zh="Cohort 02 現正接受申請"
