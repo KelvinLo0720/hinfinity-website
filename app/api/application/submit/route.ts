@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { applicationSchema } from "@/lib/application-submit-schema";
 import { sendApplicationConfirmationEmails } from "@/lib/application-confirmation-email";
+import { sendInternalApplicationNotifications } from "@/lib/application-notification-email";
 import {
   getApplicationsDataSource,
   heading2,
@@ -409,6 +410,26 @@ export async function POST(request: Request) {
       console.error(
         "Application confirmation email setup error",
         emailError
+      );
+    }
+
+    try {
+      await sendInternalApplicationNotifications({
+        reference,
+        applicationType: data.applicationType,
+        teamSize: data.applicants.length,
+        primaryContactName:
+          lead.englishName ||
+          lead.chineseName ||
+          "Applicant",
+        submittedAt,
+        testMode
+      });
+    } catch (notificationError) {
+      // Internal notification failure must never affect a successful application.
+      console.error(
+        "Internal application notification setup error",
+        notificationError
       );
     }
 
