@@ -6,6 +6,7 @@ import { LanguageProvider } from "@/components/i18n";
 import { MotionLayer } from "@/components/motion-layer";
 import { PageTransition } from "@/components/page-transition";
 import { MobileDock } from "@/components/mobile-dock";
+import { MetaPixel } from "@/components/meta-pixel";
 
 const SITE_URL = "https://hinfinityhk.com";
 
@@ -16,7 +17,10 @@ export const metadata: Metadata = {
   },
   description:
     "H Infinity 係俾青年由「我有感覺」走到「我真係做咗一件事」嘅文化實踐計劃。",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || SITE_URL),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ||
+      SITE_URL
+  ),
   openGraph: {
     type: "website",
     siteName: "H Infinity",
@@ -35,17 +39,27 @@ export default function RootLayout({
     <html lang="zh-HK" data-language="zh">
       <body>
         <LanguageProvider>
-          <a className="skip-link" href="#main">
+          <a
+            className="skip-link"
+            href="#main"
+          >
             跳到主要內容
           </a>
+
           <MotionLayer />
           <Header />
+
           <main id="main">
-            <PageTransition>{children}</PageTransition>
+            <PageTransition>
+              {children}
+            </PageTransition>
           </main>
+
           <MobileDock />
           <Footer />
         </LanguageProvider>
+
+        <MetaPixel />
       </body>
     </html>
   );
