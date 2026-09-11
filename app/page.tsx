@@ -467,7 +467,7 @@ export default function HomePage() {
           >
             <figure className="motion-card">
               <Image
-                src="/images/home/home-emotional-idea-share.jpg"
+                src="/images/home/home-emotional-idea-share.png"
                 alt="H Infinity 參加者分享手繪文化項目構思"
                 fill
                 sizes="(max-width: 700px) 90vw, 460px"
