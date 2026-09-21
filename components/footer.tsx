@@ -163,9 +163,9 @@ export function Footer() {
         <div>
           <h3>{isZh ? "條款及細則" : "Terms & Conditions"}</h3>
 
-          <Link href="/privacy">
-            {isZh ? "私隱及資料使用" : "Privacy & Data Use"}
-          </Link>
+          <a href="/privacy">
+  {isZh ? "私隱與個人資料政策" : "Privacy & Personal Data"}
+</a>
         </div>
       </div>
 
