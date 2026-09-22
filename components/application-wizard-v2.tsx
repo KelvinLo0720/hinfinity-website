@@ -38,6 +38,7 @@ type FormData = {
   q4: string;
   q5: string;
   q6: string;
+  individualTeamFormationConsent: boolean;
   accuracyDeclaration: boolean;
   privacyConsent: boolean;
 };
@@ -72,6 +73,7 @@ const emptyData: FormData = {
   q4: "",
   q5: "",
   q6: "",
+  individualTeamFormationConsent: false,
   accuracyDeclaration: false,
   privacyConsent: false
 };
@@ -367,6 +369,10 @@ export function ApplicationWizardV2({
     setData((previous) => ({
       ...previous,
       applicationType: type,
+      individualTeamFormationConsent:
+        type === "individual"
+          ? previous.individualTeamFormationConsent
+          : false,
       applicants:
         type === "individual"
           ? [
@@ -984,6 +990,19 @@ export function ApplicationWizardV2({
   }
 
   async function submitApplication() {
+    if (
+      data.applicationType === "individual" &&
+      !data.individualTeamFormationConsent
+    ) {
+      setStatus(
+        t(
+          "請確認你明白並同意個人申請者獲選後需要與其他獲選的個人申請者組成隊伍。",
+          "Please confirm that you understand and agree that selected individual applicants are required to form a team with other selected individual applicants."
+        )
+      );
+      return;
+    }
+
     if (
       !data.accuracyDeclaration ||
       !data.privacyConsent
@@ -2025,6 +2044,40 @@ export function ApplicationWizardV2({
                   <dd>{value}</dd>
                 </dl>
               ))}
+
+              {data.applicationType ===
+                "individual" && (
+                <label className="checkbox-line">
+                  <input
+                    type="checkbox"
+                    checked={
+                      data.individualTeamFormationConsent
+                    }
+                    onChange={(event) =>
+                      setData(
+                        (previous) => ({
+                          ...previous,
+                          individualTeamFormationConsent:
+                            event.target
+                              .checked
+                        })
+                      )
+                    }
+                  />
+                  <span>
+                    <strong>
+                      {t(
+                        "必須：",
+                        "Required: "
+                      )}
+                    </strong>
+                    {t(
+                      "我明白並同意，如我以個人形式申請並獲選，參加 H Infinity 期間需要與其他獲選的個人申請者組成隊伍，共同發展及實踐項目。",
+                      "I understand and agree that, if I apply and am selected as an individual applicant, I will be required to form a team with other selected individual applicants during H Infinity to develop and implement a project together."
+                    )}
+                  </span>
+                </label>
+              )}
 
               <label className="checkbox-line">
                 <input
