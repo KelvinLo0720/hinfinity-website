@@ -10,6 +10,7 @@ import {
 import { useRouter } from "next/navigation";
 import { applicationConfig } from "@/lib/application-form-config";
 import {
+  OTHER_INSTITUTION_OPTION,
   institutionOptions,
   interviewTimePreferenceOptions,
   yearOfStudyOptions
@@ -133,15 +134,7 @@ function normaliseLoadedData(
               cvFileSize: 0
             };
 
-            if (
-              !institutionOptions.includes(
-                merged.institution as any
-              )
-            ) {
-              merged.institution = "";
-            }
-
-            if (
+                        if (
               !yearOfStudyOptions.includes(
                 merged.yearOfStudy as any
               )
@@ -716,21 +709,21 @@ export function ApplicationWizardV2({
           );
         }
 
-        if (
-          !institutionOptions.includes(
-            applicant.institution as any
-          )
-        ) {
-          errors[
-            fieldKey(
-              index,
-              "institution"
-            )
-          ] = t(
-            `${role}：請從名單選擇院校`,
-            `${role}: select an institution`
-          );
-        }
+       if (
+  !applicant.institution.trim() ||
+  applicant.institution ===
+    OTHER_INSTITUTION_OPTION
+) {
+  errors[
+    fieldKey(
+      index,
+      "institution"
+    )
+  ] = t(
+    `${role}：請選擇院校，或填寫其他院校名稱`,
+    `${role}: select an institution or enter another institution name`
+  );
+}
 
         if (!applicant.programme.trim()) {
           errors[
@@ -1502,76 +1495,139 @@ export function ApplicationWizardV2({
                           }
                         )}
 
-                        <div className="field">
-                          <label
-                            htmlFor={fieldKey(
-                              index,
-                              "institution"
-                            )}
-                          >
-                            {t(
-                              "院校 / 學校",
-                              "Institution / school"
-                            )}
-                          </label>
+                       <div className="field">
+  <label
+    htmlFor={fieldKey(
+      index,
+      "institution"
+    )}
+  >
+    {t(
+      "院校 / 學校",
+      "Institution / school"
+    )}
+  </label>
 
-                          <select
-                            id={fieldKey(
-                              index,
-                              "institution"
-                            )}
-                            value={
-                              applicant.institution
-                            }
-                            onChange={(
-                              event
-                            ) =>
-                              updateApplicant(
-                                index,
-                                "institution",
-                                event.target
-                                  .value
-                              )
-                            }
-                            style={errorStyle(
-                              fieldKey(
-                                index,
-                                "institution"
-                              )
-                            )}
-                          >
-                            <option value="">
-                              {t(
-                                "請選擇院校 / 學校",
-                                "Select institution / school"
-                              )}
-                            </option>
+  <select
+    id={fieldKey(
+      index,
+      "institution"
+    )}
+    value={
+      institutionOptions.includes(
+        applicant.institution as any
+      )
+        ? applicant.institution
+        : applicant.institution
+          ? OTHER_INSTITUTION_OPTION
+          : ""
+    }
+    onChange={(event) => {
+      const value =
+        event.target.value;
 
-                            {institutionOptions.map(
-                              (institution) => (
-                                <option
-                                  key={
-                                    institution
-                                  }
-                                  value={
-                                    institution
-                                  }
-                                >
-                                  {
-                                    institution
-                                  }
-                                </option>
-                              )
-                            )}
-                          </select>
+      updateApplicant(
+        index,
+        "institution",
+        value
+      );
+    }}
+    style={errorStyle(
+      fieldKey(
+        index,
+        "institution"
+      )
+    )}
+  >
+    <option value="">
+      {t(
+        "請選擇院校 / 學校",
+        "Select institution / school"
+      )}
+    </option>
 
-                          {renderError(
-                            fieldKey(
-                              index,
-                              "institution"
-                            )
-                          )}
-                        </div>
+    {institutionOptions.map(
+      (institution) => (
+        <option
+          key={institution}
+          value={institution}
+        >
+          {institution}
+        </option>
+      )
+    )}
+  </select>
+
+  {(
+    applicant.institution ===
+      OTHER_INSTITUTION_OPTION ||
+    (
+      applicant.institution &&
+      !institutionOptions.includes(
+        applicant.institution as any
+      )
+    )
+  ) && (
+    <input
+      type="text"
+      value={
+        applicant.institution ===
+        OTHER_INSTITUTION_OPTION
+          ? ""
+          : applicant.institution
+      }
+      onChange={(event) =>
+        updateApplicant(
+          index,
+          "institution",
+          event.target.value
+        )
+      }
+      placeholder={t(
+        "請填寫院校全名，包括海外院校",
+        "Enter the full institution name, including overseas institutions"
+      )}
+      style={{
+        marginTop: 8,
+        ...errorStyle(
+          fieldKey(
+            index,
+            "institution"
+          )
+        )
+      }}
+      aria-label={t(
+        "其他院校 / 學校名稱",
+        "Other institution / school name"
+      )}
+    />
+  )}
+
+  {(
+    applicant.institution ===
+      OTHER_INSTITUTION_OPTION ||
+    (
+      applicant.institution &&
+      !institutionOptions.includes(
+        applicant.institution as any
+      )
+    )
+  ) && (
+    <small>
+      {t(
+        "其他院校 / 學校名稱｜請填寫院校全名，包括海外院校",
+        "Other institution / school name — enter the full name, including overseas institutions"
+      )}
+    </small>
+  )}
+
+  {renderError(
+    fieldKey(
+      index,
+      "institution"
+    )
+  )}
+</div>
 
                         <div className="field">
                           <label
