@@ -158,6 +158,7 @@ export async function POST(request: Request) {
       "Additional Note",
       "CV Files",
       "Privacy Consent",
+      "Individual Team Formation Consent",
       "Source",
       "Interview Time Preference"
     ]);
@@ -253,6 +254,12 @@ export async function POST(request: Request) {
       },
       "Privacy Consent": {
         checkbox: true
+      },
+      "Individual Team Formation Consent": {
+        checkbox:
+          data.applicationType === "individual"
+            ? data.individualTeamFormationConsent
+            : false
       },
       Source: {
         select: {
@@ -374,7 +381,13 @@ export async function POST(request: Request) {
       paragraph(data.q6 || "—"),
       heading2("Submission Record"),
       paragraph(
-        `Reference: ${reference}\nSource: Website\nTest Mode: ${
+        `Reference: ${reference}\nSource: Website\nIndividual Team Formation Consent: ${
+          data.applicationType === "individual"
+            ? data.individualTeamFormationConsent
+              ? "Yes"
+              : "No"
+            : "Not applicable"
+        }\nTest Mode: ${
           testMode ? "Yes" : "No"
         }`
       )
