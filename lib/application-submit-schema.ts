@@ -44,10 +44,23 @@ export const applicationSchema = z
     q4: z.string().trim().min(1).max(6000),
     q5: z.string().trim().min(1).max(6000),
     q6: z.string().trim().max(5000),
+    individualTeamFormationConsent: z.boolean().default(false),
     accuracyDeclaration: z.literal(true),
     privacyConsent: z.literal(true)
   })
   .superRefine((value, context) => {
+    if (
+      value.applicationType === "individual" &&
+      !value.individualTeamFormationConsent
+    ) {
+      context.addIssue({
+        code: "custom",
+        path: ["individualTeamFormationConsent"],
+        message:
+          "個人申請者必須確認同意獲選後與其他獲選的個人申請者組成隊伍。"
+      });
+    }
+
     if (
       value.applicationType === "individual" &&
       value.applicants.length !== 1
