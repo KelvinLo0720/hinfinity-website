@@ -412,8 +412,25 @@ export async function POST(request: Request) {
         applicants: data.applicants.map((applicant) => ({
           chineseName: applicant.chineseName,
           englishName: applicant.englishName,
-          email: applicant.email
+          phone: applicant.phone,
+          email: applicant.email,
+          institution: applicant.institution,
+          programme: applicant.programme,
+          yearOfStudy: applicant.yearOfStudy,
+          cvFileName: applicant.cvFileName
         })),
+        interviewTimePreference:
+          data.interviewTimePreference,
+        answers: {
+          q1: data.q1,
+          q2: data.q2,
+          q3: data.q3,
+          q4: data.q4,
+          q5: data.q5,
+          q6: data.q6
+        },
+        individualTeamFormationConsent:
+          data.individualTeamFormationConsent,
         submittedAt,
         testMode
       });
