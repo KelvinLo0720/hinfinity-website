@@ -77,7 +77,7 @@ export default async function ApplicationPage({
                     <strong>
                       確認電郵：
                     </strong>
-                    我哋會將申請確認電郵發送到你／你哋於申請表填寫嘅電郵地址。請留意收件箱，並檢查 Spam／Junk 郵件。
+                    我哋會將申請確認電郵發送到你／你哋於申請表填寫嘅電郵地址，當中亦會附上今次提交內容嘅副本，方便你日後查看自己填寫過嘅資料及回答。請留意收件箱，並檢查 Spam／Junk 郵件。
                   </>
                 }
                 en={
@@ -85,7 +85,7 @@ export default async function ApplicationPage({
                     <strong>
                       Confirmation email:
                     </strong>
-                    we will send an application confirmation email to the email address(es) provided in your application. Please check your inbox as well as your Spam/Junk folder.
+                    we will send an application confirmation email to the email address(es) provided in your application. It will also include a copy of the information and responses submitted for your reference. Please check your inbox as well as your Spam/Junk folder.
                   </>
                 }
               />
@@ -155,7 +155,7 @@ export default async function ApplicationPage({
               style={{
                 margin: "22px auto",
                 maxWidth: 640,
-                padding: 16,
+                padding: 18,
                 border:
                   "1px solid var(--line)",
                 borderRadius: 14
@@ -166,17 +166,17 @@ export default async function ApplicationPage({
                 zh={
                   <>
                     <strong>
-                      下一步：
+                      面試安排：
                     </strong>
-                    H Infinity 團隊會按甄選流程處理你嘅申請。如有需要，我哋會透過申請表所提供嘅電郵聯絡你。
+                    如你的申請獲安排進入面試階段，我哋會於提交申請後 <strong>14 個工作天內</strong>，透過你於申請表提供嘅電話號碼致電或 WhatsApp 聯絡你；團隊申請將聯絡主要聯絡人。請留意來電及訊息。如未能成功聯絡，我哋保留不作第二次聯絡嘅權利。
                   </>
                 }
                 en={
                   <>
                     <strong>
-                      Next:
+                      Interview arrangements:
                     </strong>
-                    the H Infinity team will process your application according to the selection workflow and contact you through the email address provided in your application if needed.
+                    if your application is selected for the interview stage, we will contact you within <strong>14 working days</strong> of submission by phone call or WhatsApp using the number provided in your application. For team applications, we will contact the primary contact. Please keep an eye on calls and messages. If we are unable to reach you, we reserve the right not to make a second contact attempt.
                   </>
                 }
               />
