@@ -1,3 +1,6 @@
+export const OTHER_INSTITUTION_OPTION =
+  "其他 / Other";
+
 export const institutionOptions = [
   // Degree-awarding institutions
   "明德學院 / Centennial College",
@@ -60,7 +63,9 @@ export const institutionOptions = [
   "青年學院 / Youth College",
   "卓越培訓發展中心 / Pro-Act by VTC",
   "匯縱專業發展中心 / Integrated Vocational Development Centre (IVDC)",
-  "展亮技能發展中心 / Shine Skills Centre"
+  "展亮技能發展中心 / Shine Skills Centre",
+
+  OTHER_INSTITUTION_OPTION
 ] as const;
 
 export const yearOfStudyOptions = [
@@ -80,7 +85,11 @@ export const interviewTimePreferenceOptions = [
   "Flexible"
 ] as const;
 
-export type InstitutionOption = (typeof institutionOptions)[number];
-export type YearOfStudyOption = (typeof yearOfStudyOptions)[number];
+export type InstitutionOption =
+  (typeof institutionOptions)[number];
+
+export type YearOfStudyOption =
+  (typeof yearOfStudyOptions)[number];
+
 export type InterviewTimePreferenceOption =
   (typeof interviewTimePreferenceOptions)[number];
