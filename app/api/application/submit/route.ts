@@ -2,6 +2,7 @@ import crypto from "node:crypto";
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { applicationSchema } from "@/lib/application-submit-schema";
+import { OTHER_DISCOVERY_SOURCE_OPTION } from "@/lib/application-options";
 import { sendApplicationConfirmationEmails } from "@/lib/application-confirmation-email";
 import { sendInternalApplicationNotifications } from "@/lib/application-notification-email";
 import {
@@ -159,6 +160,8 @@ export async function POST(request: Request) {
       "CV Files",
       "Privacy Consent",
       "Individual Team Formation Consent",
+      "Discovery Source",
+      "Discovery Source — Other",
       "Source",
       "Interview Time Preference"
     ]);
@@ -260,6 +263,19 @@ export async function POST(request: Request) {
           data.applicationType === "individual"
             ? data.individualTeamFormationConsent
             : false
+      },
+      "Discovery Source": {
+        select: {
+          name: data.discoverySource
+        }
+      },
+      "Discovery Source — Other": {
+        rich_text: richText(
+          data.discoverySource ===
+            OTHER_DISCOVERY_SOURCE_OPTION
+            ? data.discoverySourceOther
+            : ""
+        )
       },
       Source: {
         select: {
@@ -381,7 +397,13 @@ export async function POST(request: Request) {
       paragraph(data.q6 || "—"),
       heading2("Submission Record"),
       paragraph(
-        `Reference: ${reference}\nSource: Website\nIndividual Team Formation Consent: ${
+        `Reference: ${reference}\nSource: Website\nDiscovery Source: ${
+          data.discoverySource ===
+            OTHER_DISCOVERY_SOURCE_OPTION &&
+          data.discoverySourceOther.trim()
+            ? `${data.discoverySource} — ${data.discoverySourceOther.trim()}`
+            : data.discoverySource
+        }\nIndividual Team Formation Consent: ${
           data.applicationType === "individual"
             ? data.individualTeamFormationConsent
               ? "Yes"
@@ -419,6 +441,10 @@ export async function POST(request: Request) {
           yearOfStudy: applicant.yearOfStudy,
           cvFileName: applicant.cvFileName
         })),
+        discoverySource:
+          data.discoverySource,
+        discoverySourceOther:
+          data.discoverySourceOther,
         interviewTimePreference:
           data.interviewTimePreference,
         answers: {
