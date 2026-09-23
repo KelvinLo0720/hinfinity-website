@@ -10,7 +10,9 @@ import {
 import { useRouter } from "next/navigation";
 import { applicationConfig } from "@/lib/application-form-config";
 import {
+  OTHER_DISCOVERY_SOURCE_OPTION,
   OTHER_INSTITUTION_OPTION,
+  discoverySourceOptions,
   institutionOptions,
   interviewTimePreferenceOptions,
   yearOfStudyOptions
@@ -32,6 +34,8 @@ type Applicant = {
 type FormData = {
   applicationType: "individual" | "team";
   applicants: Applicant[];
+  discoverySource: string;
+  discoverySourceOther: string;
   interviewTimePreference: string[];
   q1: string;
   q2: string;
@@ -67,6 +71,8 @@ const emptyApplicant = (): Applicant => ({
 const emptyData: FormData = {
   applicationType: "individual",
   applicants: [emptyApplicant()],
+  discoverySource: "",
+  discoverySourceOther: "",
   interviewTimePreference: [],
   q1: "",
   q2: "",
@@ -134,7 +140,7 @@ function normaliseLoadedData(
               cvFileSize: 0
             };
 
-                        if (
+            if (
               !yearOfStudyOptions.includes(
                 merged.yearOfStudy as any
               )
@@ -145,6 +151,20 @@ function normaliseLoadedData(
             return merged;
           })
       : [emptyApplicant()];
+
+  const discoverySource =
+    discoverySourceOptions.includes(
+      raw.discoverySource as any
+    )
+      ? (raw.discoverySource as string)
+      : "";
+
+  const discoverySourceOther =
+    discoverySource ===
+      OTHER_DISCOVERY_SOURCE_OPTION &&
+    typeof raw.discoverySourceOther === "string"
+      ? raw.discoverySourceOther
+      : "";
 
   const preferences =
     Array.isArray(
@@ -166,6 +186,8 @@ function normaliseLoadedData(
         ? "team"
         : "individual",
     applicants,
+    discoverySource,
+    discoverySourceOther,
     interviewTimePreference: preferences
   };
 }
@@ -607,6 +629,50 @@ export function ApplicationWizardV2({
     );
   }
 
+  function discoverySourceLabel(
+    value: string
+  ) {
+    const labels: Record<
+      string,
+      [string, string]
+    > = {
+      Instagram: ["Instagram", "Instagram"],
+      Threads: ["Threads", "Threads"],
+      Facebook: ["Facebook", "Facebook"],
+      LinkedIn: ["LinkedIn", "LinkedIn"],
+      "School / University / Student Organisation": [
+        "學校／院校／學生組織",
+        "School / University / Student Organisation"
+      ],
+      "Friend / Classmate": [
+        "朋友／同學介紹",
+        "Friend / Classmate"
+      ],
+      "H Infinity Alumni": [
+        "H Infinity 過往參加者",
+        "H Infinity Alumni"
+      ],
+      "Mentor / Speaker / Partner Organisation": [
+        "導師／嘉賓／合作機構",
+        "Mentor / Speaker / Partner Organisation"
+      ],
+      "Event / Talk / Workshop": [
+        "活動／講座／工作坊",
+        "Event / Talk / Workshop"
+      ],
+      "Online Search / H Infinity Website": [
+        "網上搜尋／H Infinity 網站",
+        "Online Search / H Infinity Website"
+      ],
+      Other: ["其他", "Other"]
+    };
+
+    return t(
+      labels[value]?.[0] || value,
+      labels[value]?.[1] || value
+    );
+  }
+
   function yearOfStudyLabel(
     value: string
   ) {
@@ -709,21 +775,21 @@ export function ApplicationWizardV2({
           );
         }
 
-       if (
-  !applicant.institution.trim() ||
-  applicant.institution ===
-    OTHER_INSTITUTION_OPTION
-) {
-  errors[
-    fieldKey(
-      index,
-      "institution"
-    )
-  ] = t(
-    `${role}：請選擇院校，或填寫其他院校名稱`,
-    `${role}: select an institution or enter another institution name`
-  );
-}
+        if (
+          !applicant.institution.trim() ||
+          applicant.institution ===
+            OTHER_INSTITUTION_OPTION
+        ) {
+          errors[
+            fieldKey(
+              index,
+              "institution"
+            )
+          ] = t(
+            `${role}：請選擇院校，或填寫其他院校名稱`,
+            `${role}: select an institution or enter another institution name`
+          );
+        }
 
         if (!applicant.programme.trim()) {
           errors[
@@ -754,6 +820,28 @@ export function ApplicationWizardV2({
         }
       }
     );
+
+    if (
+      !discoverySourceOptions.includes(
+        data.discoverySource as any
+      )
+    ) {
+      errors.discoverySource = t(
+        "請選擇你／你哋最初從哪個渠道得知 H Infinity。",
+        "Please select how you first heard about H Infinity."
+      );
+    }
+
+    if (
+      data.discoverySource ===
+        OTHER_DISCOVERY_SOURCE_OPTION &&
+      !data.discoverySourceOther.trim()
+    ) {
+      errors.discoverySourceOther = t(
+        "請註明你／你哋從哪個渠道得知 H Infinity。",
+        "Please specify how you heard about H Infinity."
+      );
+    }
 
     setFieldErrors(errors);
 
@@ -1495,139 +1583,139 @@ export function ApplicationWizardV2({
                           }
                         )}
 
-                       <div className="field">
-  <label
-    htmlFor={fieldKey(
-      index,
-      "institution"
-    )}
-  >
-    {t(
-      "院校 / 學校",
-      "Institution / school"
-    )}
-  </label>
+                        <div className="field">
+                          <label
+                            htmlFor={fieldKey(
+                              index,
+                              "institution"
+                            )}
+                          >
+                            {t(
+                              "院校 / 學校",
+                              "Institution / school"
+                            )}
+                          </label>
 
-  <select
-    id={fieldKey(
-      index,
-      "institution"
-    )}
-    value={
-      institutionOptions.includes(
-        applicant.institution as any
-      )
-        ? applicant.institution
-        : applicant.institution
-          ? OTHER_INSTITUTION_OPTION
-          : ""
-    }
-    onChange={(event) => {
-      const value =
-        event.target.value;
+                          <select
+                            id={fieldKey(
+                              index,
+                              "institution"
+                            )}
+                            value={
+                              institutionOptions.includes(
+                                applicant.institution as any
+                              )
+                                ? applicant.institution
+                                : applicant.institution
+                                  ? OTHER_INSTITUTION_OPTION
+                                  : ""
+                            }
+                            onChange={(event) => {
+                              const value =
+                                event.target.value;
 
-      updateApplicant(
-        index,
-        "institution",
-        value
-      );
-    }}
-    style={errorStyle(
-      fieldKey(
-        index,
-        "institution"
-      )
-    )}
-  >
-    <option value="">
-      {t(
-        "請選擇院校 / 學校",
-        "Select institution / school"
-      )}
-    </option>
+                              updateApplicant(
+                                index,
+                                "institution",
+                                value
+                              );
+                            }}
+                            style={errorStyle(
+                              fieldKey(
+                                index,
+                                "institution"
+                              )
+                            )}
+                          >
+                            <option value="">
+                              {t(
+                                "請選擇院校 / 學校",
+                                "Select institution / school"
+                              )}
+                            </option>
 
-    {institutionOptions.map(
-      (institution) => (
-        <option
-          key={institution}
-          value={institution}
-        >
-          {institution}
-        </option>
-      )
-    )}
-  </select>
+                            {institutionOptions.map(
+                              (institution) => (
+                                <option
+                                  key={institution}
+                                  value={institution}
+                                >
+                                  {institution}
+                                </option>
+                              )
+                            )}
+                          </select>
 
-  {(
-    applicant.institution ===
-      OTHER_INSTITUTION_OPTION ||
-    (
-      applicant.institution &&
-      !institutionOptions.includes(
-        applicant.institution as any
-      )
-    )
-  ) && (
-    <input
-      type="text"
-      value={
-        applicant.institution ===
-        OTHER_INSTITUTION_OPTION
-          ? ""
-          : applicant.institution
-      }
-      onChange={(event) =>
-        updateApplicant(
-          index,
-          "institution",
-          event.target.value
-        )
-      }
-      placeholder={t(
-        "請填寫院校全名，包括海外院校",
-        "Enter the full institution name, including overseas institutions"
-      )}
-      style={{
-        marginTop: 8,
-        ...errorStyle(
-          fieldKey(
-            index,
-            "institution"
-          )
-        )
-      }}
-      aria-label={t(
-        "其他院校 / 學校名稱",
-        "Other institution / school name"
-      )}
-    />
-  )}
+                          {(
+                            applicant.institution ===
+                              OTHER_INSTITUTION_OPTION ||
+                            (
+                              applicant.institution &&
+                              !institutionOptions.includes(
+                                applicant.institution as any
+                              )
+                            )
+                          ) && (
+                            <input
+                              type="text"
+                              value={
+                                applicant.institution ===
+                                OTHER_INSTITUTION_OPTION
+                                  ? ""
+                                  : applicant.institution
+                              }
+                              onChange={(event) =>
+                                updateApplicant(
+                                  index,
+                                  "institution",
+                                  event.target.value
+                                )
+                              }
+                              placeholder={t(
+                                "請填寫院校全名，包括海外院校",
+                                "Enter the full institution name, including overseas institutions"
+                              )}
+                              style={{
+                                marginTop: 8,
+                                ...errorStyle(
+                                  fieldKey(
+                                    index,
+                                    "institution"
+                                  )
+                                )
+                              }}
+                              aria-label={t(
+                                "其他院校 / 學校名稱",
+                                "Other institution / school name"
+                              )}
+                            />
+                          )}
 
-  {(
-    applicant.institution ===
-      OTHER_INSTITUTION_OPTION ||
-    (
-      applicant.institution &&
-      !institutionOptions.includes(
-        applicant.institution as any
-      )
-    )
-  ) && (
-    <small>
-      {t(
-        "其他院校 / 學校名稱｜請填寫院校全名，包括海外院校",
-        "Other institution / school name — enter the full name, including overseas institutions"
-      )}
-    </small>
-  )}
+                          {(
+                            applicant.institution ===
+                              OTHER_INSTITUTION_OPTION ||
+                            (
+                              applicant.institution &&
+                              !institutionOptions.includes(
+                                applicant.institution as any
+                              )
+                            )
+                          ) && (
+                            <small>
+                              {t(
+                                "其他院校 / 學校名稱｜請填寫院校全名，包括海外院校",
+                                "Other institution / school name — enter the full name, including overseas institutions"
+                              )}
+                            </small>
+                          )}
 
-  {renderError(
-    fieldKey(
-      index,
-      "institution"
-    )
-  )}
-</div>
+                          {renderError(
+                            fieldKey(
+                              index,
+                              "institution"
+                            )
+                          )}
+                        </div>
 
                         <div className="field">
                           <label
@@ -1767,6 +1855,123 @@ export function ApplicationWizardV2({
                     )}
                   </button>
                 )}
+
+              <div
+                className="review-box"
+                style={{ marginTop: 24 }}
+              >
+                <div className="field field-full">
+                  <label htmlFor="discoverySource">
+                    {t(
+                      "你／你哋最初從哪個渠道得知 H Infinity？",
+                      "How did you first hear about H Infinity?"
+                    )}
+                  </label>
+
+                  <select
+                    id="discoverySource"
+                    value={data.discoverySource}
+                    onChange={(event) => {
+                      const value =
+                        event.target.value;
+
+                      setData((previous) => ({
+                        ...previous,
+                        discoverySource: value,
+                        discoverySourceOther:
+                          value ===
+                          OTHER_DISCOVERY_SOURCE_OPTION
+                            ? previous.discoverySourceOther
+                            : ""
+                      }));
+
+                      clearFieldError(
+                        "discoverySource"
+                      );
+
+                      if (
+                        value !==
+                        OTHER_DISCOVERY_SOURCE_OPTION
+                      ) {
+                        clearFieldError(
+                          "discoverySourceOther"
+                        );
+                      }
+                    }}
+                    style={errorStyle(
+                      "discoverySource"
+                    )}
+                  >
+                    <option value="">
+                      {t(
+                        "請選擇最主要的一個渠道",
+                        "Select the main channel"
+                      )}
+                    </option>
+
+                    {discoverySourceOptions.map(
+                      (source) => (
+                        <option
+                          key={source}
+                          value={source}
+                        >
+                          {discoverySourceLabel(
+                            source
+                          )}
+                        </option>
+                      )
+                    )}
+                  </select>
+
+                  <small>
+                    {t(
+                      "只需選擇最主要的一個渠道。",
+                      "Please select the main channel through which you first heard about us."
+                    )}
+                  </small>
+
+                  {renderError(
+                    "discoverySource"
+                  )}
+
+                  {data.discoverySource ===
+                    OTHER_DISCOVERY_SOURCE_OPTION && (
+                    <>
+                      <input
+                        id="discoverySourceOther"
+                        type="text"
+                        value={
+                          data.discoverySourceOther
+                        }
+                        onChange={(event) => {
+                          setData((previous) => ({
+                            ...previous,
+                            discoverySourceOther:
+                              event.target.value
+                          }));
+                          clearFieldError(
+                            "discoverySourceOther"
+                          );
+                        }}
+                        placeholder={t(
+                          "請註明",
+                          "Please specify"
+                        )}
+                        style={{
+                          marginTop: 10,
+                          ...errorStyle(
+                            "discoverySourceOther"
+                          )
+                        }}
+                      />
+
+                      {renderError(
+                        "discoverySourceOther"
+                      )}
+                    </>
+                  )}
+                </div>
+              </div>
 
             </>
           )}
@@ -2074,6 +2279,25 @@ export function ApplicationWizardV2({
                       preferenceLabel
                     )
                     .join(" / ")}
+                </dd>
+              </dl>
+
+              <dl className="review-box">
+                <dt>
+                  {t(
+                    "如何得知 H Infinity",
+                    "How you heard about H Infinity"
+                  )}
+                </dt>
+                <dd>
+                  {discoverySourceLabel(
+                    data.discoverySource
+                  )}
+                  {data.discoverySource ===
+                    OTHER_DISCOVERY_SOURCE_OPTION &&
+                  data.discoverySourceOther.trim()
+                    ? ` — ${data.discoverySourceOther.trim()}`
+                    : ""}
                 </dd>
               </dl>
 
