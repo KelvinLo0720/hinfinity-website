@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Localized } from "@/components/i18n";
+import { MediaPreview } from "@/components/media-preview";
 import { PhotoCollage } from "@/components/photo-collage";
 import { Reveal } from "@/components/reveal";
 import { SectionHeading } from "@/components/section-heading";
@@ -440,6 +441,8 @@ export default function HomePage() {
           </SnapRail>
         </div>
       </section>
+
+      <MediaPreview />
 
       <section className="section quote-section">
         <div className="shell quote-grid">

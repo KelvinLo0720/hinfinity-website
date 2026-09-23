@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/projects",
     "/projects/cohort-01",
     "/people",
+    "/media",
     "/partners",
     "/support",
     "/contact",
