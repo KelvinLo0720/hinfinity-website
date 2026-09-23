@@ -15,22 +15,22 @@ export type MediaFeature = {
 
 export const mediaFeatures: MediaFeature[] = [
   {
-    slug: "scmp-human-past-community-stories",
-    outlet: "South China Morning Post",
-    outletEn: "South China Morning Post",
-    date: "2025-12-23",
-    dateZh: "2025年12月23日",
-    dateEn: "23 Dec 2025",
+    slug: "mingpao-gen-z-culture",
+    outlet: "明報",
+    outletEn: "Ming Pao",
+    date: "2025-11-21",
+    dateZh: "2025年11月21日",
+    dateEn: "21 Nov 2025",
     title:
-      "Hong Kong’s AI-driven future and human past contrasted in 2 riveting projects",
+      "分享經驗資源 助辦活動　Gen Z 為同代人牽線 推廣文化",
     titleEn:
-      "Hong Kong’s AI-driven future and human past contrasted in 2 riveting projects",
+      "Sharing experience and resources: Gen Z connects peers to promote culture",
     excerpt:
-      "SCMP 將面向人工智能城市未來的設計，與青年研究者保存舊社區居民故事的工作並置，呈現城市發展中情感與文化連結的重要性。",
+      "《明報》從青年互助與文化推廣角度，記錄 Gen Z 如何分享經驗與資源，協助同代人籌辦活動及推廣文化。",
     excerptEn:
-      "SCMP contrasts AI-led visions of Hong Kong’s urban future with young researchers working to preserve the human stories of an old community.",
+      "Ming Pao looks at how Gen Z shares experience and resources with peers, helping other young people organise activities and take part in cultural work.",
     url:
-      "https://www.scmp.com/lifestyle/arts/article/3337275/hong-kongs-ai-driven-future-and-human-past-contrasted-2-riveting-projects",
+      "https://ol.mingpao.com/ldy/cultureleisure/culture/20251121/1763655758369/%e5%88%86%e4%ba%ab%e7%b6%93%e9%a9%97%e8%b3%87%e6%ba%90-%e5%8a%a9%e8%be%a6%e6%b4%bb%e5%8b%95-gen-z%e7%82%ba%e5%90%8c%e4%bb%a3%e4%ba%ba%e7%89%bd%e7%b7%9a-%e6%8e%a8%e5%bb%a3%e6%96%87%e5%8c%96",
     cohort: "01"
   },
   {
@@ -53,22 +53,22 @@ export const mediaFeatures: MediaFeature[] = [
     cohort: "01"
   },
   {
-    slug: "mingpao-gen-z-culture",
-    outlet: "明報",
-    outletEn: "Ming Pao",
-    date: "2025-11-21",
-    dateZh: "2025年11月21日",
-    dateEn: "21 Nov 2025",
+    slug: "scmp-human-past-community-stories",
+    outlet: "South China Morning Post",
+    outletEn: "South China Morning Post",
+    date: "2025-12-23",
+    dateZh: "2025年12月23日",
+    dateEn: "23 Dec 2025",
     title:
-      "分享經驗資源 助辦活動　Gen Z 為同代人牽線 推廣文化",
+      "Hong Kong’s AI-driven future and human past contrasted in 2 riveting projects",
     titleEn:
-      "Sharing experience and resources: Gen Z connects peers to promote culture",
+      "Hong Kong’s AI-driven future and human past contrasted in 2 riveting projects",
     excerpt:
-      "《明報》從青年互助與文化推廣角度，記錄 Gen Z 如何分享經驗與資源，協助同代人籌辦活動及推廣文化。",
+      "SCMP 將面向人工智能城市未來的設計，與青年研究者保存舊社區居民故事的工作並置，呈現城市發展中情感與文化連結的重要性。",
     excerptEn:
-      "Ming Pao looks at how Gen Z shares experience and resources with peers, helping other young people organise activities and take part in cultural work.",
+      "SCMP contrasts AI-led visions of Hong Kong’s urban future with young researchers working to preserve the human stories of an old community.",
     url:
-      "https://ol.mingpao.com/ldy/cultureleisure/culture/20251121/1763655758369/%e5%88%86%e4%ba%ab%e7%b6%93%e9%a9%97%e8%b3%87%e6%ba%90-%e5%8a%a9%e8%be%a6%e6%b4%bb%e5%8b%95-gen-z%e7%82%ba%e5%90%8c%e4%bb%a3%e4%ba%ba%e7%89%bd%e7%b7%9a-%e6%8e%a8%e5%bb%a3%e6%96%87%e5%8c%96",
+      "https://www.scmp.com/lifestyle/arts/article/3337275/hong-kongs-ai-driven-future-and-human-past-contrasted-2-riveting-projects",
     cohort: "01"
   }
 ];
