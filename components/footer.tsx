@@ -138,6 +138,10 @@ export function Footer() {
           <Link href="/projects">
             {isZh ? "青年項目" : "Youth Projects"}
           </Link>
+
+          <Link href="/media">
+            {isZh ? "媒體報道" : "Media & Features"}
+          </Link>
         </div>
 
         <div>
@@ -164,8 +168,8 @@ export function Footer() {
           <h3>{isZh ? "條款及細則" : "Terms & Conditions"}</h3>
 
           <a href="/privacy">
-  {isZh ? "私隱與個人資料政策" : "Privacy & Personal Data"}
-</a>
+            {isZh ? "私隱與個人資料政策" : "Privacy & Personal Data"}
+          </a>
         </div>
       </div>
 

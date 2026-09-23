@@ -19,7 +19,8 @@ const links = [
       { href: "/projects/cohort-01", zh: "第一屆", en: "Cohort 01" }
     ]
   },
-  { href: "/people", zh: "人物", en: "People" }
+  { href: "/people", zh: "人物", en: "People" },
+  { href: "/media", zh: "媒體", en: "Media" }
 ] as const;
 
 function isActive(pathname: string, href: string) {
