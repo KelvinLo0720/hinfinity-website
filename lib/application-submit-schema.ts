@@ -1,6 +1,8 @@
 import { z } from "zod";
 import {
+  OTHER_DISCOVERY_SOURCE_OPTION,
   OTHER_INSTITUTION_OPTION,
+  discoverySourceOptions,
   interviewTimePreferenceOptions,
   yearOfStudyOptions
 } from "@/lib/application-options";
@@ -91,6 +93,16 @@ export const applicationSchema = z
       .min(1)
       .max(4),
 
+    discoverySource: z.enum(
+      discoverySourceOptions
+    ),
+
+    discoverySourceOther: z
+      .string()
+      .trim()
+      .max(500)
+      .default(""),
+
     interviewTimePreference: z
       .array(
         z.enum(
@@ -145,6 +157,19 @@ export const applicationSchema = z
       z.literal(true)
   })
   .superRefine((value, context) => {
+    if (
+      value.discoverySource ===
+        OTHER_DISCOVERY_SOURCE_OPTION &&
+      !value.discoverySourceOther.trim()
+    ) {
+      context.addIssue({
+        code: "custom",
+        path: ["discoverySourceOther"],
+        message:
+          "選擇 Other 後，請註明你從哪個渠道得知 H Infinity。"
+      });
+    }
+
     if (
       value.applicationType ===
         "individual" &&

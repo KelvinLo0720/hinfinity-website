@@ -25,6 +25,8 @@ type SendApplicationConfirmationArgs = {
   reference: string;
   applicationType: "individual" | "team";
   applicants: ConfirmationApplicant[];
+  discoverySource: string;
+  discoverySourceOther: string;
   interviewTimePreference: string[];
   answers: ApplicationAnswers;
   individualTeamFormationConsent: boolean;
@@ -97,6 +99,8 @@ function buildEmailContent({
   reference,
   applicationType,
   applicants,
+  discoverySource,
+  discoverySourceOther,
   interviewTimePreference,
   answers,
   individualTeamFormationConsent,
@@ -106,6 +110,8 @@ function buildEmailContent({
   reference: string;
   applicationType: "individual" | "team";
   applicants: ConfirmationApplicant[];
+  discoverySource: string;
+  discoverySourceOther: string;
   interviewTimePreference: string[];
   answers: ApplicationAnswers;
   individualTeamFormationConsent: boolean;
@@ -146,6 +152,12 @@ function buildEmailContent({
   const interviewEn = interviewTimePreference
     .map((value) => preferenceLabel(value, "en"))
     .join(" / ");
+
+  const discoverySourceDisplay =
+    discoverySource === "Other" &&
+    discoverySourceOther.trim()
+      ? `${discoverySource} — ${discoverySourceOther.trim()}`
+      : discoverySource || "—";
 
   const interviewNoticeZh =
     applicationType === "team"
@@ -218,7 +230,8 @@ ${interviewNoticeZh}
 課程／學系：${applicant.programme || "—"}
 就讀年級／目前狀況：${applicant.yearOfStudy || "—"}
 CV：${applicant.cvFileName || "—"}
-${applicationType === "team" ? `團隊成員 / Team members：${teamNames}\n` : ""}面試時段偏好：${interviewZh || "—"}
+${applicationType === "team" ? `團隊成員 / Team members：${teamNames}\n` : ""}如何得知 H Infinity / How you heard about H Infinity：${discoverySourceDisplay}
+面試時段偏好：${interviewZh || "—"}
 Preferred interview time: ${interviewEn || "—"}${individualConsentText}
 
 ${questionText}
@@ -297,6 +310,7 @@ Hong Kong Culture Limited`;
               <tr><td style="padding:5px 16px 5px 0;color:#687188;vertical-align:top;">就讀年級／目前狀況</td><td style="padding:5px 0;">${escapeHtml(applicant.yearOfStudy || "—")}</td></tr>
               <tr><td style="padding:5px 16px 5px 0;color:#687188;vertical-align:top;">CV</td><td style="padding:5px 0;">${escapeHtml(applicant.cvFileName || "—")}</td></tr>
               ${applicationType === "team" ? `<tr><td style="padding:5px 16px 5px 0;color:#687188;vertical-align:top;">團隊成員<br /><span style="font-size:12px;">Team members</span></td><td style="padding:5px 0;">${escapeHtml(teamNames)}</td></tr>` : ""}
+              <tr><td style="padding:5px 16px 5px 0;color:#687188;vertical-align:top;">如何得知 H Infinity<br /><span style="font-size:12px;">How you heard about H Infinity</span></td><td style="padding:5px 0;">${escapeHtml(discoverySourceDisplay)}</td></tr>
               <tr><td style="padding:5px 16px 5px 0;color:#687188;vertical-align:top;">面試時段偏好<br /><span style="font-size:12px;">Interview preference</span></td><td style="padding:5px 0;">${escapeHtml(interviewZh || "—")}<br /><span style="font-size:12px;color:#687188;">${escapeHtml(interviewEn || "—")}</span></td></tr>
               ${individualConsentHtml}
             </table>
@@ -340,6 +354,8 @@ export async function sendApplicationConfirmationEmails({
   reference,
   applicationType,
   applicants,
+  discoverySource,
+  discoverySourceOther,
   interviewTimePreference,
   answers,
   individualTeamFormationConsent,
@@ -375,6 +391,8 @@ export async function sendApplicationConfirmationEmails({
         reference,
         applicationType,
         applicants,
+        discoverySource,
+        discoverySourceOther,
         interviewTimePreference,
         answers,
         individualTeamFormationConsent,

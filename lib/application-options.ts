@@ -68,6 +68,22 @@ export const institutionOptions = [
   OTHER_INSTITUTION_OPTION
 ] as const;
 
+export const OTHER_DISCOVERY_SOURCE_OPTION = "Other";
+
+export const discoverySourceOptions = [
+  "Instagram",
+  "Threads",
+  "Facebook",
+  "LinkedIn",
+  "School / University / Student Organisation",
+  "Friend / Classmate",
+  "H Infinity Alumni",
+  "Mentor / Speaker / Partner Organisation",
+  "Event / Talk / Workshop",
+  "Online Search / H Infinity Website",
+  OTHER_DISCOVERY_SOURCE_OPTION
+] as const;
+
 export const yearOfStudyOptions = [
   "Year 1",
   "Year 2",
@@ -87,6 +103,9 @@ export const interviewTimePreferenceOptions = [
 
 export type InstitutionOption =
   (typeof institutionOptions)[number];
+
+export type DiscoverySourceOption =
+  (typeof discoverySourceOptions)[number];
 
 export type YearOfStudyOption =
   (typeof yearOfStudyOptions)[number];
