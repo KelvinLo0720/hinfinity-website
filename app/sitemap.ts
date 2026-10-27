@@ -1,17 +1,18 @@
 import type { MetadataRoute } from "next";
-import { projects } from "@/lib/content";
 
 const BASE_URL = "https://hinfinityhk.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  /**
+   * TEMPORARY:
+   * Cohort 01 / previous-project routes, the current Media archive,
+   * and the People page are intentionally excluded while the public
+   * archive is hidden for banking / due-diligence processing.
+   */
   const staticRoutes = [
     "",
     "/about",
     "/h-infinity",
-    "/projects",
-    "/projects/cohort-01",
-    "/people",
-    "/media",
     "/partners",
     "/support",
     "/contact",
@@ -19,19 +20,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/apply"
   ];
 
-  return [
-    ...staticRoutes.map((route) => ({
-      url: `${BASE_URL}${route}`,
-      changeFrequency:
-        route === "" || route === "/apply"
-          ? ("weekly" as const)
-          : ("monthly" as const),
-      priority: route === "" ? 1 : route === "/apply" ? 0.95 : 0.7
-    })),
-    ...projects.map((project) => ({
-      url: `${BASE_URL}/projects/${project.slug}`,
-      changeFrequency: "monthly" as const,
-      priority: 0.65
-    }))
-  ];
+  return staticRoutes.map((route) => ({
+    url: `${BASE_URL}${route}`,
+    changeFrequency:
+      route === "" || route === "/apply"
+        ? ("weekly" as const)
+        : ("monthly" as const),
+    priority:
+      route === ""
+        ? 1
+        : route === "/apply"
+          ? 0.95
+          : 0.7
+  }));
 }

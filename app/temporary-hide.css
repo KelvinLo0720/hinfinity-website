@@ -1,0 +1,57 @@
+/*
+ * TEMPORARY BANKING HIDE — COHORT 01 / PREVIOUS PROJECT CONTENT
+ *
+ * Keep this file separate from globals.css so the change is easy to reverse.
+ * Remove the import from app/layout.tsx when the content can be public again.
+ */
+
+/* Homepage: explicit Cohort 01 / previous-project sections */
+.chapter-section,
+.projects-section {
+  display: none !important;
+}
+
+/* Homepage Media preview: current media archive is Cohort 01-related */
+section:has(a[href="/media"]) {
+  display: none !important;
+}
+
+/* Hide public navigation links to archived / previous-cohort areas */
+a[href="/projects"],
+a[href^="/projects/"],
+a[href="/media"],
+a[href="/first-chapter"],
+a[href="/stories"],
+a[href="/people"] {
+  display: none !important;
+}
+
+/* Desktop Projects navigation group */
+.nav-group:has(> a[href="/projects"]) {
+  display: none !important;
+}
+
+/* Mobile menu: Projects + Media + People */
+.mobile-menu-group:has(> a[href="/projects"]),
+.mobile-menu-group:has(> a[href="/media"]),
+.mobile-menu-group:has(> a[href="/people"]) {
+  display: none !important;
+}
+
+/* Homepage mobile section navigation */
+button[data-section="chapter"],
+button[data-section="projects"] {
+  display: none !important;
+}
+
+/* H Infinity page: hide the 5th feature ("傳承" / alumni continuation) temporarily */
+[class*="featureGrid"] > :nth-child(5) {
+  display: none !important;
+}
+
+/* Mobile dock: Projects link is hidden, so rebalance Home + Apply */
+@media (max-width: 700px) {
+  .mobile-dock {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
