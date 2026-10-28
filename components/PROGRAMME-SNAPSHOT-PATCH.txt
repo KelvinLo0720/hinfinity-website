@@ -1,0 +1,19 @@
+components/programme-snapshot.tsx
+
+Find:
+
+              <Localized
+                as="b"
+                zh="申請截止：31 Oct 2026"
+                en="Applications close: 31 Oct 2026"
+              />
+
+Replace with:
+
+              <Localized
+                as="b"
+                zh="申請截止：14 Nov 2026"
+                en="Applications close: 14 Nov 2026"
+              />
+
+No other programme dates should be changed.
