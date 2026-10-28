@@ -510,8 +510,8 @@ export default function HomePage() {
 
             <Localized
               as="p"
-              zh="不限學科背景，亦無需遞交周詳計劃。只要有熱誠，我哋都期待與你相見。"
-              en="No specific academic background or detailed plan is required. If you have the passion to try, we look forward to meeting you."
+              zh="申請期已延長至 14 Nov 2026。收到唔少查詢，希望有多少少時間整理 idea、準備申請內容同組隊，所以我哋決定延長申請期。你未需要有完整答案，只要由一樣真正關心嘅事開始。"
+              en="Applications have been extended to 14 Nov 2026. We heard from many of you that you would like a little more time to develop your idea, prepare your application and form a team, so we have extended the deadline. You do not need all the answers yet—start with something you genuinely care about."
             />
 
             <div className="button-row">
@@ -559,7 +559,7 @@ export default function HomePage() {
                   en="Applications close"
                 />
 
-                <dd>31 Oct 2026</dd>
+                <dd>14 Nov 2026</dd>
               </div>
 
               <div>
