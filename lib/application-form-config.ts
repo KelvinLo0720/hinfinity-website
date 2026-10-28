@@ -1,7 +1,7 @@
 export const applicationConfig = {
   cohortLabel: "H Infinity Cohort 02",
   applicationOpen: "1 Sep 2026",
-  applicationClose: "31 Oct 2026",
+  applicationClose: "14 Nov 2026",
   maxTeamSize: 4,
   minTeamSize: 2,
   frontendOnly: false,
