@@ -47,6 +47,29 @@ export default function ApplyPage() {
 
       <section>
         <div className="apply-panel motion-card">
+          <div
+            style={{
+              marginBottom: "24px",
+              padding: "18px 20px",
+              border: "1.5px solid var(--navy)",
+              borderRadius: "18px",
+              background: "var(--yellow)",
+              color: "var(--navy)"
+            }}
+          >
+            <Localized
+              as="strong"
+              zh="申請期延長至 14 Nov 2026"
+              en="Application deadline extended to 14 Nov 2026"
+            />
+
+            <Localized
+              as="p"
+              zh="收到唔少查詢，希望有多少少時間整理 idea、準備申請內容同組隊，所以我哋決定延長申請期。唔需要等到有一份完美 Proposal 先報名；用多啲時間諗清楚你真正關心嘅問題就得。"
+              en="We heard from many of you that you would like a little more time to develop your idea, prepare your application and form a team, so we have extended the deadline. You do not need a perfect proposal before applying—use the extra time to think through the question you genuinely care about."
+            />
+          </div>
+
           <div className="apply-facts">
             <div className="apply-fact">
               <Localized as="b" zh="申請期" en="Application period" />
